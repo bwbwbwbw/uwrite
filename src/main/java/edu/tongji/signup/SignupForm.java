@@ -16,6 +16,9 @@ public class SignupForm {
     @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
 	private String password;
 
+    @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
+    private String nickname;
+
     public String getEmail() {
 		return email;
 	}
@@ -32,7 +35,15 @@ public class SignupForm {
 		this.password = password;
 	}
 
-	public Account createAccount() {
-        return new Account(getEmail(), getPassword(), "ROLE_USER");
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public Account createAccount() {
+        return new Account(getEmail(), getPassword(), getNickname(), "ROLE_USER");
 	}
 }
