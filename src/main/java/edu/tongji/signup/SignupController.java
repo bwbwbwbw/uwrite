@@ -3,14 +3,12 @@ package edu.tongji.signup;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.tongji.account.*;
-import edu.tongji.support.web.*;
 
 @Controller
 public class SignupController {
@@ -30,14 +28,21 @@ public class SignupController {
 	}
 	
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
-	public String signup(@Valid @ModelAttribute SignupForm signupForm, Errors errors, RedirectAttributes ra) {
-		if (errors.hasErrors()) {
-			return SIGNUP_VIEW_NAME;
-		}
+	@ResponseStatus(value = HttpStatus.OK)
+	@ResponseBody
+	public Account signup(@Valid @ModelAttribute SignupForm signupForm/*, Errors errors, RedirectAttributes ra*/) {
+		//if (errors.hasErrors()) {
+		//	return errors;
+		//}
 		Account account = accountRepository.save(signupForm.createAccount());
+		return account;
+
+		/*
 		userService.signin(account);
         // see /WEB-INF/i18n/messages.properties and /WEB-INF/views/homeSignedIn.html
         MessageHelper.addSuccessAttribute(ra, "signup.success");
-		return "redirect:/";
+		return "redirect:/";*/
 	}
+
+
 }
