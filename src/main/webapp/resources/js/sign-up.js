@@ -76,7 +76,7 @@ $(document).ready(function ()
           var self = $(this);
           setTimeout(function () {
             self.addClass('hide-out');
-          }, i * 100);
+          }, i * 70);
         });
         setTimeout(function () {
           window.location = '/';
