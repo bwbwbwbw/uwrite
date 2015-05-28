@@ -41,4 +41,10 @@ public class RestError {
         this.setMessage("Error " + error.getClass() + ": " + error.getMessage());
         this.setType("error.exception");
     }
+
+    public RestError(String message) {
+        this.setMessage(message);
+        this.setType("error.exception");
+    }
+
 }

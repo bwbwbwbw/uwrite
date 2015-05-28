@@ -6,31 +6,58 @@
     <link href="../../../resources/lib/semantic-ui/semantic.min.css" rel="stylesheet" media="screen" th:href="@{/resources/lib/semantic-ui/semantic.min.css}"/>
     <link href="../../../resources/css/uwrite.css" rel="stylesheet" media="screen" th:href="@{/resources/css/uwrite.css}" />
 </head>
-<body>
+<body class="page-signup">
 
-<div class="login-dialog">
-  <form class="ui form segment" method="post" th:action="@{/authenticate}">
-    <th:block th:if="${param.error != null}">
-        <div th:replace="fragments/alert :: alert (type='danger', message='Sign in error. Please try again.')">Alert</div>
-    </th:block>
-    <div class="field">
+<div class="reg-header">
+  <a href="../homeNotSignedIn.html" th:href="@{/}" target="_self" class="uwrite-animation hide">
+    <img src="../../../resources/image/logo-big.png"/>
+  </a>
+</div>
+<div class="reg-divider uwrite-animation hide">
+  <div class="ui horizontal divider">
+    Sign in
+  </div>
+</div>
+<div class="reg-dialog">
+  <form class="ui form" method="post" th:action="@{/authenticate}">
+    <div class="field uwrite-animation hide">
       <label>E-mail</label>
       <input name="username" placeholder="E-mail" type="text"/>
     </div>
-    <div class="field">
+    <div class="field uwrite-animation hide">
       <label>Password</label>
-      <input password="password" type="password"/>
+      <input name="password" type="password"/>
     </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="_spring_security_remember_me" /> Remember me</label>
+    <div class="field uwrite-animation hide">
+      <div class="ui checkbox">
+        <input name="_spring_security_remember_me" type="checkbox"/>
+        <label>Remember me</label>
+      </div>
     </div>
-    <button class="positive ui submit button">Sign in</button>
-    <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
-                <p>New here? <a href="signup" th:href="@{/signup}">Sign Up</a></p>
-            </div>
-        </div>
+    <div class="field uwrite-animation hide">
+      <div class="ui fluid positive large submit button">
+        Sign in
+      </div>
+    </div>
+    <div class="field uwrite-animation hide">
+      <p>New here? <a href="../signup/signup.html" th:href="@{/signup}">Sign Up</a></p>
+    </div>
   </form>
+</div>
+
+<div class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Sign in failed
+  </div>
+  <div class="content">
+    <div class="description">Email or password mismatch. Please try again.</div>
+  </div>
+  <div class="actions">
+      <div class="ui red basic inverted button">
+        OK
+      </div>
+  </div>
 </div>
 
 <script src="../../../resources/lib/jquery.min.js" th:src="@{/resources/lib/jquery.min.js}"></script>

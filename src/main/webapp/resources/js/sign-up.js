@@ -1,8 +1,7 @@
-$(document).ready(function ()
-{
+$(document).ready(function () {
 
   setTimeout(function () {
-    $('.uwrite-animation.hide').each(function (i) {
+    $('.uwrite-animation.hide').addClass('ready').each(function (i) {
       var self = $(this);
       setTimeout(function () {
         self.removeClass('hide');
@@ -12,20 +11,20 @@ $(document).ready(function ()
 
   var validationRules = {
     email: {
-      identifier  : 'email',
+      identifier: 'email',
       rules: [{
-        type   : 'empty',
-        prompt : 'Please enter an e-mail'
+        type: 'empty',
+        prompt: 'Please enter an e-mail'
       }, {
-        type   : 'email',
-        prompt : 'Please enter a valid e-mail'
+        type: 'email',
+        prompt: 'Please enter a valid e-mail'
       }]
     },
     nickname: {
-      identifier:'nickname',
+      identifier: 'nickname',
       rules: [{
-        type:'empty',
-        prompt:'Please pick up a nick name'
+        type: 'empty',
+        prompt: 'Please pick up a nick name'
       }]
     },
     password: {
@@ -37,7 +36,7 @@ $(document).ready(function ()
         type: 'length[3]',
         prompt: 'Password needs to be at least 3 characters long'
       }]
-    },       
+    },
     comfirmPassword: {
       identifier: 'confirmPassword',
       rules: [{
@@ -46,17 +45,15 @@ $(document).ready(function ()
       }]
     },
     isAgree: {
-      identifier:'isAgree',
+      identifier: 'isAgree',
       rules: [{
-        type:'checked',
+        type: 'checked',
         prompt: 'Your must agree to the terms and conditions'
       }]
     }
   };
 
-  $('.ui.dropdown').dropdown({
-    on: 'hover'
-  });
+  $('.ui.checkbox').checkbox();
 
   $('.ui.form').form(validationRules, {
     on: 'blur',
@@ -70,18 +67,11 @@ $(document).ready(function ()
         url: '/signup',
         type: 'POST',
         data: form
-      }).done(function (data) {
-        
-        $('.uwrite-animation').each(function (i) {
-          var self = $(this);
-          setTimeout(function () {
-            self.addClass('hide-out');
-          }, i * 70);
-        });
+      }).done(function () {
+        $('.uwrite-animation').addClass('hide-out');
         setTimeout(function () {
           window.location = '/';
-        }, ($('.uwrite-animation').length + 1) * 100)
-
+        }, 500);
       }).fail(function (jqXHR) {
         var err = jqXHR.responseJSON;
         if (err.error) {
@@ -94,8 +84,4 @@ $(document).ready(function ()
       return false;
     }
   });
-  
-  $('.ui.checkbox')
-    .checkbox()
-  ;
 });

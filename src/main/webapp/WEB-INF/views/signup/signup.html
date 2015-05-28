@@ -9,7 +9,9 @@
 <body class="page-signup">
 
 <div class="reg-header">
-  <img src="../../../resources/image/logo-big.png" class="uwrite-animation hide"/>
+  <a href="../homeNotSignedIn.html" th:href="@{/}" target="_self" class="uwrite-animation hide">
+    <img src="../../../resources/image/logo-big.png"/>
+  </a>
 </div>
 <div class="reg-divider uwrite-animation hide">
   <div class="ui horizontal divider">
@@ -18,16 +20,13 @@
 </div>
 <div class="reg-dialog">
   <form class="ui form" method="post" th:action="@{/signup}" th:object="${signupForm}">
-    <th:block th:if="${#fields.hasErrors('${signupForm.*}')}">
-        <div th:replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">Alert</div>
-    </th:block>
     <div class="field uwrite-animation hide">
       <label>E-mail</label>
-      <input th:field="*{email}" placeholder="Your e-mail" type="text"/>
+      <input name="email" placeholder="Your e-mail" type="text"/>
     </div>
     <div class="field uwrite-animation hide">
       <label>Password</label>
-      <input th:field="*{password}" type="password"/>
+      <input name="password" type="password"/>
     </div>
     <div class="field uwrite-animation hide">
       <label>Comfirm your password</label>
@@ -35,7 +34,7 @@
     </div>
     <div class="field uwrite-animation hide">
       <label>Nick name</label>
-      <input th:field="*{nickname}" placeholder="Pick up a nick name" type="text"/>
+      <input name="nickname" placeholder="Pick up a nick name" type="text"/>
     </div>
     <div class="field uwrite-animation hide">
       <div class="ui checkbox">

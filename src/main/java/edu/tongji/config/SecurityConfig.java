@@ -1,5 +1,7 @@
 package edu.tongji.config;
 
+import edu.tongji.error.ajaxAuthenticationFailureHandler;
+import edu.tongji.error.ajaxAuthenticationSuccessHandler;
 import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -48,7 +50,8 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
                 .loginPage("/signin")
                 .permitAll()
-                .failureUrl("/signin?error=1")
+                .failureHandler(new ajaxAuthenticationFailureHandler())
+                .successHandler(new ajaxAuthenticationSuccessHandler())
                 .loginProcessingUrl("/authenticate")
                 .and()
             .logout()
