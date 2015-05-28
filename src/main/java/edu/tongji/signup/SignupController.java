@@ -31,17 +31,9 @@ public class SignupController {
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
 	public Account signup(@Valid @ModelAttribute SignupForm signupForm/*, Errors errors, RedirectAttributes ra*/) {
-		//if (errors.hasErrors()) {
-		//	return errors;
-		//}
 		Account account = accountRepository.save(signupForm.createAccount());
-		return account;
-
-		/*
 		userService.signin(account);
-        // see /WEB-INF/i18n/messages.properties and /WEB-INF/views/homeSignedIn.html
-        MessageHelper.addSuccessAttribute(ra, "signup.success");
-		return "redirect:/";*/
+		return account;
 	}
 
 

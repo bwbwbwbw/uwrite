@@ -29,6 +29,10 @@ public class RestError {
         this.message = message;
     }
 
+    public Boolean getError() {
+        return error;
+    }
+
     public RestError() {
 
     }

@@ -29,6 +29,13 @@ class Handler {
 		return new RestError(ex);
 	}
 
+	@ExceptionHandler(ConstraintException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public RestError handleConstraintException(ConstraintException ex) {
+		return new ConstraintError(ex);
+	}
+
 	@ExceptionHandler(BindException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody

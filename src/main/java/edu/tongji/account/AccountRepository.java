@@ -3,6 +3,8 @@ package edu.tongji.account;
 import javax.persistence.*;
 import javax.inject.Inject;
 
+import edu.tongji.error.ConstraintException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,9 +21,24 @@ public class AccountRepository {
 	
 	@Transactional
 	public Account save(Account account) {
-		account.setPassword(passwordEncoder.encode(account.getPassword()));
-		entityManager.persist(account);
-		return account;
+		try {
+			account.setPassword(passwordEncoder.encode(account.getPassword()));
+			entityManager.persist(account);
+			return account;
+		} catch (PersistenceException e) {
+			if (e.getCause() instanceof ConstraintViolationException) {
+				ConstraintViolationException ex =  (ConstraintViolationException)e.getCause();
+				if (ex.getConstraintName().equals("email")) {
+					throw new ConstraintException("This email is already taken.");
+				} else if (ex.getConstraintName().equals("nickname")) {
+					throw new ConstraintException("This nickname is already taken.");
+				} else {
+					throw e;
+				}
+			} else {
+				throw e;
+			}
+		}
 	}
 	
 	public Account findByEmail(String email) {

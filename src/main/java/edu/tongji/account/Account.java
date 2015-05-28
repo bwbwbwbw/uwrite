@@ -6,7 +6,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "account")
+@Table(name = "account", uniqueConstraints = {
+		@UniqueConstraint(name="email", columnNames = {"email"}),
+		@UniqueConstraint(name="nickname", columnNames = {"nickname"}),
+})
 @NamedQuery(name = Account.FIND_BY_EMAIL, query = "select a from Account a where a.email = :email")
 public class Account implements java.io.Serializable {
 
@@ -16,7 +19,7 @@ public class Account implements java.io.Serializable {
 	@GeneratedValue
 	private Long id;
 
-	@Column(unique = true)
+	@Column
 	private String email;
 
     @Column
