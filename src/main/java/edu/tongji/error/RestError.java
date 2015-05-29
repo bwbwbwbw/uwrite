@@ -1,7 +1,5 @@
 package edu.tongji.error;
 
-import org.slf4j.Logger;
-
 /**
  * Created by Breezewish on 5/27/15.
  */

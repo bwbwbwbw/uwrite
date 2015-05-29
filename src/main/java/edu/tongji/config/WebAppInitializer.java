@@ -4,7 +4,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.ServletRegistration;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -15,12 +16,12 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] {ApplicationConfig.class, JpaConfig.class, SecurityConfig.class};
+        return new Class<?>[]{ApplicationConfig.class, JpaConfig.class, SecurityConfig.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[] {WebMvcConfig.class};
+        return new Class<?>[]{WebMvcConfig.class};
     }
 
     @Override
@@ -31,7 +32,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
         DelegatingFilterProxy securityFilterChain = new DelegatingFilterProxy("springSecurityFilterChain");
 
-        return new Filter[] {characterEncodingFilter, securityFilterChain};
+        return new Filter[]{characterEncodingFilter, securityFilterChain};
     }
 
     @Override
