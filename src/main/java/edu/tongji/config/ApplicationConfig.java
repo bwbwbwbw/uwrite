@@ -2,6 +2,9 @@ package edu.tongji.config;
 
 import static org.springframework.context.annotation.ComponentScan.Filter;
 
+import edu.tongji.article.Article;
+import edu.tongji.article.ArticleRepository;
+import org.pegdown.PegDownProcessor;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +23,16 @@ class ApplicationConfig {
 		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
 		ppc.setLocation(new ClassPathResource("/persistence.properties"));
 		return ppc;
+	}
+
+	@Bean
+	public static PegDownProcessor pegDownProcessor() {
+		return new PegDownProcessor();
+	}
+
+	@Bean
+	public static ArticleRepository articleRepository() {
+		return new ArticleRepository();
 	}
 	
 }

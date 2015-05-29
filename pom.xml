@@ -28,6 +28,12 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- Markdown -->
+        <dependency>
+            <groupId>org.pegdown</groupId>
+            <artifactId>pegdown</artifactId>
+            <version>1.5.0</version>
+        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
