@@ -1,5 +1,7 @@
 package edu.tongji.article;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,9 +19,11 @@ public class Article implements java.io.Serializable {
     private String title;
 
     @Column
+    @Type(type="text")
     private String markdown;
 
     @Column
+    @Type(type="text")
     private String html;
 
     @Column

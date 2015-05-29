@@ -31,7 +31,7 @@ public class SignupController {
     @RequestMapping(value = "signup", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Account signup(@Valid @ModelAttribute SignupForm signupForm/*, Errors errors, RedirectAttributes ra*/) {
+    public Account signup(@Valid @ModelAttribute SignupForm signupForm) {
         Account account = accountRepository.save(signupForm.createAccount());
         userService.signin(account);
         return account;
