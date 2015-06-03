@@ -44,7 +44,7 @@ public class ArticleRepository {
     public void deleteById(Long id)
     {
 
-    entityManager.createNamedQuery(Article.DELETE_BY_ID, Article.class)
+    entityManager.createNamedQuery(Article.DELETE_BY_ID)
                  .setParameter("id",id)
                  .executeUpdate();
 
@@ -54,7 +54,7 @@ public class ArticleRepository {
     @Transactional
     public void update(Long uid,Long id ,String markdown,String title)
     {
-entityManager.createNamedQuery(Article.UPDATE,Article.class)
+entityManager.createNamedQuery(Article.UPDATE)
         .setParameter("uid",uid)
         .setParameter("id",id)
         .setParameter("markdown",markdown)

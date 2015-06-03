@@ -37,17 +37,19 @@ public class ArticleController {
         return "article/list";
     }
     @RequestMapping(value="article/delete-{id}",method = RequestMethod.GET)
-    public String delete(@PathVariable Long id )
+    @ResponseBody
+    public String delete(@PathVariable String id )
     {
+     Long p_id=Long.parseLong(id);
+     articleRepository.deleteById(p_id);
 
-     articleRepository.deleteById(id);
-
-        return "redirect:article/list";
+        return "{}";
     }
     @RequestMapping(value="article/update",method = RequestMethod.POST)
+    @ResponseBody
     public String update(@RequestParam Long uid,@RequestParam Long id,@RequestParam String title,@RequestParam String markdown)
     {
        articleRepository.update(uid,id,title,markdown);
-       return "article/article";
+       return "{}";
     }
 }
