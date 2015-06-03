@@ -1,5 +1,7 @@
 package edu.tongji.article;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -7,8 +9,13 @@ import java.util.Date;
 @Entity
 @EntityListeners(ArticleAdult.class)
 @Table(name = "article")
+@NamedQueries({@NamedQuery(name=Article.FIND_ALL_ARTICLE,query = "select a from Article a where a.uid= :uid order by a.createAt desc "),
+               @NamedQuery(name=Article.DELETE_BY_ID,query = "delete  from Article as a where a.id= :id"),
+               @NamedQuery(name=Article.UPDATE,query="update Article a set a.title= :title,a.markdown= :markdown where a.uid= :uid and a.id= :id")})
 public class Article implements java.io.Serializable {
-
+    public static final String FIND_ALL_ARTICLE ="Article.findAllArticle";
+    public static final String DELETE_BY_ID="Article.deleteById";
+    public static final String UPDATE="Article.update";
     @Id
     @GeneratedValue
     private Long id;
@@ -17,9 +24,11 @@ public class Article implements java.io.Serializable {
     private String title;
 
     @Column
+    @Type(type="text")
     private String markdown;
 
     @Column
+    @Type(type="text")
     private String html;
 
     @Column

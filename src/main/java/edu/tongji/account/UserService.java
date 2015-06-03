@@ -1,5 +1,7 @@
 package edu.tongji.account;
 
+import edu.tongji.article.Article;
+import edu.tongji.article.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,11 +20,14 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private AccountRepository accountRepository;
-
+    @Autowired
+    private ArticleRepository articleRepository;
     @PostConstruct
     protected void initialize() {
         accountRepository.save(new Account("admin", "admin", "admin", "ROLE_ADMIN"));
         accountRepository.save(new Account("test", "test", "Test User", "ROLE_USER"));
+        articleRepository.save(new Article(Long.MAX_VALUE,"test","test"));
+        articleRepository.save(new Article(Long.MAX_VALUE,"test2","test2"));
     }
 
     @Override

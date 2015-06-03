@@ -5,12 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.persistence.Transient;
+import java.util.List;
 
 @Repository
-@Transactional(readOnly = true)
+//@Transactional(readOnly = true)
 public class ArticleRepository {
 
     @PersistenceContext
@@ -28,4 +31,35 @@ public class ArticleRepository {
         return article;
     }
 
+   public List<Article> listAll(Long uid){
+     try {
+         return entityManager.createNamedQuery(Article.FIND_ALL_ARTICLE, Article.class).setParameter("uid",uid)
+                 .getResultList();
+     }catch (PersistenceException e)
+     {
+         return null;
+     }
+   }
+    @Transactional
+    public void deleteById(Long id)
+    {
+
+    entityManager.createNamedQuery(Article.DELETE_BY_ID, Article.class)
+                 .setParameter("id",id)
+                 .executeUpdate();
+
+
+    }
+
+    @Transactional
+    public void update(Long uid,Long id ,String markdown,String title)
+    {
+entityManager.createNamedQuery(Article.UPDATE,Article.class)
+        .setParameter("uid",uid)
+        .setParameter("id",id)
+        .setParameter("markdown",markdown)
+        .setParameter("title",title)
+        .executeUpdate();
+
+    }
 }
