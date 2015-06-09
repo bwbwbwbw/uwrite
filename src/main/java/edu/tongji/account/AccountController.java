@@ -16,18 +16,15 @@ import java.security.Principal;
 @Secured("ROLE_USER")
 class AccountController {
 
-    private AccountRepository accountRepository;
-
     @Autowired
-    public AccountController(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
-    }
+    private AccountRepository accountRepository;
 
     @RequestMapping(value = "account/current", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
     public Account accounts(Principal principal) {
         Assert.notNull(principal);
+
         return accountRepository.findByEmail(principal.getName());
     }
 }

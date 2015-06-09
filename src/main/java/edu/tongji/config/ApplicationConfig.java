@@ -1,6 +1,7 @@
 package edu.tongji.config;
 
 import edu.tongji.Application;
+import edu.tongji.account.AccountRepository;
 import edu.tongji.article.ArticleRepository;
 import org.pegdown.PegDownProcessor;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -31,6 +32,11 @@ class ApplicationConfig {
     @Bean
     public static ArticleRepository articleRepository() {
         return new ArticleRepository();
+    }
+
+    @Bean
+    public static AccountRepository accountRepository() {
+        return new AccountRepository();
     }
 
 }
