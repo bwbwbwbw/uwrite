@@ -1,5 +1,6 @@
 package edu.tongji.article;
 
+import edu.tongji.account.Account;
 import org.pegdown.PegDownProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,19 +31,20 @@ public class ArticleRepository {
         return article;
     }
 
-    public List<Article> listAll(Long uid) {
+    public List<Article> listAll(Account account) {
         try {
-            return entityManager.createNamedQuery(Article.FIND_MINE, Article.class).setParameter("uid", uid)
+            return entityManager.createNamedQuery(Article.FIND_MINE, Article.class)
+                    .setParameter("uid", account.getId())
                     .getResultList();
         } catch (PersistenceException e) {
             return null;
         }
     }
 
-    public Article getArticle(Long uid, Long id) {
+    public Article getArticle(Account account, Long id) {
         try {
             return entityManager.createNamedQuery(Article.FIND_BY_UID_ID, Article.class)
-                    .setParameter("uid", uid)
+                    .setParameter("uid", account.getId())
                     .setParameter("id", id)
                     .getSingleResult();
         } catch (PersistenceException e) {
@@ -51,15 +53,15 @@ public class ArticleRepository {
     }
 
     @Transactional
-    public Boolean delete(Long uid, Long id) {
-        Article article = getArticle(uid, id);
+    public Boolean delete(Account account, Long id) {
+        Article article = getArticle(account, id);
         entityManager.remove(article);
         return true;
     }
 
     @Transactional
-    public Article update(Long uid, Long id, String markdown, String title) {
-        Article article = getArticle(uid, id);
+    public Article update(Account account, Long id, String markdown, String title) {
+        Article article = getArticle(account, id);
         article.setMarkdown(markdown);
         article.setTitle(title);
         entityManager.merge(article);

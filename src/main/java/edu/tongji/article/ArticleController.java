@@ -30,15 +30,20 @@ public class ArticleController {
     @ResponseBody
     public Article create(Principal principal, @RequestParam String title, @RequestParam String markdown) {
         Account account = accountRepository.findByEmail(principal.getName());
-        Article article = new Article(account.getId(), title, markdown);
+        Article article = new Article(account, title, markdown);
         articleRepository.save(article);
         return article;
+    }
+
+    @RequestMapping(value = "article/create", method = RequestMethod.GET)
+    public String create(Principal principal) {
+        return "article/create";
     }
 
     @RequestMapping(value = "article/my", method = RequestMethod.GET)
     public String list(Principal principal, Model model) {
         Account account = accountRepository.findByEmail(principal.getName());
-        model.addAttribute("list", articleRepository.listAll(account.getId()));
+        model.addAttribute("list", articleRepository.listAll(account));
         return "article/list";
     }
 
@@ -47,7 +52,7 @@ public class ArticleController {
     public String delete(Principal principal, @PathVariable("id") Long id) {
         Account account = accountRepository.findByEmail(principal.getName());
         if (account != null) {
-            articleRepository.delete(account.getId(), id);
+            articleRepository.delete(account, id);
         }
         return "{}";
     }
@@ -57,7 +62,7 @@ public class ArticleController {
     public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String markdown) {
         Account account = accountRepository.findByEmail(principal.getName());
         if (account != null) {
-            return articleRepository.update(account.getId(), id, title, markdown);
+            return articleRepository.update(account, id, title, markdown);
         } else {
             return null;
         }

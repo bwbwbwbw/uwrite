@@ -7,8 +7,11 @@
 <body>
 
     <div>
-       <p th:each="article : ${list}" th:text="${article.title}"></p>
+        <div th:each="article : ${list}">
+            <h3 th:text="${article.title}"></h3>
+            <p th:text="${article.id}"></p>
+            <p th:utext="${article.html}"></p>
+        </div>
      </div>
-
 </body>
 </html>

@@ -26,8 +26,6 @@ public class UserService implements UserDetailsService {
     protected void initialize() {
         accountRepository.save(new Account("admin", "admin", "admin", "ROLE_ADMIN"));
         accountRepository.save(new Account("test", "test", "Test User", "ROLE_USER"));
-        articleRepository.save(new Article(Long.MAX_VALUE,"test","test"));
-        articleRepository.save(new Article(Long.MAX_VALUE,"test2","test2"));
     }
 
     @Override
