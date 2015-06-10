@@ -2,6 +2,9 @@ package edu.tongji.article;
 
 import edu.tongji.account.Account;
 import org.hibernate.annotations.Type;
+import org.pegdown.PegDownProcessor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,6 +12,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 @Entity
 @EntityListeners(ArticleAdult.class)
+@Configurable
 @Table(name = "article")
 @NamedQueries({
         @NamedQuery(name = Article.FIND_BY_UID_ID, query = "select a from Article a where a.id = :id and a.user.id = :uid"),
@@ -44,14 +48,17 @@ public class Article implements java.io.Serializable {
     @Column
     private Date updateAt;
 
-    protected Article() {
+    @Autowired
+    @Transient
+    private PegDownProcessor pegDownProcessor;
 
+    protected Article() {
     }
 
     public Article(Account owner, String title, String markdown) {
-        this.user = owner;
-        this.title = title;
-        this.markdown = markdown;
+        this.setUser(owner);
+        this.setTitle(title);
+        this.setMarkdown(markdown);
     }
 
     public String getTitle() {
@@ -60,6 +67,8 @@ public class Article implements java.io.Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+        this.url = title;
+        // TODO: process title
     }
 
     public String getMarkdown() {
@@ -68,22 +77,16 @@ public class Article implements java.io.Serializable {
 
     public void setMarkdown(String markdown) {
         this.markdown = markdown;
+        this.html = markdown;
+        // TODO: use pegdown processor
     }
 
     public String getHtml() {
         return html;
     }
 
-    public void setHtml(String html) {
-        this.html = html;
-    }
-
     public String getUrl() {
         return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public Long getId() {

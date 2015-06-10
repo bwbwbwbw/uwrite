@@ -35,10 +35,10 @@ public class Account implements java.io.Serializable {
     }
 
     public Account(String email, String password, String nickname, String role) {
-        this.email = email;
-        this.password = password;
-        this.nickname = nickname;
-        this.role = role;
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setNickname(nickname);
+        this.setRole(role);
     }
 
     public Long getId() {
