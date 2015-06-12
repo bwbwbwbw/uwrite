@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.signin.title}">Sign in</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/lib/semantic-ui/semantic.min.css" rel="stylesheet" media="screen" th:href="@{/resources/lib/semantic-ui/semantic.min.css}"/>
+    <link href="../../../resources/css/uwrite.css" rel="stylesheet" media="screen" th:href="@{/resources/css/uwrite.css}" />
+</head>
+<body class="page-article">
+
+
+<div class="postArticle-content">
+
+</div>
+
+<div class="ui comments">
+    <h3 class="ui dividing header">Comments</h3>
+    <div id="comment">
+        <div class="comment">
+            <a class="avatar">
+                <img src="/images/avatar/small/matt.jpg"/>
+            </a>
+            <div class="content">
+                <a class="author">Matt</a>
+                <div class="metadata">
+                    <span class="date">Today at 5:42PM</span>
+                </div>
+                <div class="text">
+                    How artistic!
+                </div>
+                <div class="actions">
+                    <a class="reply">Reply</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form class="ui reply form">
+        <div class="field">
+            <textarea class="role-reply-body"></textarea>
+        </div>
+        <div class="ui blue labeled submit icon button role-reply">
+            <i class="icon edit"></i> Add Reply
+        </div>
+    </form>
+</div>
+
+<script src="../../../resources/lib/jquery.min.js" th:src="@{/resources/lib/jquery.min.js}"></script>
+<script src="../../../resources/lib/semantic-ui/semantic.min.js" th:src="@{/resources/lib/semantic-ui/semantic.min.js}"></script>
+<script src="../../../resources/js/article-view.js" th:src="@{/resources/js/article-view.js}"></script>
+</body>
+</html>

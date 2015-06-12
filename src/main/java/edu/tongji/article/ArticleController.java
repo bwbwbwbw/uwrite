@@ -41,6 +41,11 @@ public class ArticleController {
         return article;
     }
 
+    @RequestMapping(value = "article/xxx")
+    public String view(Principal principal) {
+        return "article/view";
+    }
+
     @RequestMapping(value = "article/create", method = RequestMethod.GET)
     public String create(Principal principal) {
         return "article/create";

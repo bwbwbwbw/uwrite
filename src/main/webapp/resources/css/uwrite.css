@@ -16,6 +16,210 @@
 .uwrite-animation.hide-out {
   opacity: 0;
 }
+.page-article .postArticle-content {
+  font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
+  color: rgba(0,0,0,0.8);
+  font-size: 18px;
+  line-height: 1.4;
+}
+.page-article .postArticle-content {
+  position: relative;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: normal;
+}
+.page-article hr {
+  box-sizing: content-box;
+  height: 0;
+}
+.page-article .section--last {
+  padding-bottom: 5px;
+}
+.page-article .postArticle-content>section {
+  position: relative;
+  clear: both;
+}
+.page-article .postArticle-content,
+.page-article .postArticle-content:focus {
+  outline: 0;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+.page-article .graf--hr,
+.page-article hr.section-divider {
+  display: block;
+  width: 100px;
+  margin: 51px auto 41px auto;
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,0.15);
+}
+.page-article .graf--p,
+.page-article .graf--blockquote,
+.page-article .graf--pullquote {
+  margin-bottom: 30px;
+}
+.page-article p[data-align="center"],
+.page-article .graf--h2[data-align="center"],
+.page-article .graf--h3[data-align="center"],
+.page-article .graf--h4[data-align="center"],
+.page-article .graf--blockquote[data-align="center"] {
+  text-align: center;
+}
+.page-article .graf--h3 {
+  font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 36px;
+  margin-left: -1.8px;
+  line-height: 1.2;
+  margin-top: 40px;
+  margin-bottom: 4px;
+  color: rgba(0,0,0,0.8);
+}
+.page-article .graf--h4 {
+  font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 32px;
+  margin-left: -1.6px;
+  line-height: 1.2;
+  color: rgba(0,0,0,0.44);
+  margin-top: 40px;
+  margin-bottom: 2px;
+}
+.page-article .graf--h2+.graf--p.graf--empty+.graf--h3,
+.page-article .graf--h3+.graf--p.graf--empty+.graf--h3,
+.page-article .graf--h4+.graf--p.graf--empty+.graf--h3,
+.page-article .graf--h2+.graf--p.graf--empty+.graf--h4,
+.page-article .graf--h3+.graf--p.graf--empty+.graf--h4,
+.page-article .graf--h4+.graf--p.graf--empty+.graf--h4 {
+  margin-top: -8px;
+}
+.page-article .graf--p,
+.page-article .graf--blockquote,
+.page-article .graf--pullquote {
+  margin-bottom: 30px;
+}
+.page-article .graf--pullquote {
+  line-height: 1.4;
+  text-align: center;
+  font-size: 32px;
+  margin: 48px -160px;
+  border: none;
+  padding: 0;
+  font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-transition: margin 100ms;
+          transition: margin 100ms;
+}
+.page-article .section-captionContent,
+.page-article section.is-darkBackgrounded>.section-captionContent {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  display: block;
+  color: rgba(0,0,0,0.6);
+  left: 0;
+  margin-top: 10px;
+}
+.page-article .section-captionContent,
+.page-article section.is-darkBackgrounded>.section-captionContent {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  display: block;
+  color: rgba(0,0,0,0.6);
+  left: 0;
+  margin-top: 10px;
+}
+.page-article .graf--sectionCaption {
+  display: block;
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+}
+.page-article .section-image--aspectRatioViewport .graf--last {
+  margin-bottom: 0;
+}
+.page-article .layoutSingleColumn {
+  width: 700px;
+  margin: 0 auto;
+}
+.page-article figure {
+  margin: 1em 40px;
+}
+.page-article .postArticle-content {
+  position: relative;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: normal;
+}
+.page-article ::-moz-selection {
+  background-color: #cce2ff;
+  color: rgba(0,0,0,0.8);
+}
+.page-article ::selection {
+  background-color: #cce2ff;
+  color: rgba(0,0,0,0.8);
+}
+.page-article *,
+.page-article *:before,
+.page-article *:after {
+  box-sizing: inherit;
+}
+.page-article div.section-divider,
+.page-article .section-inner,
+.page-article .postFollowUps,
+.page-article .notesPositionContainer {
+  position: relative;
+  right: 0%;
+  -webkit-transition: right 200ms;
+          transition: right 200ms;
+}
+.page-article figcaption {
+  display: block;
+}
+.page-article article,
+.page-article aside,
+.page-article details,
+.page-article figcaption,
+.page-article figure,
+.page-article footer,
+.page-article header,
+.page-article hgroup,
+.page-article main,
+.page-article nav,
+.page-article section,
+.page-article summary {
+  display: block;
+}
+.page-article section:first-child>.section-divider,
+.page-article section.is-backgrounded+section>.section-divider {
+  display: none;
+}
+.page-article .ui.comments {
+  width: 700px;
+  margin: 0 auto;
+}
 .page-signup .reg-header {
   margin: 30px 0 10px 0;
   text-align: center;

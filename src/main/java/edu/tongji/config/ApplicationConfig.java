@@ -3,6 +3,7 @@ package edu.tongji.config;
 import edu.tongji.Application;
 import edu.tongji.account.AccountRepository;
 import edu.tongji.article.ArticleRepository;
+import edu.tongji.comment.CommentRepository;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -32,5 +33,8 @@ class ApplicationConfig {
     public static AccountRepository accountRepository() {
         return new AccountRepository();
     }
+
+    @Bean
+    public static CommentRepository commentRepository() { return new CommentRepository(); }
 
 }
