@@ -1,5 +1,7 @@
 package edu.tongji.topic;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 /**
@@ -13,36 +15,35 @@ public class Topic implements java.io.Serializable {
 
     public static final String FIND_BY_ID = "Topic.findById";
 
-
     @Id
     @GeneratedValue
     private Long id;
 
     @Column
-    private String topicName;
+    private String name;
 
     @Column
+    @Type(type = "text")
     private String description;
 
     @Column
-    private String topicPicture;
+    private String slug;
 
     public Topic() {
 
     }
 
-    public Topic(String topicName, String description, String topicPicture) {
-        this.description = description;
-        this.topicName = topicName;
-        this.topicPicture = topicPicture;
+    public Topic(String name, String description) {
+        this.setName(name);
+        this.setDescription(description);
     }
 
-    public String getTopicName() {
-        return topicName;
+    public String getName() {
+        return name;
     }
 
-    public void setTopicName(String topicName) {
-        this.topicName = topicName;
+    public void setName(String topicName) {
+        this.name = topicName;
     }
 
     public String getDescription() {
@@ -53,17 +54,16 @@ public class Topic implements java.io.Serializable {
         this.description = description;
     }
 
-    public String getTopicPicture() {
-        return topicPicture;
-    }
-
-    public void setTopicPicture(String topicPicture) {
-        this.topicPicture = topicPicture;
-    }
-
     public Long getId() {
         return id;
     }
 
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
 
 }

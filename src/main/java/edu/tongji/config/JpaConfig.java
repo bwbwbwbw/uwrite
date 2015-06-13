@@ -35,8 +35,6 @@ class JpaConfig implements TransactionManagementConfigurer {
     private String dialect;
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;
-    @Value("${hibernate.hbm2ddl.import_files}")
-    private String hbm2ddlImport;
 
     @Bean
     public DataSource configureDataSource() {
@@ -63,7 +61,7 @@ class JpaConfig implements TransactionManagementConfigurer {
         Properties jpaProperties = new Properties();
         jpaProperties.put(Environment.DIALECT, dialect);
         jpaProperties.put(Environment.HBM2DDL_AUTO, hbm2ddlAuto);
-        jpaProperties.put(Environment.HBM2DDL_IMPORT_FILES, hbm2ddlImport);
+        jpaProperties.put(Environment.HBM2DDL_IMPORT_FILES, "/data/account.sql,/data/topic.sql,/data/article.sql");
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;
