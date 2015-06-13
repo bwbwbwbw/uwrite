@@ -3,6 +3,7 @@ package edu.tongji.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import edu.tongji.Application;
+import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,6 +35,8 @@ class JpaConfig implements TransactionManagementConfigurer {
     private String dialect;
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;
+    @Value("${hibernate.hbm2ddl.import_files}")
+    private String hbm2ddlImport;
 
     @Bean
     public DataSource configureDataSource() {
@@ -58,8 +61,9 @@ class JpaConfig implements TransactionManagementConfigurer {
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();
-        jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, dialect);
-        jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, hbm2ddlAuto);
+        jpaProperties.put(Environment.DIALECT, dialect);
+        jpaProperties.put(Environment.HBM2DDL_AUTO, hbm2ddlAuto);
+        jpaProperties.put(Environment.HBM2DDL_IMPORT_FILES, hbm2ddlImport);
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;

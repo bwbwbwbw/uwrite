@@ -19,14 +19,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private AccountRepository accountRepository;
-    @Autowired
-    private ArticleRepository articleRepository;
-
-    @PostConstruct
-    protected void initialize() {
-        accountRepository.save(new Account("admin", "admin", "admin", "ROLE_ADMIN"));
-        accountRepository.save(new Account("test", "test", "Test User", "ROLE_USER"));
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -25,6 +25,9 @@ public class Account implements java.io.Serializable {
     @Column
     private String nickname;
 
+    @Column
+    private String avatar;
+
     @JsonIgnore
     private String password;
 
@@ -39,6 +42,7 @@ public class Account implements java.io.Serializable {
         this.setPassword(password);
         this.setNickname(nickname);
         this.setRole(role);
+        this.setAvatar("default.png");
     }
 
     public Long getId() {
@@ -75,6 +79,14 @@ public class Account implements java.io.Serializable {
 
     public void setNickname(String username) {
         this.nickname = username;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
 }

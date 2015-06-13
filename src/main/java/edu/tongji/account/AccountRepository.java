@@ -10,9 +10,14 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 @Repository
-@Transactional(readOnly = true)
+@Transactional
 public class AccountRepository {
 
     @PersistenceContext
@@ -52,6 +57,5 @@ public class AccountRepository {
             return null;
         }
     }
-
 
 }
