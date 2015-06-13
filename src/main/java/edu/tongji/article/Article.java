@@ -1,6 +1,7 @@
 package edu.tongji.article;
 
 import edu.tongji.account.Account;
+import edu.tongji.slug.UrlSlugGenerator;
 import edu.tongji.topic.Topic;
 import org.hibernate.annotations.Type;
 import org.pegdown.PegDownProcessor;
@@ -54,12 +55,8 @@ public class Article implements java.io.Serializable {
     @Column
     private Date updateAt;
 
-    @Autowired
-    @Transient
-    private PegDownProcessor pegDownProcessor;
     @ManyToOne
     private Topic topic;
-
 
     protected Article() {
     }
@@ -77,8 +74,8 @@ public class Article implements java.io.Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+        this.url = new UrlSlugGenerator().toSlug(title);
         this.url = title;
-        // TODO: process title
     }
 
     public String getMarkdown() {
