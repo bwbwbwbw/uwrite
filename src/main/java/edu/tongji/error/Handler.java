@@ -20,6 +20,13 @@ class Handler {
         return new RestError(ex);
     }
 
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public RestError handleResourceNotFoundException(ResourceNotFoundException ex) {
+        return new ResourceNotFoundError(ex);
+    }
+
     @ExceptionHandler(ConstraintException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody

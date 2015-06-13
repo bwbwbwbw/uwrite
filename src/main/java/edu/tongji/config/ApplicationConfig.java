@@ -4,6 +4,7 @@ import edu.tongji.Application;
 import edu.tongji.account.AccountRepository;
 import edu.tongji.article.ArticleRepository;
 import edu.tongji.comment.CommentRepository;
+import edu.tongji.image.ImageResolver;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +21,10 @@ class ApplicationConfig {
     @Bean
     public static PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
         PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-        ppc.setLocation(new ClassPathResource("/persistence.properties"));
+        ppc.setLocations(
+                new ClassPathResource("/persistence.properties"),
+                new ClassPathResource("/config.properties")
+        );
         return ppc;
     }
 
@@ -39,4 +43,8 @@ class ApplicationConfig {
         return new CommentRepository();
     }
 
+    @Bean
+    public static ImageResolver imageResolver() {
+        return new ImageResolver();
+    }
 }

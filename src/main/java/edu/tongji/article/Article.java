@@ -4,8 +4,6 @@ import edu.tongji.account.Account;
 import edu.tongji.slug.UrlSlugGenerator;
 import edu.tongji.topic.Topic;
 import org.hibernate.annotations.Type;
-import org.pegdown.PegDownProcessor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import javax.persistence.*;
