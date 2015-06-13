@@ -25,7 +25,7 @@ public class Article implements java.io.Serializable {
     public static final String FIND_BY_ID = "Article.findById";
     public static final String FIND_BY_UID_ID = "Article.findByUidId";
     public static final String FIND_MINE = "Article.findMine";
-    public static final String FIND_UNDER_TOPIC ="Article.findUnderTopic";
+    public static final String FIND_UNDER_TOPIC = "Article.findUnderTopic";
 
     @Id
     @GeneratedValue
@@ -126,6 +126,7 @@ public class Article implements java.io.Serializable {
     public void setUser(Account user) {
         this.user = user;
     }
+
     public Topic getTopic() {
         return topic;
     }

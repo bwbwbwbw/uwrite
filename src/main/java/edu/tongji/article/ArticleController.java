@@ -35,8 +35,8 @@ public class ArticleController {
     public Article create(Principal principal, @RequestParam String title, @RequestParam String markdown,
                           @RequestParam Long topicId) {
         Account account = accountRepository.findByEmail(principal.getName());
-        Topic topic=topicRepository.findById(topicId);
-        Article article = new Article(account,topic, title, markdown);
+        Topic topic = topicRepository.findById(topicId);
+        Article article = new Article(account, topic, title, markdown);
         articleRepository.save(article);
         return article;
     }
@@ -57,11 +57,12 @@ public class ArticleController {
         model.addAttribute("list", articleRepository.listAll(account));
         return "article/list";
     }
-    @RequestMapping(value ="article/topic/{id}",method=RequestMethod.GET)
-    public String listUnderTopic (Model model,@PathVariable("id") Long id){
 
-        Topic topic=topicRepository.findById(id);
-        model.addAttribute("list",articleRepository.listUnderTopic(topic));
+    @RequestMapping(value = "article/topic/{id}", method = RequestMethod.GET)
+    public String listUnderTopic(Model model, @PathVariable("id") Long id) {
+
+        Topic topic = topicRepository.findById(id);
+        model.addAttribute("list", articleRepository.listUnderTopic(topic));
 
         return "article/list";
     }
@@ -78,11 +79,11 @@ public class ArticleController {
 
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String markdown,@RequestParam  Long topicId) {
+    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String markdown, @RequestParam Long topicId) {
         Account account = accountRepository.findByEmail(principal.getName());
-        Topic topic=topicRepository.findById(topicId);
+        Topic topic = topicRepository.findById(topicId);
         if (account != null) {
-            return articleRepository.update(account,topic, id, title, markdown);
+            return articleRepository.update(account, topic, id, title, markdown);
         } else {
             return null;
         }

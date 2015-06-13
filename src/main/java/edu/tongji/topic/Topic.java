@@ -1,10 +1,6 @@
 package edu.tongji.topic;
 
-import edu.tongji.article.Article;
-import edu.tongji.article.ArticleAdult;
-
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by pc-dll on 2015/6/9.
@@ -12,10 +8,10 @@ import java.util.List;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "topic")
-@NamedQueries({@NamedQuery(name=Topic.FIND_BY_ID,query = "select t from Topic t where t.id= :id"),})
-public class Topic implements java.io.Serializable{
+@NamedQueries({@NamedQuery(name = Topic.FIND_BY_ID, query = "select t from Topic t where t.id= :id"),})
+public class Topic implements java.io.Serializable {
 
-    public static final String FIND_BY_ID="Topic.findById";
+    public static final String FIND_BY_ID = "Topic.findById";
 
 
     @Id
@@ -31,16 +27,16 @@ public class Topic implements java.io.Serializable{
     @Column
     private String topicPicture;
 
-    public Topic()
-    {
+    public Topic() {
 
     }
-    public Topic(String topicName,String description,String topicPicture)
-    {
-        this.description=description;
-        this.topicName=topicName;
-        this.topicPicture=topicPicture;
+
+    public Topic(String topicName, String description, String topicPicture) {
+        this.description = description;
+        this.topicName = topicName;
+        this.topicPicture = topicPicture;
     }
+
     public String getTopicName() {
         return topicName;
     }
@@ -64,12 +60,10 @@ public class Topic implements java.io.Serializable{
     public void setTopicPicture(String topicPicture) {
         this.topicPicture = topicPicture;
     }
+
     public Long getId() {
         return id;
     }
-
-
-
 
 
 }

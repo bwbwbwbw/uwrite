@@ -35,6 +35,8 @@ class ApplicationConfig {
     }
 
     @Bean
-    public static CommentRepository commentRepository() { return new CommentRepository(); }
+    public static CommentRepository commentRepository() {
+        return new CommentRepository();
+    }
 
 }

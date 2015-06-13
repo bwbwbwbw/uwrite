@@ -2,12 +2,9 @@ package edu.tongji.article;
 
 import edu.tongji.account.Account;
 import edu.tongji.topic.Topic;
-import org.pegdown.PegDownProcessor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
