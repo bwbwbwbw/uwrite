@@ -1,6 +1,5 @@
 package edu.tongji.topic;
 
-import edu.tongji.article.Article;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
