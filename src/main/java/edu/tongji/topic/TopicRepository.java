@@ -1,10 +1,12 @@
 package edu.tongji.topic;
 
+import edu.tongji.article.Article;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
+import java.util.List;
 
 /**
  * Created by pc-dll on 2015/6/10.
@@ -13,6 +15,15 @@ import javax.persistence.PersistenceException;
 public class TopicRepository {
     @PersistenceContext
     private EntityManager entityManager;
+
+    public List<Topic> findAll() {
+        try {
+            return entityManager.createNamedQuery(Topic.FIND_ALL, Topic.class)
+                    .getResultList();
+        } catch (PersistenceException e) {
+            return null;
+        }
+    }
 
     public Topic findById(Long id) {
         try {

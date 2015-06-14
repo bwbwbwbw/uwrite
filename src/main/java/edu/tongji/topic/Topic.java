@@ -11,11 +11,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "topic")
 @NamedQueries({
+        @NamedQuery(name = Topic.FIND_ALL, query = "select t from Topic t order by t.id asc"),
         @NamedQuery(name = Topic.FIND_BY_ID, query = "select t from Topic t where t.id= :id"),
         @NamedQuery(name = Topic.FIND_BY_SLUG, query = "select t from Topic t where t.slug= :slug"),
 })
 public class Topic implements java.io.Serializable {
 
+    public static final String FIND_ALL = "Topic.findAll";
     public static final String FIND_BY_ID = "Topic.findById";
     public static final String FIND_BY_SLUG = "Topic.findBySlug";
 
@@ -68,6 +70,10 @@ public class Topic implements java.io.Serializable {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public String getFinalUrl() {
+        return "/topic/" + this.getSlug();
     }
 
 }
