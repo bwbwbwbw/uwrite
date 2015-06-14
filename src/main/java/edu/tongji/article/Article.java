@@ -17,13 +17,15 @@ import java.util.Date;
 @NamedQueries({
         @NamedQuery(name = Article.FIND_BY_UID_ID, query = "select a from Article a where a.id = :id and a.user.id = :uid"),
         @NamedQuery(name = Article.FIND_BY_ID, query = "select a from Article a where a.id = :id"),
-        @NamedQuery(name = Article.FIND_MINE, query = "select a from Article a where a.user.id = :uid order by a.createAt desc"),
+        @NamedQuery(name = Article.FIND_ALL, query = "select a from Article a order by a.createAt desc"),
+        @NamedQuery(name = Article.FIND_UNDER_USER, query = "select a from Article a where a.user.id = :uid order by a.createAt desc"),
         @NamedQuery(name = Article.FIND_UNDER_TOPIC, query = "select a from Article a where a.topic.id= :id order by a.createAt desc"),
 })
 public class Article implements java.io.Serializable {
     public static final String FIND_BY_ID = "Article.findById";
     public static final String FIND_BY_UID_ID = "Article.findByUidId";
-    public static final String FIND_MINE = "Article.findMine";
+    public static final String FIND_ALL = "Article.findAll";
+    public static final String FIND_UNDER_USER = "Article.findMine";
     public static final String FIND_UNDER_TOPIC = "Article.findUnderTopic";
 
     @Id
@@ -128,5 +130,9 @@ public class Article implements java.io.Serializable {
 
     public void setTopic(Topic topic) {
         this.topic = topic;
+    }
+
+    public String getFinalUrl() {
+        return "/article/view/" + getId() + "/" + getUrl();
     }
 }

@@ -14,7 +14,6 @@ public class TopicRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     public Topic findById(Long id) {
         try {
             return entityManager.createNamedQuery(Topic.FIND_BY_ID, Topic.class)
@@ -24,4 +23,15 @@ public class TopicRepository {
             return null;
         }
     }
+
+    public Topic findBySlug(String slug) {
+        try {
+            return entityManager.createNamedQuery(Topic.FIND_BY_SLUG, Topic.class)
+                    .setParameter("slug", slug)
+                    .getSingleResult();
+        } catch (PersistenceException e) {
+            return null;
+        }
+    }
+
 }

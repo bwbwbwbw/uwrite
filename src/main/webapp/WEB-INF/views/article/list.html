@@ -7,11 +7,9 @@
 <body>
 
     <div>
-        <div th:each="article : ${list}">
-            <h3 th:text="${article.title}"></h3>
-            <p th:text="${article.id}"></p>
-            <p th:utext="${article.html}"></p>
-        </div>
+        <p th:each="article : ${list}">
+            <a th:href="${article.getFinalUrl()}" th:text="${article.title}"></a>
+        </p>
      </div>
 </body>
 </html>

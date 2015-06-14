@@ -23,9 +23,18 @@ public class ArticleRepository {
         return article;
     }
 
-    public List<Article> listAll(Account account) {
+    public List<Article> listAllArticle() {
         try {
-            return entityManager.createNamedQuery(Article.FIND_MINE, Article.class)
+            return entityManager.createNamedQuery(Article.FIND_ALL, Article.class)
+                    .getResultList();
+        } catch (PersistenceException e) {
+            return null;
+        }
+    }
+
+    public List<Article> listUserArticle(Account account) {
+        try {
+            return entityManager.createNamedQuery(Article.FIND_UNDER_USER, Article.class)
                     .setParameter("uid", account.getId())
                     .getResultList();
         } catch (PersistenceException e) {
@@ -33,7 +42,7 @@ public class ArticleRepository {
         }
     }
 
-    public List<Article> listUnderTopic(Topic topic) {
+    public List<Article> listTopicArticle(Topic topic) {
         try {
             return entityManager.createNamedQuery(Article.FIND_UNDER_TOPIC, Article.class)
                     .setParameter("id", topic.getId())

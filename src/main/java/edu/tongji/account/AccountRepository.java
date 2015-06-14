@@ -43,6 +43,16 @@ public class AccountRepository {
         }
     }
 
+    public Account findById(Long id) {
+        try {
+            return entityManager.createNamedQuery(Account.FIND_BY_ID, Account.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+        } catch (PersistenceException e) {
+            return null;
+        }
+    }
+
     public Account findByEmail(String email) {
         try {
             return entityManager.createNamedQuery(Account.FIND_BY_EMAIL, Account.class)

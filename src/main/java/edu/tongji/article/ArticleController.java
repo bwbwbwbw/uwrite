@@ -2,6 +2,7 @@ package edu.tongji.article;
 
 import edu.tongji.account.Account;
 import edu.tongji.account.AccountRepository;
+import edu.tongji.error.ResourceNotFoundException;
 import edu.tongji.topic.Topic;
 import edu.tongji.topic.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,48 @@ public class ArticleController {
     @Autowired
     private TopicRepository topicRepository;
 
+    @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
+    public String listMine(Model model, @PathVariable("id") Long id) {
+        Account account = accountRepository.findById(id);
+        model.addAttribute("list", articleRepository.listUserArticle(account));
+        return "article/list";
+    }
+
+    @RequestMapping(value = "article/view/all", method = RequestMethod.GET)
+    public String listAll(Principal principal, Model model) {
+        model.addAttribute("list", articleRepository.listAllArticle());
+        return "article/list";
+    }
+
+    @RequestMapping(value = "article/view/{id}/{slug}")
+    public String view(Model model, @PathVariable("id") Long id, @PathVariable String slug) {
+        Article article = articleRepository.getArticle(id);
+        if (article == null) {
+            throw new ResourceNotFoundException();
+        }
+        if (!slug.equals(article.getUrl())) {
+            return "redirect:" + article.getFinalUrl();
+        } else {
+            model.addAttribute("article", article);
+            return "article/view";
+        }
+    }
+
+    @RequestMapping(value = "topic/{slug}", method = RequestMethod.GET)
+    public String listUnderTopic(Model model, @PathVariable String slug) {
+        Topic topic = topicRepository.findBySlug(slug);
+        if (topic == null) {
+            throw new ResourceNotFoundException();
+        }
+        model.addAttribute("list", articleRepository.listTopicArticle(topic));
+        return "article/list";
+    }
+
+    @RequestMapping(value = "article/create", method = RequestMethod.GET)
+    public String create() {
+        return "article/create";
+    }
+
     @RequestMapping(value = "article/create", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
@@ -39,32 +82,6 @@ public class ArticleController {
         Article article = new Article(account, topic, title, markdown);
         articleRepository.save(article);
         return article;
-    }
-
-    @RequestMapping(value = "article/xxx")
-    public String view(Principal principal) {
-        return "article/view";
-    }
-
-    @RequestMapping(value = "article/create", method = RequestMethod.GET)
-    public String create(Principal principal) {
-        return "article/create";
-    }
-
-    @RequestMapping(value = "article/my", method = RequestMethod.GET)
-    public String list(Principal principal, Model model) {
-        Account account = accountRepository.findByEmail(principal.getName());
-        model.addAttribute("list", articleRepository.listAll(account));
-        return "article/list";
-    }
-
-    @RequestMapping(value = "article/topic/{id}", method = RequestMethod.GET)
-    public String listUnderTopic(Model model, @PathVariable("id") Long id) {
-
-        Topic topic = topicRepository.findById(id);
-        model.addAttribute("list", articleRepository.listUnderTopic(topic));
-
-        return "article/list";
     }
 
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.DELETE)

@@ -10,10 +10,14 @@ import javax.persistence.*;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "topic")
-@NamedQueries({@NamedQuery(name = Topic.FIND_BY_ID, query = "select t from Topic t where t.id= :id"),})
+@NamedQueries({
+        @NamedQuery(name = Topic.FIND_BY_ID, query = "select t from Topic t where t.id= :id"),
+        @NamedQuery(name = Topic.FIND_BY_SLUG, query = "select t from Topic t where t.slug= :slug"),
+})
 public class Topic implements java.io.Serializable {
 
     public static final String FIND_BY_ID = "Topic.findById";
+    public static final String FIND_BY_SLUG = "Topic.findBySlug";
 
     @Id
     @GeneratedValue
