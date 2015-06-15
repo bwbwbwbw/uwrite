@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Collections;
 
-public class UserService implements UserDetailsService {
+public class AccountService implements UserDetailsService {
 
     @Autowired
     private AccountRepository accountRepository;

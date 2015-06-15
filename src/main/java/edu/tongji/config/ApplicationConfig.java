@@ -3,8 +3,11 @@ package edu.tongji.config;
 import edu.tongji.Application;
 import edu.tongji.account.AccountRepository;
 import edu.tongji.article.ArticleRepository;
+import edu.tongji.article.ArticleService;
 import edu.tongji.comment.CommentRepository;
 import edu.tongji.image.ImageResolver;
+import edu.tongji.topic.TopicRepository;
+import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -34,6 +37,11 @@ class ApplicationConfig {
     }
 
     @Bean
+    public static ArticleService articleService() {
+        return new ArticleService();
+    }
+
+    @Bean
     public static AccountRepository accountRepository() {
         return new AccountRepository();
     }
@@ -42,6 +50,12 @@ class ApplicationConfig {
     public static CommentRepository commentRepository() {
         return new CommentRepository();
     }
+
+    @Bean
+    public static TopicRepository topicRepository() { return new TopicRepository(); }
+
+    @Bean
+    public static TopicService topicService() { return new TopicService(); }
 
     @Bean
     public static ImageResolver imageResolver() {

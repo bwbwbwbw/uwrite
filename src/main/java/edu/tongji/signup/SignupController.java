@@ -2,7 +2,7 @@ package edu.tongji.signup;
 
 import edu.tongji.account.Account;
 import edu.tongji.account.AccountRepository;
-import edu.tongji.account.UserService;
+import edu.tongji.account.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class SignupController {
     private AccountRepository accountRepository;
 
     @Autowired
-    private UserService userService;
+    private AccountService accountService;
 
     @RequestMapping(value = "signup")
     public String signup(Model model) {
@@ -33,7 +33,7 @@ public class SignupController {
     @ResponseBody
     public Account signup(@Valid @ModelAttribute SignupForm signupForm) {
         Account account = accountRepository.save(signupForm.createAccount());
-        userService.signin(account);
+        accountService.signin(account);
         return account;
     }
 

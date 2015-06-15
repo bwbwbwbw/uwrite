@@ -50,7 +50,6 @@ public class ArticleRepository {
         } catch (PersistenceException e) {
             return null;
         }
-
     }
 
     public Article getArticle(Long id) {

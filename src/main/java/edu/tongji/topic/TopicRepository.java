@@ -12,6 +12,7 @@ import java.util.List;
  */
 @Repository
 public class TopicRepository {
+
     @PersistenceContext
     private EntityManager entityManager;
 

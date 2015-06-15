@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TopicController {
 
     @Autowired
-    TopicRepository topicRepository;
+    TopicService topicService;
 
     @RequestMapping(value = "topics", method = RequestMethod.GET)
-    public String listUnderTopic(Model model) {
-        model.addAttribute("list", topicRepository.findAll());
+    public String listTopics(Model model) {
+        model.addAttribute("list", topicService.listTopic());
         return "topic/list";
     }
 

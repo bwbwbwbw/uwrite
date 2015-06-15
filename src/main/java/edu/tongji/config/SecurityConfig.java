@@ -1,6 +1,6 @@
 package edu.tongji.config;
 
-import edu.tongji.account.UserService;
+import edu.tongji.account.AccountService;
 import edu.tongji.error.ajaxAuthenticationFailureHandler;
 import edu.tongji.error.ajaxAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +18,8 @@ import org.springframework.security.web.authentication.rememberme.TokenBasedReme
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public UserService userService() {
-        return new UserService();
+    public AccountService userService() {
+        return new AccountService();
     }
 
     @Bean

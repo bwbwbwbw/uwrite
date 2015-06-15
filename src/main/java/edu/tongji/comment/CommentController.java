@@ -4,6 +4,7 @@ import edu.tongji.account.Account;
 import edu.tongji.account.AccountRepository;
 import edu.tongji.article.Article;
 import edu.tongji.article.ArticleRepository;
+import edu.tongji.article.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -20,24 +21,14 @@ import java.security.Principal;
 public class CommentController {
 
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
-    private ArticleRepository articleRepository;
-
-    @Autowired
-    private CommentRepository commentRepository;
+    private ArticleService articleService;
 
     @RequestMapping(value = "article/comment", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
     public Comment create(Principal principal, @RequestParam String markdown,
                           @RequestParam Long articleId) {
-        Account account = accountRepository.findByEmail(principal.getName());
-        Article article = articleRepository.getArticle(articleId);
-        ArticleComment comment = new ArticleComment(article, account, markdown);
-        commentRepository.save(comment);
-        return comment;
+        return articleService.addComment(principal.getName(), articleId, markdown);
     }
 
 }

@@ -22,33 +22,23 @@ import java.security.Principal;
 public class ArticleController {
 
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
-    private ArticleRepository articleRepository;
-
-    @Autowired
-    private TopicRepository topicRepository;
+    private ArticleService articleService;
 
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listMine(Model model, @PathVariable("id") Long id) {
-        Account account = accountRepository.findById(id);
-        model.addAttribute("list", articleRepository.listUserArticle(account));
+        model.addAttribute("list", articleService.listUserArticleByUid(id));
         return "article/list";
     }
 
     @RequestMapping(value = "article/view/all", method = RequestMethod.GET)
     public String listAll(Principal principal, Model model) {
-        model.addAttribute("list", articleRepository.listAllArticle());
+        model.addAttribute("list", articleService.listAllArticle());
         return "article/list";
     }
 
     @RequestMapping(value = "article/view/{id}/{slug}")
     public String view(Model model, @PathVariable("id") Long id, @PathVariable String slug) {
-        Article article = articleRepository.getArticle(id);
-        if (article == null) {
-            throw new ResourceNotFoundException();
-        }
+        Article article = articleService.getArticleById(id);
         if (!slug.equals(article.getUrl())) {
             return "redirect:" + article.getFinalUrl();
         } else {
@@ -59,11 +49,7 @@ public class ArticleController {
 
     @RequestMapping(value = "topic/{slug}", method = RequestMethod.GET)
     public String listUnderTopic(Model model, @PathVariable String slug) {
-        Topic topic = topicRepository.findBySlug(slug);
-        if (topic == null) {
-            throw new ResourceNotFoundException();
-        }
-        model.addAttribute("list", articleRepository.listTopicArticle(topic));
+        model.addAttribute("list", articleService.listTopicArticleBySlug(slug));
         return "article/list";
     }
 
@@ -77,32 +63,19 @@ public class ArticleController {
     @ResponseBody
     public Article create(Principal principal, @RequestParam String title, @RequestParam String markdown,
                           @RequestParam Long topicId) {
-        Account account = accountRepository.findByEmail(principal.getName());
-        Topic topic = topicRepository.findById(topicId);
-        Article article = new Article(account, topic, title, markdown);
-        articleRepository.save(article);
-        return article;
+        return articleService.createArticle(principal.getName(), topicId, title, markdown);
     }
 
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String delete(Principal principal, @PathVariable("id") Long id) {
-        Account account = accountRepository.findByEmail(principal.getName());
-        if (account != null) {
-            articleRepository.delete(account, id);
-        }
+        articleService.deleteArticle(principal.getName(), id);
         return "{}";
     }
 
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String markdown, @RequestParam Long topicId) {
-        Account account = accountRepository.findByEmail(principal.getName());
-        Topic topic = topicRepository.findById(topicId);
-        if (account != null) {
-            return articleRepository.update(account, topic, id, title, markdown);
-        } else {
-            return null;
-        }
+        return articleService.updateArticle(principal.getName(), id, topicId, title, markdown);
     }
 }
