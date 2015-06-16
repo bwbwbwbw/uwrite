@@ -113,6 +113,35 @@
 .page-article .graf--pullquote {
   margin-bottom: 30px;
 }
+.page-article .graf-image,
+.page-article .graf-imageAnchor,
+.page-article .iframeContainer>iframe,
+.page-article .iframeContainer {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.page-article .aspectRatioPlaceholder {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+.page-article .aspectRatioPlaceholder.is-locked .graf-image,
+.page-article .aspectRatioPlaceholder.is-locked .graf-imageAnchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.page-article .graf--figure {
+  position: relative;
+  margin-bottom: 30px;
+  clear: both;
+  outline: none;
+  box-sizing: border-box;
+}
 .page-article .graf--pullquote {
   line-height: 1.4;
   text-align: center;
@@ -156,9 +185,52 @@
 .page-article .section-image--aspectRatioViewport .graf--last {
   margin-bottom: 0;
 }
+.page-article .sectionLayout--outsetColumn,
+.page-article .sectionLayout--outsetRow {
+  max-width: 1020px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 35px;
+  box-sizing: border-box;
+}
+.page-article div.section-divider,
+.page-article .section-inner,
+.page-article .postFollowUps,
+.page-article .notesPositionContainer {
+  position: relative;
+  right: 0%;
+  -webkit-transition: right 200ms;
+          transition: right 200ms;
+}
+.page-article .sectionLayout--outsetColumn+.layoutSingleColumn,
+.page-article .sectionLayout--outsetColumn+.u-sizeFullWidth,
+.page-article .sectionLayout--outsetRow+.layoutSingleColumn,
+.page-article .sectionLayout--outsetRow+.u-sizeFullWidth {
+  padding-top: 65px;
+}
 .page-article .layoutSingleColumn {
   width: 700px;
   margin: 0 auto;
+}
+.page-article div.section-divider,
+.page-article .section-inner,
+.page-article .postFollowUps,
+.page-article .notesPositionContainer {
+  position: relative;
+  right: 0%;
+  -webkit-transition: right 200ms;
+          transition: right 200ms;
+}
+.page-article .sectionLayout--outsetColumn:before,
+.page-article .sectionLayout--outsetRow:before,
+.page-article .sectionLayout--outsetColumn:after,
+.page-article .sectionLayout--outsetRow:after {
+  display: table;
+  content: " ";
+}
+.page-article .sectionLayout--outsetColumn:after,
+.page-article .sectionLayout--outsetRow:after {
+  clear: both;
 }
 .page-article figure {
   margin: 1em 40px;
@@ -236,4 +308,8 @@
 }
 .page-signup .form {
   padding: 20px;
+}
+html,
+body {
+  background: #fff;
 }

@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+  $('.aspect-ratio-fill').each(function () {
+    var placeholder = $(this).parent();
+    var ratio = String(parseInt(placeholder.css('max-height')) / parseInt(placeholder.css('max-width')) * 100) + '%';
+    $(this).css('padding-bottom', ratio);
+  });
+
 	$('.role-reply').click(function() {
 		// send ajax
 		$.ajax({

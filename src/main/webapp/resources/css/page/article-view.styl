@@ -93,6 +93,30 @@
   .graf--p, .graf--blockquote, .graf--pullquote
     margin-bottom: 30px
   
+  .graf-image, .graf-imageAnchor, .iframeContainer>iframe, .iframeContainer
+    display: block
+    margin: auto
+    max-width: 100%
+    box-sizing: border-box
+  
+  .aspectRatioPlaceholder
+    position: relative
+    width: 100%
+    margin: 0 auto
+
+  .aspectRatioPlaceholder.is-locked .graf-image, .aspectRatioPlaceholder.is-locked .graf-imageAnchor
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+  
+  .graf--figure
+    position: relative
+    margin-bottom: 30px
+    clear: both
+    outline: none
+    box-sizing: border-box
 
   .graf--pullquote
     line-height: 1.4
@@ -139,10 +163,36 @@
     margin-bottom: 0
   
 
+  .sectionLayout--outsetColumn, .sectionLayout--outsetRow
+    max-width: 1020px
+    width: 100%
+    margin: 0 auto
+    padding-top: 35px
+    box-sizing: border-box
+  
+  div.section-divider, .section-inner, .postFollowUps, .notesPositionContainer
+    position: relative
+    right: 0%
+    transition: right 200ms
+  
+  .sectionLayout--outsetColumn+.layoutSingleColumn, .sectionLayout--outsetColumn+.u-sizeFullWidth, .sectionLayout--outsetRow+.layoutSingleColumn, .sectionLayout--outsetRow+.u-sizeFullWidth
+    padding-top: 65px
+
   .layoutSingleColumn
     width: 700px
     margin: 0 auto
   
+  div.section-divider, .section-inner, .postFollowUps, .notesPositionContainer
+    position: relative
+    right: 0%
+    transition: right 200ms
+  
+  .sectionLayout--outsetColumn:before, .sectionLayout--outsetRow:before, .sectionLayout--outsetColumn:after, .sectionLayout--outsetRow:after
+    display: table
+    content: " "
+  
+  .sectionLayout--outsetColumn:after, .sectionLayout--outsetRow:after
+    clear: both
 
   figure
     margin: 1em 40px

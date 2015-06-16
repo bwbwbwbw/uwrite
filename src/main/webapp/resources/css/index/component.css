@@ -114,11 +114,6 @@
 	opacity: 0;
 }
 
-/* Individual styles */
-.demo-1 body {
-	background: #3498db;
-}
-
 .demo-1 .grid figure button,
 .demo-3 .grid figure button {
 	top: 50%;
