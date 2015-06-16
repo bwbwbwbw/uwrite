@@ -489,6 +489,10 @@
 .page-article .is-darkBackgrounded .graf--blockquote {
   border-left-color: rgba(255,255,255,0.85);
 }
+.page-article section.is-imageBackgrounded .graf--h4,
+.page-article section[data-background-color]:not([data-background-color$="Light"]) .graf--h4 {
+  color: rgba(255,255,255,0.65);
+}
 .page-article h1,
 .page-article h2,
 .page-article h3,
