@@ -69,12 +69,26 @@
 .page-article .graf--pullquote {
   margin-bottom: 30px;
 }
+.page-article .graf--blockquote+.graf--blockquote {
+  padding-top: 30px;
+  margin-top: -30px;
+}
 .page-article p[data-align="center"],
 .page-article .graf--h2[data-align="center"],
 .page-article .graf--h3[data-align="center"],
 .page-article .graf--h4[data-align="center"],
 .page-article .graf--blockquote[data-align="center"] {
   text-align: center;
+}
+.page-article .graf--blockquote {
+  font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: italic;
+  border-left: 3px solid rgba(0,0,0,0.8);
+  padding-left: 20px;
+  margin-left: -23px;
+  padding-bottom: 3px;
 }
 .page-article .graf--h3 {
   font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
@@ -141,6 +155,27 @@
   clear: both;
   outline: none;
   box-sizing: border-box;
+}
+.page-article .graf--layoutInsetLeft,
+.page-article .graf--layoutOutsetLeft {
+  float: left;
+  margin-top: 10px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+.page-article .graf--layoutOutsetLeft {
+  width: 75%;
+}
+.page-article .graf--layoutOutsetLeft {
+  margin-left: -160px;
+}
+.page-article .graf--layoutInsetLeft {
+  width: 50%;
+}
+.page-article .graf--h4+.graf--figure,
+.page-article .graf--h3+.graf--figure,
+.page-article .graf--h2+.graf--figure {
+  margin-top: 15px;
 }
 .page-article .graf--pullquote {
   line-height: 1.4;
@@ -288,9 +323,69 @@
 .page-article section.is-backgrounded+section>.section-divider {
   display: none;
 }
+.page-article .imageCaption {
+  position: absolute;
+  left: -172px;
+  width: 150px;
+  top: 0;
+  text-align: right;
+  margin-top: 0;
+  font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(0,0,0,0.6);
+  outline: 0;
+  z-index: 300;
+}
+.page-article .m-imageCaption-below,
+.page-article .postArticle--short .imageCaption,
+.page-article .graf--layoutOutsetLeft>.imageCaption,
+.page-article .graf--layoutOutsetCenter>.imageCaption,
+.page-article .graf--layoutFillWidth>.imageCaption,
+.page-article .is-partialWidth>.imageCaption {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  margin-top: 10px;
+}
+.page-article .markup--quote {
+  -webkit-transition: 200ms background-color;
+          transition: 200ms background-color;
+  cursor: pointer;
+}
+.page-article .markup--quote.is-other {
+  background-color: rgba(225,225,225,0.5);
+}
+.page-article .markup--quote.is-other {
+  background-color: rgba(0,0,0,0);
+  background-image: -webkit-linear-gradient(top, rgba(225,225,225,0.5), rgba(225,225,225,0.5));
+  background-image: linear-gradient(to bottom, rgba(225,225,225,0.5), rgba(225,225,225,0.5));
+}
 .page-article .ui.comments {
   width: 700px;
   margin: 0 auto;
+}
+.page-article h1,
+.page-article h2,
+.page-article h3,
+.page-article h4,
+.page-article h5,
+.page-article h6,
+.page-article dl,
+.page-article dd,
+.page-article ol,
+.page-article ul,
+.page-article menu,
+.page-article figure,
+.page-article blockquote,
+.page-article p,
+.page-article pre,
+.page-article form {
+  margin: 0;
 }
 .page-signup .reg-header {
   margin: 30px 0 10px 0;
