@@ -90,6 +90,20 @@
   margin-left: -23px;
   padding-bottom: 3px;
 }
+.page-article .graf--h2 {
+  font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 60px;
+  margin-left: -3px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-top: 40px;
+  padding-top: 0;
+  margin-bottom: 8px;
+  color: rgba(0,0,0,0.8);
+}
 .page-article .graf--h3 {
   font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   letter-spacing: -0.02em;
@@ -368,6 +382,112 @@
 .page-article .ui.comments {
   width: 700px;
   margin: 0 auto;
+}
+.page-article .section-aspectRatioViewportBottomSpacer,
+.page-article .section-aspectRatioViewportBottomPlaceholder {
+  display: none;
+  max-height: 50vh;
+}
+.page-article .section--bottomCenter .section-aspectRatioViewportBottomSpacer,
+.page-article .section--bottomCenter .section-aspectRatioViewportBottomPlaceholder {
+  display: block;
+}
+.page-article section.is-imageBackgrounded>.section-background {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  cursor: default;
+}
+.page-article .section-image--aspectRatioViewport.is-imageBackgrounded .section-background,
+.page-article .section-image--aspectRatioViewport.is-imageBackgrounded .section-backgroundImage {
+  bottom: 0;
+}
+.page-article .postArticle-content>section {
+  position: relative;
+  clear: both;
+}
+.page-article section.is-backgrounded {
+  padding: 80px 0;
+  width: 100%;
+  margin: 80px 0;
+}
+.page-article section.is-imageBackgrounded {
+  box-sizing: border-box;
+  padding-bottom: 80px;
+}
+.page-article section.section-image--aspectRatio,
+.page-article section.section-image--aspectRatioViewport {
+  padding: 0;
+}
+.page-article .section--first.is-backgrounded {
+  margin-top: 0;
+}
+.page-article section.is-imageBackgrounded.is-darkBackgrounded {
+  background: #191918;
+  color: #fff;
+}
+.page-article section.is-imageBackgrounded.is-darkBackgrounded.is-sectionUsingCanvas {
+  background: rgba(255,255,255,0);
+}
+.page-article .postArticle-content:before,
+.page-article .postArticle-content:after {
+  display: table;
+  content: " ";
+}
+.page-article .postArticle-content:after {
+  clear: both;
+}
+.page-article section.is-darkBackgrounded .graf--h2,
+.page-article section.is-darkBackgrounded .graf--h3 {
+  color: #fff;
+}
+.page-article section.is-imageBackgrounded .section-backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: center;
+}
+.page-article .section-image--aspectRatioViewport.is-imageBackgrounded .section-background,
+.page-article .section-image--aspectRatioViewport.is-imageBackgrounded .section-backgroundImage {
+  bottom: 0;
+}
+.page-article .u-table {
+  display: table !important;
+}
+.page-article .section-doubleWidthTable {
+  width: 200%;
+  table-layout: fixed;
+}
+.page-article .section-doubleWidthTable {
+  width: 200%;
+}
+.page-article .u-verticalAlignTop {
+  vertical-align: top !important;
+}
+.page-article .u-tableCell {
+  display: table-cell !important;
+}
+.page-article .section-doubleWidthTable>.u-tableCell {
+  width: 50%;
+}
+.page-article .section-doubleWidthTable>.u-tableCell {
+  width: 50%;
+}
+.page-article .section--middleCenter .section-contentCell,
+.page-article .section--bottomCenter .section-contentCell {
+  vertical-align: middle;
+}
+.page-article .section-backgroundImage {
+  opacity: 0.5;
+}
+.page-article .section-image--aspectRatioViewport.section--topCenter .section-content {
+  padding: 120px 0 80px;
+}
+.page-article .is-darkBackgrounded .graf--blockquote {
+  border-left-color: rgba(255,255,255,0.85);
 }
 .page-article h1,
 .page-article h2,

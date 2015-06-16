@@ -71,6 +71,20 @@
     padding-left: 20px
     margin-left: -23px
     padding-bottom: 3px
+  
+  .graf--h2
+    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif
+    letter-spacing: -0.02em
+    font-weight: 700
+    font-style: normal
+    font-size: 60px
+    margin-left: -3px
+    line-height: 1
+    letter-spacing: -0.04em
+    margin-top: 40px
+    padding-top: 0
+    margin-bottom: 8px
+    color: rgba(0, 0, 0, 0.8)
 
   .graf--h3
     font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif
@@ -301,6 +315,103 @@
     width: 700px
     margin: 0 auto
   
+  .section-aspectRatioViewportBottomSpacer, .section-aspectRatioViewportBottomPlaceholder
+    display: none
+    max-height: 50vh
+  
+  .section--bottomCenter .section-aspectRatioViewportBottomSpacer, .section--bottomCenter .section-aspectRatioViewportBottomPlaceholder
+    display: block
+  
+  section.is-imageBackgrounded>.section-background
+    display: block
+    width: 100%
+    position: absolute
+    top: 0
+    cursor: default
+  
+  .section-image--aspectRatioViewport.is-imageBackgrounded .section-background, .section-image--aspectRatioViewport.is-imageBackgrounded .section-backgroundImage
+    bottom: 0
+  
+  .postArticle-content>section
+    position: relative
+    clear: both
+
+  section.is-backgrounded
+    padding: 80px 0
+    width: 100%
+    margin: 80px 0
+  
+  section.is-imageBackgrounded
+    box-sizing: border-box
+    padding-bottom: 80px
+  
+  section.section-image--aspectRatio, section.section-image--aspectRatioViewport
+    padding: 0
+  
+  .section--first.is-backgrounded
+    margin-top: 0
+  
+  section.is-imageBackgrounded.is-darkBackgrounded
+    background: #191918
+    color: #FFF
+  
+  section.is-imageBackgrounded.is-darkBackgrounded.is-sectionUsingCanvas
+    background: rgba(255, 255, 255, 0)
+  
+  .postArticle-content:before, .postArticle-content:after
+    display: table
+    content: " "
+  
+  .postArticle-content:after
+    clear: both
+  
+  section.is-darkBackgrounded .graf--h2, section.is-darkBackgrounded .graf--h3
+    color: #FFF
+  
+  section.is-imageBackgrounded .section-backgroundImage
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    background-size: cover
+    background-position: center
+
+  .section-image--aspectRatioViewport.is-imageBackgrounded .section-background, .section-image--aspectRatioViewport.is-imageBackgrounded .section-backgroundImage
+    bottom: 0
+  
+  .u-table
+    display: table !important
+
+  .section-doubleWidthTable
+    width: 200%
+    table-layout: fixed
+  
+  .section-doubleWidthTable
+    width: 200%
+
+  .u-verticalAlignTop
+    vertical-align: top !important
+  
+  .u-tableCell
+    display: table-cell !important
+  
+  .section-doubleWidthTable>.u-tableCell
+    width: 50%
+  
+  .section-doubleWidthTable>.u-tableCell
+    width: 50%
+  
+  .section--middleCenter .section-contentCell, .section--bottomCenter .section-contentCell
+    vertical-align: middle
+  
+  .section-backgroundImage
+    opacity: 0.5
+  
+  .section-image--aspectRatioViewport.section--topCenter .section-content
+    padding: 120px 0 80px
+  
+  .is-darkBackgrounded .graf--blockquote
+    border-left-color: rgba(255, 255, 255, 0.85)
 
   h1, h2, h3, h4, h5, h6, dl, dd, ol, ul, menu, figure, blockquote, p, pre, form
     margin: 0
