@@ -16,6 +16,15 @@
 .uwrite-animation.hide-out {
   opacity: 0;
 }
+.page-article-create h3[contenteditable]:empty:not(:focus):before {
+  content: 'The title';
+}
+.page-article-create [contenteditable] {
+  outline: 0;
+}
+.page-article-create .role-content-edit {
+  min-height: 500px;
+}
 .page-article .postArticle-content {
   font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   letter-spacing: -0.02em;
@@ -28,8 +37,6 @@
   color: rgba(0,0,0,0.8);
   font-size: 18px;
   line-height: 1.4;
-}
-.page-article .postArticle-content {
   position: relative;
   font-size: 22px;
   line-height: 1.5;
@@ -38,13 +45,6 @@
   letter-spacing: 0.01rem;
   font-weight: 400;
   font-style: normal;
-}
-.page-article hr {
-  box-sizing: content-box;
-  height: 0;
-}
-.page-article .section--last {
-  padding-bottom: 5px;
 }
 .page-article .postArticle-content>section {
   position: relative;
@@ -56,31 +56,78 @@
   word-break: break-word;
   word-wrap: break-word;
 }
-.page-article .graf--hr,
-.page-article hr.section-divider {
+.page-article .postArticle-content {
+  position: relative;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  font-style: normal;
+}
+.page-article .postArticle-content>section {
+  position: relative;
+  clear: both;
+}
+.page-article .postArticle-content:before,
+.page-article .postArticle-content:after {
+  display: table;
+  content: " ";
+}
+.page-article .postArticle-content:after {
+  clear: both;
+}
+.page-article .postArticle-content h1,
+.page-article .postArticle-content h2,
+.page-article .postArticle-content h3,
+.page-article .postArticle-content h4,
+.page-article .postArticle-content h5,
+.page-article .postArticle-content h6,
+.page-article .postArticle-content dl,
+.page-article .postArticle-content dd,
+.page-article .postArticle-content ol,
+.page-article .postArticle-content ul,
+.page-article .postArticle-content menu,
+.page-article .postArticle-content figure,
+.page-article .postArticle-content blockquote,
+.page-article .postArticle-content p,
+.page-article .postArticle-content pre,
+.page-article .postArticle-content form {
+  margin: 0;
+}
+.page-article .postArticle-content hr {
+  box-sizing: content-box;
+  height: 0;
+}
+.page-article .postArticle-content .section--last {
+  padding-bottom: 5px;
+}
+.page-article .postArticle-content hr,
+.page-article .postArticle-content hr.section-divider {
   display: block;
   width: 100px;
   margin: 51px auto 41px auto;
   border: 0;
   border-top: 1px solid rgba(0,0,0,0.15);
 }
-.page-article .graf--p,
-.page-article .graf--blockquote,
-.page-article .graf--pullquote {
+.page-article .postArticle-content p,
+.page-article .postArticle-content blockquote,
+.page-article .postArticle-content .graf--pullquote {
   margin-bottom: 30px;
 }
-.page-article .graf--blockquote+.graf--blockquote {
+.page-article .postArticle-content blockquote+blockquote {
   padding-top: 30px;
   margin-top: -30px;
 }
-.page-article p[data-align="center"],
-.page-article .graf--h2[data-align="center"],
-.page-article .graf--h3[data-align="center"],
-.page-article .graf--h4[data-align="center"],
-.page-article .graf--blockquote[data-align="center"] {
+.page-article .postArticle-content p[data-align="center"],
+.page-article .postArticle-content h2[data-align="center"],
+.page-article .postArticle-content h3[data-align="center"],
+.page-article .postArticle-content h4[data-align="center"],
+.page-article .postArticle-content blockquote[data-align="center"] {
   text-align: center;
 }
-.page-article .graf--blockquote {
+.page-article .postArticle-content blockquote {
   font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
   letter-spacing: 0.01rem;
   font-weight: 400;
@@ -90,7 +137,7 @@
   margin-left: -23px;
   padding-bottom: 3px;
 }
-.page-article .graf--h2 {
+.page-article .postArticle-content h2 {
   font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -104,7 +151,7 @@
   margin-bottom: 8px;
   color: rgba(0,0,0,0.8);
 }
-.page-article .graf--h3 {
+.page-article .postArticle-content h3 {
   font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -116,7 +163,7 @@
   margin-bottom: 4px;
   color: rgba(0,0,0,0.8);
 }
-.page-article .graf--h4 {
+.page-article .postArticle-content h4 {
   font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   letter-spacing: -0.02em;
   font-weight: 300;
@@ -128,70 +175,70 @@
   margin-top: 40px;
   margin-bottom: 2px;
 }
-.page-article .graf--h2+.graf--p.graf--empty+.graf--h3,
-.page-article .graf--h3+.graf--p.graf--empty+.graf--h3,
-.page-article .graf--h4+.graf--p.graf--empty+.graf--h3,
-.page-article .graf--h2+.graf--p.graf--empty+.graf--h4,
-.page-article .graf--h3+.graf--p.graf--empty+.graf--h4,
-.page-article .graf--h4+.graf--p.graf--empty+.graf--h4 {
+.page-article .postArticle-content h2+p.graf--empty+h3,
+.page-article .postArticle-content h3+p.graf--empty+h3,
+.page-article .postArticle-content h4+p.graf--empty+h3,
+.page-article .postArticle-content h2+p.graf--empty+h4,
+.page-article .postArticle-content h3+p.graf--empty+h4,
+.page-article .postArticle-content h4+p.graf--empty+h4 {
   margin-top: -8px;
 }
-.page-article .graf--p,
-.page-article .graf--blockquote,
-.page-article .graf--pullquote {
+.page-article .postArticle-content p,
+.page-article .postArticle-content blockquote,
+.page-article .postArticle-content .graf--pullquote {
   margin-bottom: 30px;
 }
-.page-article .graf-image,
-.page-article .graf-imageAnchor,
-.page-article .iframeContainer>iframe,
-.page-article .iframeContainer {
+.page-article .postArticle-content .graf-image,
+.page-article .postArticle-content .graf-imageAnchor,
+.page-article .postArticle-content .iframeContainer>iframe,
+.page-article .postArticle-content .iframeContainer {
   display: block;
   margin: auto;
   max-width: 100%;
   box-sizing: border-box;
 }
-.page-article .aspectRatioPlaceholder {
+.page-article .postArticle-content .aspectRatioPlaceholder {
   position: relative;
   width: 100%;
   margin: 0 auto;
 }
-.page-article .aspectRatioPlaceholder.is-locked .graf-image,
-.page-article .aspectRatioPlaceholder.is-locked .graf-imageAnchor {
+.page-article .postArticle-content .aspectRatioPlaceholder.is-locked .graf-image,
+.page-article .postArticle-content .aspectRatioPlaceholder.is-locked .graf-imageAnchor {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-.page-article .graf--figure {
+.page-article .postArticle-content .graf--figure {
   position: relative;
   margin-bottom: 30px;
   clear: both;
   outline: none;
   box-sizing: border-box;
 }
-.page-article .graf--layoutInsetLeft,
-.page-article .graf--layoutOutsetLeft {
+.page-article .postArticle-content .graf--layoutInsetLeft,
+.page-article .postArticle-content .graf--layoutOutsetLeft {
   float: left;
   margin-top: 10px;
   margin-right: 30px;
   margin-bottom: 10px;
 }
-.page-article .graf--layoutOutsetLeft {
+.page-article .postArticle-content .graf--layoutOutsetLeft {
   width: 75%;
 }
-.page-article .graf--layoutOutsetLeft {
+.page-article .postArticle-content .graf--layoutOutsetLeft {
   margin-left: -160px;
 }
-.page-article .graf--layoutInsetLeft {
+.page-article .postArticle-content .graf--layoutInsetLeft {
   width: 50%;
 }
-.page-article .graf--h4+.graf--figure,
-.page-article .graf--h3+.graf--figure,
-.page-article .graf--h2+.graf--figure {
+.page-article .postArticle-content h4+.graf--figure,
+.page-article .postArticle-content h3+.graf--figure,
+.page-article .postArticle-content h2+.graf--figure {
   margin-top: 15px;
 }
-.page-article .graf--pullquote {
+.page-article .postArticle-content .graf--pullquote {
   line-height: 1.4;
   text-align: center;
   font-size: 32px;
@@ -205,8 +252,8 @@
   -webkit-transition: margin 100ms;
           transition: margin 100ms;
 }
-.page-article .section-captionContent,
-.page-article section.is-darkBackgrounded>.section-captionContent {
+.page-article .postArticle-content .section-captionContent,
+.page-article .postArticle-content section.is-darkBackgrounded>.section-captionContent {
   position: absolute;
   top: 100%;
   width: 100%;
@@ -215,8 +262,8 @@
   left: 0;
   margin-top: 10px;
 }
-.page-article .section-captionContent,
-.page-article section.is-darkBackgrounded>.section-captionContent {
+.page-article .postArticle-content .section-captionContent,
+.page-article .postArticle-content section.is-darkBackgrounded>.section-captionContent {
   position: absolute;
   top: 100%;
   width: 100%;
@@ -225,119 +272,106 @@
   left: 0;
   margin-top: 10px;
 }
-.page-article .graf--sectionCaption {
+.page-article .postArticle-content .graf--sectionCaption {
   display: block;
   font-size: 16px;
   font-style: italic;
   text-align: center;
 }
-.page-article .section-image--aspectRatioViewport .graf--last {
+.page-article .postArticle-content .section-image--aspectRatioViewport .graf--last {
   margin-bottom: 0;
 }
-.page-article .sectionLayout--outsetColumn,
-.page-article .sectionLayout--outsetRow {
+.page-article .postArticle-content .sectionLayout--outsetColumn,
+.page-article .postArticle-content .sectionLayout--outsetRow {
   max-width: 1020px;
   width: 100%;
   margin: 0 auto;
   padding-top: 35px;
   box-sizing: border-box;
 }
-.page-article div.section-divider,
-.page-article .section-inner,
-.page-article .postFollowUps,
-.page-article .notesPositionContainer {
+.page-article .postArticle-content div.section-divider,
+.page-article .postArticle-content .section-inner,
+.page-article .postArticle-content .postFollowUps,
+.page-article .postArticle-content .notesPositionContainer {
   position: relative;
   right: 0%;
   -webkit-transition: right 200ms;
           transition: right 200ms;
 }
-.page-article .sectionLayout--outsetColumn+.layoutSingleColumn,
-.page-article .sectionLayout--outsetColumn+.u-sizeFullWidth,
-.page-article .sectionLayout--outsetRow+.layoutSingleColumn,
-.page-article .sectionLayout--outsetRow+.u-sizeFullWidth {
+.page-article .postArticle-content .sectionLayout--outsetColumn+.layoutSingleColumn,
+.page-article .postArticle-content .sectionLayout--outsetColumn+.u-sizeFullWidth,
+.page-article .postArticle-content .sectionLayout--outsetRow+.layoutSingleColumn,
+.page-article .postArticle-content .sectionLayout--outsetRow+.u-sizeFullWidth {
   padding-top: 65px;
 }
-.page-article .layoutSingleColumn {
+.page-article .postArticle-content .layoutSingleColumn {
   width: 700px;
   margin: 0 auto;
 }
-.page-article div.section-divider,
-.page-article .section-inner,
-.page-article .postFollowUps,
-.page-article .notesPositionContainer {
+.page-article .postArticle-content div.section-divider,
+.page-article .postArticle-content .section-inner,
+.page-article .postArticle-content .postFollowUps,
+.page-article .postArticle-content .notesPositionContainer {
   position: relative;
   right: 0%;
   -webkit-transition: right 200ms;
           transition: right 200ms;
 }
-.page-article .sectionLayout--outsetColumn:before,
-.page-article .sectionLayout--outsetRow:before,
-.page-article .sectionLayout--outsetColumn:after,
-.page-article .sectionLayout--outsetRow:after {
+.page-article .postArticle-content .sectionLayout--outsetColumn:before,
+.page-article .postArticle-content .sectionLayout--outsetRow:before,
+.page-article .postArticle-content .sectionLayout--outsetColumn:after,
+.page-article .postArticle-content .sectionLayout--outsetRow:after {
   display: table;
   content: " ";
 }
-.page-article .sectionLayout--outsetColumn:after,
-.page-article .sectionLayout--outsetRow:after {
+.page-article .postArticle-content .sectionLayout--outsetColumn:after,
+.page-article .postArticle-content .sectionLayout--outsetRow:after {
   clear: both;
 }
-.page-article figure {
-  margin: 1em 40px;
-}
-.page-article .postArticle-content {
-  position: relative;
-  font-size: 22px;
-  line-height: 1.5;
-  margin-bottom: 30px;
-  font-family: "freight-text-pro", Georgia, Cambria, "Times New Roman", Times, serif;
-  letter-spacing: 0.01rem;
-  font-weight: 400;
-  font-style: normal;
-}
-.page-article ::-moz-selection {
+.page-article .postArticle-content ::-moz-selection {
   background-color: #cce2ff;
   color: rgba(0,0,0,0.8);
 }
-.page-article ::selection {
+.page-article .postArticle-content ::selection {
   background-color: #cce2ff;
   color: rgba(0,0,0,0.8);
 }
-.page-article *,
-.page-article *:before,
-.page-article *:after {
+.page-article .postArticle-content *,
+.page-article .postArticle-content *:before,
+.page-article .postArticle-content *:after {
   box-sizing: inherit;
 }
-.page-article div.section-divider,
-.page-article .section-inner,
-.page-article .postFollowUps,
-.page-article .notesPositionContainer {
+.page-article .postArticle-content div.section-divider,
+.page-article .postArticle-content .section-inner,
+.page-article .postArticle-content .postFollowUps,
+.page-article .postArticle-content .notesPositionContainer {
   position: relative;
   right: 0%;
   -webkit-transition: right 200ms;
           transition: right 200ms;
 }
-.page-article figcaption {
+.page-article .postArticle-content figcaption {
   display: block;
 }
-.page-article article,
-.page-article aside,
-.page-article details,
-.page-article figcaption,
-.page-article figure,
-.page-article footer,
-.page-article header,
-.page-article hgroup,
-.page-article main,
-.page-article nav,
-.page-article section,
-.page-article summary {
+.page-article .postArticle-content article,
+.page-article .postArticle-content aside,
+.page-article .postArticle-content details,
+.page-article .postArticle-content figcaption,
+.page-article .postArticle-content figure,
+.page-article .postArticle-content footer,
+.page-article .postArticle-content header,
+.page-article .postArticle-content hgroup,
+.page-article .postArticle-content main,
+.page-article .postArticle-content nav,
+.page-article .postArticle-content section,
+.page-article .postArticle-content summary {
   display: block;
 }
-.page-article section:first-child>.section-divider,
-.page-article section.is-backgrounded+section>.section-divider {
+.page-article .postArticle-content section:first-child>.section-divider,
+.page-article .postArticle-content section.is-backgrounded+section>.section-divider {
   display: none;
 }
-.page-article .imageCaption {
+.page-article .postArticle-content .imageCaption {
   position: absolute;
   left: -172px;
   width: 150px;
@@ -354,95 +388,83 @@
   outline: 0;
   z-index: 300;
 }
-.page-article .m-imageCaption-below,
-.page-article .postArticle--short .imageCaption,
-.page-article .graf--layoutOutsetLeft>.imageCaption,
-.page-article .graf--layoutOutsetCenter>.imageCaption,
-.page-article .graf--layoutFillWidth>.imageCaption,
-.page-article .is-partialWidth>.imageCaption {
+.page-article .postArticle-content .m-imageCaption-below,
+.page-article .postArticle-content .postArticle--short .imageCaption,
+.page-article .postArticle-content .graf--layoutOutsetLeft>.imageCaption,
+.page-article .postArticle-content .graf--layoutOutsetCenter>.imageCaption,
+.page-article .postArticle-content .graf--layoutFillWidth>.imageCaption,
+.page-article .postArticle-content .is-partialWidth>.imageCaption {
   position: relative;
   width: 100%;
   text-align: center;
   left: 0;
   margin-top: 10px;
 }
-.page-article .markup--quote {
+.page-article .postArticle-content .markup--quote {
   -webkit-transition: 200ms background-color;
           transition: 200ms background-color;
   cursor: pointer;
 }
-.page-article .markup--quote.is-other {
+.page-article .postArticle-content .markup--quote.is-other {
   background-color: rgba(225,225,225,0.5);
 }
-.page-article .markup--quote.is-other {
+.page-article .postArticle-content .markup--quote.is-other {
   background-color: rgba(0,0,0,0);
   background-image: -webkit-linear-gradient(top, rgba(225,225,225,0.5), rgba(225,225,225,0.5));
   background-image: linear-gradient(to bottom, rgba(225,225,225,0.5), rgba(225,225,225,0.5));
 }
-.page-article .ui.comments {
+.page-article .postArticle-content .ui.comments {
   width: 700px;
   margin: 0 auto;
 }
-.page-article .section-aspectRatioViewportBottomSpacer,
-.page-article .section-aspectRatioViewportBottomPlaceholder {
+.page-article .postArticle-content .section-aspectRatioViewportBottomSpacer,
+.page-article .postArticle-content .section-aspectRatioViewportBottomPlaceholder {
   display: none;
   max-height: 50vh;
 }
-.page-article .section--bottomCenter .section-aspectRatioViewportBottomSpacer,
-.page-article .section--bottomCenter .section-aspectRatioViewportBottomPlaceholder {
+.page-article .postArticle-content .section--bottomCenter .section-aspectRatioViewportBottomSpacer,
+.page-article .postArticle-content .section--bottomCenter .section-aspectRatioViewportBottomPlaceholder {
   display: block;
 }
-.page-article section.is-imageBackgrounded>.section-background {
+.page-article .postArticle-content section.is-imageBackgrounded>.section-background {
   display: block;
   width: 100%;
   position: absolute;
   top: 0;
   cursor: default;
 }
-.page-article .section-image--aspectRatioViewport.is-imageBackgrounded .section-background,
-.page-article .section-image--aspectRatioViewport.is-imageBackgrounded .section-backgroundImage {
+.page-article .postArticle-content .section-image--aspectRatioViewport.is-imageBackgrounded .section-background,
+.page-article .postArticle-content .section-image--aspectRatioViewport.is-imageBackgrounded .section-backgroundImage {
   bottom: 0;
 }
-.page-article .postArticle-content>section {
-  position: relative;
-  clear: both;
-}
-.page-article section.is-backgrounded {
+.page-article .postArticle-content section.is-backgrounded {
   padding: 80px 0;
   width: 100%;
   margin: 80px 0;
 }
-.page-article section.is-imageBackgrounded {
+.page-article .postArticle-content section.is-imageBackgrounded {
   box-sizing: border-box;
   padding-bottom: 80px;
 }
-.page-article section.section-image--aspectRatio,
-.page-article section.section-image--aspectRatioViewport {
+.page-article .postArticle-content section.section-image--aspectRatio,
+.page-article .postArticle-content section.section-image--aspectRatioViewport {
   padding: 0;
 }
-.page-article .section--first.is-backgrounded {
+.page-article .postArticle-content .section--first.is-backgrounded {
   margin-top: 0;
 }
-.page-article section.is-imageBackgrounded.is-darkBackgrounded {
+.page-article .postArticle-content section.is-imageBackgrounded.is-darkBackgrounded {
   background: #191918;
   color: #fff;
 }
-.page-article section.is-imageBackgrounded.is-darkBackgrounded.is-sectionUsingCanvas {
+.page-article .postArticle-content section.is-imageBackgrounded.is-darkBackgrounded.is-sectionUsingCanvas {
   background: rgba(255,255,255,0);
 }
-.page-article .postArticle-content:before,
-.page-article .postArticle-content:after {
-  display: table;
-  content: " ";
-}
-.page-article .postArticle-content:after {
-  clear: both;
-}
-.page-article section.is-darkBackgrounded .graf--h2,
-.page-article section.is-darkBackgrounded .graf--h3 {
+.page-article .postArticle-content section.is-darkBackgrounded h2,
+.page-article .postArticle-content section.is-darkBackgrounded h3 {
   color: #fff;
 }
-.page-article section.is-imageBackgrounded .section-backgroundImage {
+.page-article .postArticle-content section.is-imageBackgrounded .section-backgroundImage {
   position: absolute;
   top: 0;
   left: 0;
@@ -450,66 +472,48 @@
   background-size: cover;
   background-position: center;
 }
-.page-article .section-image--aspectRatioViewport.is-imageBackgrounded .section-background,
-.page-article .section-image--aspectRatioViewport.is-imageBackgrounded .section-backgroundImage {
+.page-article .postArticle-content .section-image--aspectRatioViewport.is-imageBackgrounded .section-background,
+.page-article .postArticle-content .section-image--aspectRatioViewport.is-imageBackgrounded .section-backgroundImage {
   bottom: 0;
 }
-.page-article .u-table {
+.page-article .postArticle-content .u-table {
   display: table !important;
 }
-.page-article .section-doubleWidthTable {
+.page-article .postArticle-content .section-doubleWidthTable {
   width: 200%;
   table-layout: fixed;
 }
-.page-article .section-doubleWidthTable {
+.page-article .postArticle-content .section-doubleWidthTable {
   width: 200%;
 }
-.page-article .u-verticalAlignTop {
+.page-article .postArticle-content .u-verticalAlignTop {
   vertical-align: top !important;
 }
-.page-article .u-tableCell {
+.page-article .postArticle-content .u-tableCell {
   display: table-cell !important;
 }
-.page-article .section-doubleWidthTable>.u-tableCell {
+.page-article .postArticle-content .section-doubleWidthTable>.u-tableCell {
   width: 50%;
 }
-.page-article .section-doubleWidthTable>.u-tableCell {
+.page-article .postArticle-content .section-doubleWidthTable>.u-tableCell {
   width: 50%;
 }
-.page-article .section--middleCenter .section-contentCell,
-.page-article .section--bottomCenter .section-contentCell {
+.page-article .postArticle-content .section--middleCenter .section-contentCell,
+.page-article .postArticle-content .section--bottomCenter .section-contentCell {
   vertical-align: middle;
 }
-.page-article .section-backgroundImage {
+.page-article .postArticle-content .section-backgroundImage {
   opacity: 0.5;
 }
-.page-article .section-image--aspectRatioViewport.section--topCenter .section-content {
+.page-article .postArticle-content .section-image--aspectRatioViewport.section--topCenter .section-content {
   padding: 120px 0 80px;
 }
-.page-article .is-darkBackgrounded .graf--blockquote {
+.page-article .postArticle-content .is-darkBackgrounded blockquote {
   border-left-color: rgba(255,255,255,0.85);
 }
-.page-article section.is-imageBackgrounded .graf--h4,
-.page-article section[data-background-color]:not([data-background-color$="Light"]) .graf--h4 {
+.page-article .postArticle-content section.is-imageBackgrounded h4,
+.page-article .postArticle-content section[data-background-color]:not([data-background-color$="Light"]) h4 {
   color: rgba(255,255,255,0.65);
-}
-.page-article h1,
-.page-article h2,
-.page-article h3,
-.page-article h4,
-.page-article h5,
-.page-article h6,
-.page-article dl,
-.page-article dd,
-.page-article ol,
-.page-article ul,
-.page-article menu,
-.page-article figure,
-.page-article blockquote,
-.page-article p,
-.page-article pre,
-.page-article form {
-  margin: 0;
 }
 .page-signup .reg-header {
   margin: 30px 0 10px 0;
