@@ -37,7 +37,9 @@ public class ImageController extends WebContentGenerator {
             headers.setContentType(ImageUtil.getMimeType(name));
 
             return new ResponseEntity<>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
-        } catch (IOException | IllegalArgumentException ex) {
+        } catch (IOException ex) {
+            throw new ResourceNotFoundException();
+        } catch (IllegalArgumentException ex) {
             throw new ResourceNotFoundException();
         }
     }
