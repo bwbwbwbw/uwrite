@@ -1,5 +1,5 @@
 dataSource.driverClassName=com.mysql.jdbc.Driver
-dataSource.url=jdbc:mysql://localhost:3306/uwrite
+dataSource.url=jdbc:mysql://localhost:3306/uwrite?useUnicode=true&createDatabaseIfNotExist=true&characterEncoding=utf-8
 dataSource.username=root
 dataSource.password=
 
