@@ -45,7 +45,9 @@
                     <section id="content" class="positionleft nine columns alpha">
                         <div class="padcontent">
 
-                            <h1 class="pagetitle">Article List</h1>
+                            <h1 class="pagetitle" >Article List Of
+                                <p th:text="${Slug}"></p>
+                            </h1>
                             <article class="post" th:each="article : ${list}">
                                <!--titles-->
                                 <h2 class="posttitle">
@@ -136,7 +138,10 @@
                                 <li class="widget-container">
                                     <h2 class="widget-title">Join Our Newsletter</h2>
                                     <form action="#" method="post" id="newsletter">
-                                    <div><input type="submit" value="Subscribe" /></div>
+                                    <div>
+                                        <input type="text" placeholder="Your message"/>
+                                        <input type="submit" value="Subscribe" />
+                                    </div>
                                     </form>
                                 </li>
                             </ul>
@@ -171,7 +176,7 @@
         <div id="outerfooter">
             <div class="container">
                 <div id="footercontainer" class="twelve columns">
-                    <footer id="footer">&copy; @Developed by SFMDM</footer>
+                    <footer id="footer">&copy; Developed by SFMDM</footer>
                     <div id="toTop">^ Back to Top</div>
                 </div>
             </div>

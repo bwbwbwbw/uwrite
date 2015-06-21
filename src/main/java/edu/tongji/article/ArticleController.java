@@ -56,6 +56,7 @@ public class ArticleController {
     public String listUnderTopic(Model model, @PathVariable String slug) {
         model.addAttribute("list", articleService.listTopicArticleBySlug(slug));
         model.addAttribute("topiclist", topicService.listTopic());
+        model.addAttribute("Slug",slug);
         return "article/list";
     }
 
