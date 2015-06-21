@@ -5,6 +5,7 @@ import edu.tongji.account.AccountRepository;
 import edu.tongji.error.ResourceNotFoundException;
 import edu.tongji.topic.Topic;
 import edu.tongji.topic.TopicRepository;
+import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -23,6 +24,10 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+
+
+    @Autowired
+    TopicService topicService;
 
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listMine(Model model, @PathVariable("id") Long id) {
@@ -50,6 +55,7 @@ public class ArticleController {
     @RequestMapping(value = "topic/{slug}", method = RequestMethod.GET)
     public String listUnderTopic(Model model, @PathVariable String slug) {
         model.addAttribute("list", articleService.listTopicArticleBySlug(slug));
+        model.addAttribute("topiclist", topicService.listTopic());
         return "article/list";
     }
 

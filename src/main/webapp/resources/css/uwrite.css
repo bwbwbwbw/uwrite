@@ -533,7 +533,7 @@
   padding: 20px;
 }
 .page-topics .grid {
-  margin: 40px auto 120px;
+  margin: 25px auto ;
   max-width: 1000px;
   width: 90%;
 }
@@ -717,5 +717,5 @@
 }
 html,
 body {
-  background: #fff;
+  background: #def9fc;
 }

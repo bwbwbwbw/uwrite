@@ -1,15 +1,198 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title></title>
-</head>
-<body>
+    <link href="../../../resources/css/page/article-list.css" rel="stylesheet" media="screen" th:href="@{/resources/css/page/article-list.css}" />
+    <link href="../../../resources/lib/semantic-ui/semantic.min.css" rel="stylesheet" media="screen" th:href="@{/resources/lib/semantic-ui/semantic.min.css}"/>
 
-    <div>
-        <p th:each="article : ${list}">
-            <a th:href="${article.getFinalUrl()}" th:text="${article.title}"></a>
-        </p>
-     </div>
+    <!-- Favicons ================================================== -->
+    <link rel="shortcut icon" href="../../../resources/image/fav.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+
+<body>
+<div id="bodychild">
+    <div id="outercontainer">
+
+        <!-- HEADER -->
+        <div id="outerheader">
+            <div class="container">
+                <header id="top" class="twelve columns">
+                    <div id="logo" class="three columns alpha"><a href="###"><img src="../../../resources/img/logo0.png" alt="Here is logo" /></a></div>
+                    <div class="clear"></div>
+                </header>
+            </div>
+            <div class="subMenu" style="box-sizing:content-box">
+                <div class="inner">
+                    <a href="../../../WEB-INF/views/topic/list.html" th:href="@{/WEB-INF/views/topic/list.html}" class="subNavBtn">Home</a>
+                    <a href="#s1" class="subNavBtn">Article</a>
+                    <a href="#s2" class="subNavBtn">My blog</a>
+                    <a href="#s3" class="subNavBtn">Message</a>
+                    <a href="#s4" class="subNavBtn">Favorite</a>
+                    <a href="#s5" class="subNavBtn">User</a>
+                </div>
+            </div>
+        </div>
+        <!-- END HEADER -->
+
+
+        <!-- MAIN CONTENT -->
+        <div id="outermain" class="inner">
+            <div class="container">
+                <section id="maincontent" class="twelve columns">
+                    <section id="content" class="positionleft nine columns alpha">
+                        <div class="padcontent">
+
+                            <h1 class="pagetitle">Article List</h1>
+                            <article class="post" th:each="article : ${list}">
+                               <!--titles-->
+                                <h2 class="posttitle">
+                                    <p >
+                                    <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Aliquam luctus rhoncus eros, non malesuada nunc.</a>
+                                    </p>
+                                </h2>
+                                <div class="entry-utility" >
+                                    Posted by <a href="###" th:text="${article.user.nickname}">Templatesquare</a>
+                                    <p th:text="${article.createAt}">on May 16, 2012</p>
+                                </div>
+                              <!--pictures-->
+                                <div class="postimg">
+                                    <img src="../../../resources/img/list/post3.jpg" alt="" class="imgborder" style="width:626px; height:173"/>
+                                </div>
+                              <!--content-->
+                                <div class="entry-content">
+                                    <p>Curabitur tincidunt iaculis ipsum, eu malesuada tellus congue a. Quisque aliquet, enim eget consequat scelerisque, lectus nibh pulvinar lectus, ac vestibulum nisl urna quis magna. Quisque laoreet pulvinar orci, eget tempor ante consectetur in. Nullam et lorem ut magna aliquet eleifend scelerisque eu justo. </p>
+                                    <p><a class="ui blue button">Read More</a></p>
+
+                                    <div class="addthis_toolbox">
+                                        <a class="ui orange button">Edit</a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </article>
+
+                        </div>
+                    </section>
+
+
+                    <aside id="sidebar" class="positionright three columns omega">
+                        <ul>
+                            <li class="widget-container">
+                                <h2 class="widget-title">Topics</h2>
+                                <ul th:each="topic : ${topiclist}">
+                                    <li><a th:text="${topic.name}" th:href="${topic.getFinalUrl()}">Interaction Design</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="widget-container">
+                                <h2 class="widget-title">Recent Visitors</h2>
+                                <ul class="rp-widget">
+                                    <li>
+                                        <img src="../../../resources/img/list/lp1.jpg" alt="" class="alignleft imgborder" />
+                                        <h3><a href="#">Sed at urna sed libero.</a></h3>
+                                        <span class="smalldate">April 27, 2012</span>
+                                        <span class="clear"></span>
+                                    </li>
+                                    <li>
+                                        <img src="../../../resources/img/list/lp2.jpg" alt="" class="alignleft imgborder" />
+                                        <h3><a href="#">Nam vel nunc at augue vehicula feugiat.</a></h3>
+                                        <span class="smalldate">April 22, 2012</span>
+                                        <span class="clear"></span>
+                                    </li>
+                                    <li>
+                                        <img src="../../../resources/img/list/lp3.jpg" alt="" class="alignleft imgborder" />
+                                        <h3><a href="#">Integer pretium ipsum sit amet dui feugiat.</a></h3>
+                                        <span class="smalldate">April 20, 2012</span>
+                                        <span class="clear"></span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <div class="clear"></div><!-- clear float -->
+                </section>
+            </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+
+        <!-- FOOTER SIDEBAR -->
+        <div id="outerfootersidebar">
+            <div class="container">
+                <div id="footersidebarcontainer" class="twelve columns">
+                    <footer id="footersidebar">
+                        <div id="footcol1" class="four columns alpha">
+                            <ul>
+                                <li class="widget-container">
+                                    <h2 class="widget-title">More About Uwrite</h2>
+                                    <p><img src="../../../resources/image/fav.ico" alt="" class="alignleft margin_bottomoff" />Sed convallis sagittis felis sed lacinia. sdsdsdsds Donec cursus fringilla aliquet. Nulla ultrices elit ut.bibendum id sollicitudin tortor blandit. Ut consectetur libero ut tortor condimentum eu egestas est viverra. In eget turpis dui, sed auctor nisi. </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="footcol2" class="four columns">
+                            <ul>
+                                <li class="widget-container">
+                                    <h2 class="widget-title">Join Our Newsletter</h2>
+                                    <form action="#" method="post" id="newsletter">
+                                    <div><input type="submit" value="Subscribe" /></div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="footcol3" class="four columns omega">
+                            <ul>
+                                <li class="widget-container">
+                                    <h2 class="widget-title">Recent Comment</h2>
+                                    <ul>
+                                        <li><a href="#">templatesquare on <strong>Post with Sidebar</strong></a></li>
+                                        <li><a href="#">templatesquare on <strong>Post with Full Width</strong></a></li>
+                                        <li><a href="#">templatesquare on <strong>Post with Different Thumbnail</strong></a></li>
+                                        <li><a href="#">templatesquare on <strong>Post with Anothere page</strong></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </footer>
+
+                    <div id="line-sep-footer"></div>
+
+                    <div id="tweets"></div><!-- twitter container (don't remove) -->
+
+                </div>
+            </div>
+        </div>
+
+        <!-- END FOOTER SIDEBAR -->
+
+        <!-- FOOTER -->
+        <div id="outerfooter">
+            <div class="container">
+                <div id="footercontainer" class="twelve columns">
+                    <footer id="footer">&copy; @Developed by SFMDM</footer>
+                    <div id="toTop">^ Back to Top</div>
+                </div>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+
+    </div>
+</div>
+
+<!-- ////////////////////////////////// -->
+<!-- //      Javascript Files        // -->
+<!-- ////////////////////////////////// -->
+<script src="../../../resources/lib/jquery/dist/jquery.min.js" th:src="@{/resources/lib/jquery/dist/jquery.min.js}"></script>
+<script src="../../../resources/lib/semantic-ui/semantic.min.js" th:src="@{/resources/lib/semantic-ui/semantic.min.js}"></script>
+
+<script src="../../../resources/js/article-list.js" th:src="@{/resources/js/article-list.js}"></script>
+
+<!-- addthis button -->
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fe7d4f472573b8b"></script>
+
+
 </body>
 </html>
