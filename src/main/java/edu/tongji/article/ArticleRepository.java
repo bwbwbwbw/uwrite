@@ -93,4 +93,17 @@ public class ArticleRepository {
         }
         return article;
     }
+    public Boolean hasLiked(String email,Long id)
+    {
+        Article article=getArticle(id);
+
+        return article.getLikedUser().contains(email);
+    }
+    public void like(String email,Long id)
+    {
+        Article article=getArticle(id);
+        long likeNow=article.getLikes();
+        article.setLikes(++likeNow);
+        article.addLikedUser(email);
+    }
 }

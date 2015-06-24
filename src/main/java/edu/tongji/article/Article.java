@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @SuppressWarnings("serial")
 @Entity
@@ -58,6 +59,11 @@ public class Article implements java.io.Serializable {
     @ManyToOne
     private Topic topic;
 
+    @Column
+    private long likes=0;
+
+    private List<String> likedUser;
+
     protected Article() {
     }
 
@@ -66,11 +72,10 @@ public class Article implements java.io.Serializable {
         this.setTitle(title);
         this.setMarkdown(markdown);
         this.setTopic(topic);
+
     }
 
-    public String getTitle() {
-        return title;
-    }
+
 
     public void setTitle(String title) {
         this.title = title;
@@ -86,6 +91,9 @@ public class Article implements java.io.Serializable {
         this.markdown = markdown;
         this.html = markdown;
         // TODO: use pegdown processor
+    }
+    public String getTitle() {
+        return title;
     }
 
     public String getHtml() {
@@ -135,4 +143,18 @@ public class Article implements java.io.Serializable {
     public String getFinalUrl() {
         return "/article/view/" + getId() + "/" + getUrl();
     }
+    public long getLikes() {
+        return likes;
+    }
+    public void setLikes(long likes) {
+        this.likes = likes;
+    }
+    public List<String> getLikedUser() {
+        return likedUser;
+    }
+
+    public void addLikedUser(String user) {
+        likedUser.add(user);
+    }
+
 }

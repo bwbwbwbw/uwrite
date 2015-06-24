@@ -87,5 +87,12 @@ public class ArticleService {
         commentRepository.save(comment);
         return comment;
     }
-
+    public Boolean hasLiked(String email,Long id)
+    {
+        return articleRepository.hasLiked(email,id);
+    }
+    public void like(String email,Long id)
+    {
+        articleRepository.like(email,id);
+    }
 }

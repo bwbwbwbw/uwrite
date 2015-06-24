@@ -85,4 +85,19 @@ public class ArticleController {
     public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String markdown, @RequestParam Long topicId) {
         return articleService.updateArticle(principal.getName(), id, topicId, title, markdown);
     }
+
+    @RequestMapping(value = "article/like/{id}",method=RequestMethod.PUT)
+    @ResponseBody
+    public Boolean like(Principal principal,@PathVariable ("id") Long id)
+    {
+        String userEmail=principal.getName();
+        if(articleService.hasLiked(userEmail,id))
+        {
+           return false;
+        }
+
+        articleService.like(userEmail,id);
+        return true;
+    }
+    
 }
