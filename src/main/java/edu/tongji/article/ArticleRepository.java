@@ -105,5 +105,6 @@ public class ArticleRepository {
         long likeNow=article.getLikes();
         article.setLikes(++likeNow);
         article.addLikedUser(email);
+        entityManager.merge(article);
     }
 }

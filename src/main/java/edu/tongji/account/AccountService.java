@@ -55,5 +55,8 @@ public class AccountService implements UserDetailsService {
     {
         Account account=accountRepository.findByEmail(email);
         account.addCollection(id);
+        accountRepository.update(account);
+
     }
+
 }
