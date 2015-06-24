@@ -42,5 +42,18 @@ public class AccountService implements UserDetailsService {
     private GrantedAuthority createAuthority(Account account) {
         return new SimpleGrantedAuthority(account.getRole());
     }
-
+    public Account getAccountByEmail(String email)
+   {
+     return accountRepository.findByEmail(email);
+   }
+    public Boolean hasCollected(String email,Long id)
+    {
+        Account account=accountRepository.findByEmail(email);
+        return account.getCollection().contains(id);
+    }
+    public void addCollection (String email,Long id)
+    {
+        Account account=accountRepository.findByEmail(email);
+        account.addCollection(id);
+    }
 }

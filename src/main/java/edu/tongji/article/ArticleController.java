@@ -2,6 +2,7 @@ package edu.tongji.article;
 
 import edu.tongji.account.Account;
 import edu.tongji.account.AccountRepository;
+import edu.tongji.account.AccountService;
 import edu.tongji.error.ResourceNotFoundException;
 import edu.tongji.topic.Topic;
 import edu.tongji.topic.TopicRepository;
@@ -25,7 +26,8 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-
+    @Autowired
+    private AccountService accountService;
     @Autowired
     TopicService topicService;
 
@@ -95,9 +97,18 @@ public class ArticleController {
         {
            return false;
         }
-
         articleService.like(userEmail,id);
         return true;
     }
-    
+    @RequestMapping(value="article/collect/{id}",method = RequestMethod.PUT)
+    @ResponseBody
+    public Boolean collect(Principal principal,@PathVariable("id") Long id)
+    {
+     if(accountService.hasCollected(principal.getName(),id))
+     {
+         return false;
+     }
+        accountService.addCollection(principal.getName(),id);
+        return true;
+    }
 }

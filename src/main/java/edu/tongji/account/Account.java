@@ -3,6 +3,7 @@ package edu.tongji.account;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @SuppressWarnings("serial")
 @Entity
@@ -34,6 +35,8 @@ public class Account implements java.io.Serializable {
 
     @JsonIgnore
     private String password;
+
+    private List<Long> collection;
 
     private String role = "ROLE_USER";
 
@@ -91,6 +94,14 @@ public class Account implements java.io.Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public List<Long> getCollection() {
+        return collection;
+    }
+
+    public void addCollection(Long id) {
+        collection.add(id);
     }
 
 }
