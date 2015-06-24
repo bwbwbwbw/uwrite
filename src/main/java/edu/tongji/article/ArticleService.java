@@ -89,10 +89,12 @@ public class ArticleService {
     }
     public Boolean hasLiked(String email,Long id)
     {
-        return articleRepository.hasLiked(email,id);
+        Account account=accountRepository.findByEmail(email);
+        return articleRepository.hasLiked(account,id);
     }
     public void like(String email,Long id)
     {
-        articleRepository.like(email,id);
+        Account account=accountRepository.findByEmail(email);
+        articleRepository.like(account,id);
     }
 }

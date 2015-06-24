@@ -1,6 +1,7 @@
 package edu.tongji.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.tongji.article.Article;
 
 import javax.persistence.*;
 import java.util.List;
@@ -36,7 +37,9 @@ public class Account implements java.io.Serializable {
     @JsonIgnore
     private String password;
 
-    private List<Long> collection;
+    @OneToMany(fetch=FetchType.EAGER)
+    @JoinColumn(name = "id")
+    private List<Article> collection;
 
     private String role = "ROLE_USER";
 
@@ -96,12 +99,12 @@ public class Account implements java.io.Serializable {
         this.avatar = avatar;
     }
 
-    public List<Long> getCollection() {
+    public List<Article> getCollection() {
         return collection;
     }
 
-    public void addCollection(Long id) {
-        collection.add(id);
+    public void setCollection(List<Article> collection) {
+        this.collection = collection;
     }
 
 }

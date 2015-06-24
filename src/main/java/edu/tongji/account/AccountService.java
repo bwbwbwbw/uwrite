@@ -1,5 +1,7 @@
 package edu.tongji.account;
 
+import edu.tongji.article.Article;
+import edu.tongji.article.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -12,11 +14,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Collections;
+import java.util.List;
 
 public class AccountService implements UserDetailsService {
 
     @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private ArticleRepository articleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -49,12 +54,23 @@ public class AccountService implements UserDetailsService {
     public Boolean hasCollected(String email,Long id)
     {
         Account account=accountRepository.findByEmail(email);
-        return account.getCollection().contains(id);
+        List<Article> collection=account.getCollection();
+        for(Article article:collection)
+        {
+            if(article.getId().equals(id))
+                return true;
+        }
+        return false;
     }
     public void addCollection (String email,Long id)
     {
         Account account=accountRepository.findByEmail(email);
-        account.addCollection(id);
+        Article article=articleRepository.getArticle(id);
+
+        List<Article> collection=account.getCollection();
+        collection.add(article);
+
+        account.setCollection(collection);
         accountRepository.update(account);
 
     }

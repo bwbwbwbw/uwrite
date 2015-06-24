@@ -88,7 +88,7 @@ public class ArticleController {
         return articleService.updateArticle(principal.getName(), id, topicId, title, markdown);
     }
 
-    @RequestMapping(value = "article/like/{id}",method=RequestMethod.PUT)
+    @RequestMapping(value = "article/like/{id}",method=RequestMethod.GET)
     @ResponseBody
     public Boolean like(Principal principal,@PathVariable ("id") Long id)
     {
@@ -100,7 +100,7 @@ public class ArticleController {
         articleService.like(userEmail,id);
         return true;
     }
-    @RequestMapping(value="article/collect/{id}",method = RequestMethod.PUT)
+    @RequestMapping(value="article/collect/{id}",method = RequestMethod.GET)
     @ResponseBody
     public Boolean collect(Principal principal,@PathVariable("id") Long id)
     {

@@ -93,18 +93,26 @@ public class ArticleRepository {
         }
         return article;
     }
-    public Boolean hasLiked(String email,Long id)
+    public Boolean hasLiked(Account account,Long id)
     {
         Article article=getArticle(id);
-
-        return article.getLikedUser().contains(email);
+        List<Account> likeduser=article.getLikedUser();
+        for(Account a:likeduser)
+        {
+            if(a.getId().equals(account.getId()))
+                return true;
+        }
+        return false;
     }
-    public void like(String email,Long id)
+    public void like(Account account,Long id)
     {
         Article article=getArticle(id);
         long likeNow=article.getLikes();
-        article.setLikes(++likeNow);
-        article.addLikedUser(email);
+        List<Account> likeduser=article.getLikedUser();
+        likeduser.add(account);
+
+        article.setLikes(likeNow+1);
+        article.setLikedUser(likeduser);
         entityManager.merge(article);
     }
 }

@@ -62,7 +62,12 @@ public class Article implements java.io.Serializable {
     @Column
     private long likes=0;
 
-    private List<String> likedUser;
+
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name="id")
+    private List<Account> likedUser;
+
 
     protected Article() {
     }
@@ -149,12 +154,11 @@ public class Article implements java.io.Serializable {
     public void setLikes(long likes) {
         this.likes = likes;
     }
-    public List<String> getLikedUser() {
+    public List<Account> getLikedUser() {
         return likedUser;
     }
-
-    public void addLikedUser(String user) {
-        likedUser.add(user);
+    public void setLikedUser(List<Account> likedUser) {
+        this.likedUser = likedUser;
     }
 
 }
