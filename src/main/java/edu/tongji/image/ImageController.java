@@ -13,9 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.support.WebContentGenerator;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by Breezewish on 6/13/15.
@@ -41,6 +46,26 @@ public class ImageController extends WebContentGenerator {
             throw new ResourceNotFoundException();
         } catch (IllegalArgumentException ex) {
             throw new ResourceNotFoundException();
+        }
+    }
+
+
+    @RequestMapping(value="/upload", method=RequestMethod.POST)
+    public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
+       @RequestParam("file") MultipartFile file){
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                BufferedOutputStream stream =
+                new BufferedOutputStream(new FileOutputStream(new File(name)));
+                stream.write(bytes);
+                stream.close();
+                return "You successfully uploaded " + name + "!";
+            } catch (Exception e) {
+                return "You failed to upload " + name + " => " + e.getMessage();
+            }
+        } else {
+            return "You failed to upload " + name + " because the file was empty.";
         }
     }
 }
