@@ -11,6 +11,6 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Principal principal) {
-        return principal != null ? "home/homeSignedIn" : "home/homeNotSignedIn";
+        return "home/home";
     }
 }

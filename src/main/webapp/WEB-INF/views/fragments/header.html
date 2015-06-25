@@ -1,36 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
-</head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Demo project</a>
+<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="nav(current)">
+    <div class="container clearfix">
+        <div class="logo"><img src="../../../resources/img/logo1.png" alt="Here is logo" th:href="@{/resources/img/logo0.png}"/></div>
+        <div class="nav-items clearfix">
+            <a th:attr="class=${current == 'recommend' ? 'active' : null}" href="/">Recommendations</a>
+            <a th:attr="class=${current == 'topics' ? 'active' : null}" href="/topics">Topics</a>
+            <a th:attr="class=${current == 'my' ? 'active' : null}" th:if="${#authorization.expression('isAuthenticated()')}" href="/article/view/mine">My</a>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#" th:href="@{/}">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li th:if="${#authorization.expression('!isAuthenticated()')}">
-                    <a href="/signin" th:href="@{/signin}">Sign in</a>
-                </li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}">
-                    <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>
-                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
-                </li>
-            </ul>
+        <div class="nav-action-items clearfix">
+            <a href="/signin" th:href="@{/signin}" class="ui black basic button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign in</a>
+            <a href="/signup" th:href="@{/signup}" class="ui blue button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign up</a>
+            <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" th:if="${#authorization.expression('isAuthenticated()')}">Logout</a>
+            <form id="form" method="post" action="#" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}"></form>
         </div>
-        <!--/.nav-collapse -->
     </div>
 </div>
 </body>

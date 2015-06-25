@@ -8,9 +8,9 @@
 </head>
 <body class="page-index">
 
-<div class="index-nav">
-    <a class="ui button" href="../../signin" th:href="@{/signin}">Login</a>
-    <a class="ui green button" href="../../signup" th:href="@{/signup}">Sign up</a>
+<div th:replace="fragments/header :: nav(current='recommend')"></div>
+
+<div class="container navbar-padding">
 </div>
 
 <script src="../../../resources/lib/jquery/dist/jquery.min.js" th:src="@{/resources/lib/jquery/dist/jquery.min.js}"></script>

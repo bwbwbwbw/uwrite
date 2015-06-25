@@ -1,3 +1,8 @@
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .uwrite-animation {
   opacity: 1;
 }
@@ -515,8 +520,64 @@
 .page-article .postArticle-content section[data-background-color]:not([data-background-color$="Light"]) h4 {
   color: rgba(255,255,255,0.65);
 }
+.navbar-padding {
+  margin-top: 90px;
+}
+.navbar {
+  position: fixed;
+  border-bottom: 1px solid #eee;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  line-height: 1;
+  z-index: 999;
+  background: #fff;
+}
+.navbar a,
+.navbar a:visited,
+.navbar a:hover {
+  color: #555;
+}
+.navbar .container {
+  width: 1000px;
+  margin: 0 auto;
+}
+.navbar .logo {
+  float: left;
+  height: 50px;
+  padding: 15px;
+}
+.navbar .logo img {
+  height: 50px;
+}
+.navbar .nav-items {
+  float: left;
+}
+.navbar .nav-items a {
+  line-height: 67px;
+  border-bottom: 3px solid transparent;
+  padding: 0 20px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  -webkit-transition: border-color 0.2s linear;
+          transition: border-color 0.2s linear;
+}
+.navbar .nav-items a.active {
+  border-color: #777;
+}
+.navbar .nav-items a:hover {
+  border-color: #2ea7e0;
+}
+.navbar .nav-action-items {
+  float: right;
+  height: 30px;
+  margin: 20px 0;
+  line-height: 30px;
+}
 .page-signup .reg-header {
-  margin: 10px 0 5px 0;
+  margin: 30px 0 10px 0;
   text-align: center;
 }
 .page-signup .reg-divider {
@@ -533,7 +594,7 @@
   padding: 20px;
 }
 .page-topics .grid {
-  margin: 25px auto ;
+  margin: 40px auto 120px;
   max-width: 1000px;
   width: 90%;
 }
@@ -581,7 +642,7 @@
 }
 .page-topics .grid figcaption p {
   padding: 0 20px;
-  color: #aaa;
+  color: #333;
   font-weight: 300;
   -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, transform 0.3s;
@@ -617,7 +678,10 @@
   height: 100%;
 }
 .page-topics .grid svg path {
-  fill: #fff;
+  fill: rgba(255,255,255,0.9);
+}
+.page-topics .grid figure:hover svg path {
+  fill: rgba(255,255,255,0.98);
 }
 .page-topics .grid a:hover figure img {
   opacity: 1;
@@ -643,7 +707,7 @@
   left: 0;
   padding: 15px;
   width: 100%;
-  background: #fff;
+  background: rgba(255,255,255,0.98);
   color: #333;
   font-weight: 300;
   -webkit-transform: translateY(100%);
@@ -717,5 +781,5 @@
 }
 html,
 body {
-  background: #def9fc;
+  background: #fff;
 }
