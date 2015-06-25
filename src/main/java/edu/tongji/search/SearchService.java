@@ -23,9 +23,7 @@ public class SearchService {
 
     public void addAll() {
         searchClient.resetIndex();
-        System.out.print("Indexing initial data...");
         searchClient.initIndexData(articleService.listAllArticle());
-        System.out.print("Index done.");
     }
 
     public void add(Article article) {

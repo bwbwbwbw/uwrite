@@ -45,7 +45,7 @@ public class SearchClient {
         for (Article article : articles) {
             addData(article);
         }
-        client.admin().indices().flush(new FlushRequest("uwrite").force(true)).actionGet();
+        client.admin().indices().prepareRefresh().execute().actionGet();
     }
 
     public void addData(Article article) {
@@ -74,11 +74,8 @@ public class SearchClient {
     }
 
     public List<ArticleSearchItem> search(String keyword) {
-        QueryBuilder qb = new MultiMatchQueryBuilder(
-                keyword,
-                "title", "html"
-        );
-        List<ArticleSearchItem> list = new ArrayList<ArticleSearchItem>();
+        QueryBuilder qb = new MultiMatchQueryBuilder(keyword, "title", "html");
+        List<ArticleSearchItem> list = new ArrayList<>();
         SearchResponse searchResponse = client
                 .prepareSearch(esIndex)
                 .setTypes(esType)
@@ -86,16 +83,13 @@ public class SearchClient {
                 .execute()
                 .actionGet();
         SearchHits hits = searchResponse.getHits();
-        System.out.println("查询到记录数=" + hits.getTotalHits());
-        SearchHit[] searchHists = hits.getHits();
+        SearchHit[] resultHits = hits.getHits();
 
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            if (searchHists.length > 0) {
-                for (SearchHit hit : searchHists) {
-                    list.add(mapper.readValue(hit.getSourceAsString(), ArticleSearchItem.class));
-                }
+            for (SearchHit hit : resultHits) {
+                list.add(mapper.readValue(hit.getSourceAsString(), ArticleSearchItem.class));
             }
         } catch (JsonGenerationException e) {
             e.printStackTrace();
