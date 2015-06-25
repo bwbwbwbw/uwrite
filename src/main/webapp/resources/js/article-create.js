@@ -1,16 +1,38 @@
-var topicId = localStorage.getItem("create-topic-id") || 1;
+var topicId;
 
-if (localStorage.getItem("create-topic-name")) {
-  $('.role-topic').text(localStorage.getItem("create-topic-name"));
+var isEditing = false;
+var articleId = null;
+
+if ($('.role-edit').length == 0) {
+  // creating mode
+
+  topicId = localStorage.getItem("create-topic-id") || 1;
+
+  if (localStorage.getItem("create-topic-name")) {
+    $('.role-topic').text(localStorage.getItem("create-topic-name"));
+  }
+
+  if (localStorage.getItem('create-html')) {
+    $('.article-content').html(localStorage.getItem('create-html'));
+  }
+} else {
+  // editing mode
+  topicId = parseInt($('.role-edit-topic-id').val());
+  isEditing = true;
+  articleId = $('.role-edit-article-id').val();
+
+  $('.graf--h2, .graf--h3').eq(0).attr('contenteditable', 'plaintext-only');
+
+  if ($('.role-content-edit').length == 0) {
+    $('.postArticle-content').addClass('role-content-edit');
+  }
 }
 
-if (localStorage.getItem('create-html')) {
-  $('.article-content').html(localStorage.getItem('create-html'));
-}
 
 setInterval(function() {
   localStorage.setItem('create-html', $('.article-content').html());
 }, 1000);
+
 
 $(document).ready(function() {
 
@@ -73,20 +95,31 @@ $(document).ready(function() {
     node.find('.medium-insert-buttons').remove();
 
     var data = {
-      title: $('.graf--h3').text(),
+      title: $('.graf--h2, .graf--h3').eq(0).text(),
       html: node.html(),
       topicId: parseInt(topicId),
-      brief: brief.map(function(p) { return '<p>' + $('<div>').text(p).html() + '</p>'; }).join('')
+      brief: brief.filter(function(p) { return p.trim().length > 0; }).map(function(p) { return '<p>' + $('<div>').text(p).html() + '</p>'; }).join('')
     };
     if (coverImage !== null) {
       data.coverImage = coverImage;
     }
 
-    $.ajax({
-      url: '/article/create',
-      method: 'POST',
-      data: data,
-    }).done(function(data) {
+    var xhr;
+    if (!isEditing) {
+      xhr = $.ajax({
+        url: '/article/create',
+        method: 'POST',
+        data: data
+      });
+    } else {
+      xhr = $.ajax({
+        url: '/article/id/' + articleId,
+        method: 'POST',
+        data: data
+      });
+    }
+
+    xhr.done(function(data) {
       localStorage.removeItem('create-topic-name');
       localStorage.removeItem('create-topic-id');
       localStorage.removeItem('create-html');
