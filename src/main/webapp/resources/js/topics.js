@@ -130,7 +130,7 @@
       }
       lastBottomRow = rowIndex;
     }
-  }, 500));
+  }, 100));
 
   $(window).scroll();
 
