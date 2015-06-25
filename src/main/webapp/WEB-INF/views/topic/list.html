@@ -21,7 +21,7 @@
     <section id="grid" class="grid clearfix">
         <a class="topic-card" hide="bottom" th:each="topic : ${list}" th:href="${topic.getFinalUrl()}">
             <figure>
-                <img src="../../../resources/img/1.png" th:src="@{/resources/img/1.png}" />
+                <img th:src="${topic.getPicture()}" width="240" height="420" />
 
                 <figcaption>
                     <h2 th:text="${topic.name}">Crystalline</h2>
