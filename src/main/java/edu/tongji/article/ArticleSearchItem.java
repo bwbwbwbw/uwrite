@@ -1,5 +1,7 @@
 package edu.tongji.article;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  * Created by Breezewish on 6/26/15.
  */
@@ -13,6 +15,8 @@ public class ArticleSearchItem implements java.io.Serializable {
 
     public String url;
 
+    public String brief;
+
     protected ArticleSearchItem() {}
 
     public ArticleSearchItem(Article article)
@@ -21,6 +25,7 @@ public class ArticleSearchItem implements java.io.Serializable {
         this.title = article.getTitle();
         this.html = article.getHtml();
         this.url = article.getUrl();
+        this.brief = article.getBrief();
     }
 
     public Long getId() {
@@ -54,4 +59,18 @@ public class ArticleSearchItem implements java.io.Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    @JsonIgnore
+    public String getFinalUrl() {
+        return "/article/view/" + getId() + "/" + getUrl();
+    }
+
 }
