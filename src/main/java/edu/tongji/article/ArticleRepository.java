@@ -87,7 +87,7 @@ public class ArticleRepository {
         Article article = getArticle(account, id);
         if (article != null) {
             article.setTopic(topic);
-            article.setMarkdown(markdown);
+            article.setHtml(markdown);
             article.setTitle(title);
             entityManager.merge(article);
         }

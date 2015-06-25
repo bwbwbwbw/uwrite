@@ -38,10 +38,6 @@ public class Article implements java.io.Serializable {
 
     @Column
     @Type(type = "text")
-    private String markdown;
-
-    @Column
-    @Type(type = "text")
     private String html;
 
     @Column
@@ -81,7 +77,7 @@ public class Article implements java.io.Serializable {
     public Article(Account owner, Topic topic, String title, String markdown) {
         this.setUser(owner);
         this.setTitle(title);
-        this.setMarkdown(markdown);
+        this.setHtml(markdown);
         this.setTopic(topic);
         this.deleted = false;
     }
@@ -92,14 +88,8 @@ public class Article implements java.io.Serializable {
         this.url = title;
     }
 
-    public String getMarkdown() {
-        return markdown;
-    }
-
-    public void setMarkdown(String markdown) {
-        this.markdown = markdown;
-        this.html = markdown;
-        // TODO: use pegdown processor
+    public void setHtml(String html) {
+        this.html = html;
     }
 
     public String getTitle() {
