@@ -13,8 +13,7 @@ public class HtmlFilter {
     private AntiSamy antiSamy;
     private Policy policy;
 
-    public HtmlFilter()
-    {
+    public HtmlFilter() {
         try {
             policy = Policy.getInstance(new ClassPathResource("antisamy-myspace-1.4.4.xml").getFile());
         } catch (Exception ex) {
@@ -23,8 +22,7 @@ public class HtmlFilter {
         antiSamy = new AntiSamy();
     }
 
-    public String filter(String html)
-    {
+    public String filter(String html) {
         try {
             CleanResults result = antiSamy.scan(html, policy);
             return result.getCleanHTML();

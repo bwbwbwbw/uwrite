@@ -45,8 +45,7 @@ public class ArticleService {
         return article;
     }
 
-    public Article getUserArticleById(String email, Long id)
-    {
+    public Article getUserArticleById(String email, Long id) {
         Account account = accountRepository.findByEmail(email);
         if (account == null) {
             throw new ResourceNotFoundException();
@@ -97,8 +96,7 @@ public class ArticleService {
         return comment;
     }
 
-    public List<ArticleComment> getComment(Article article)
-    {
+    public List<ArticleComment> getComment(Article article) {
         return commentRepository.listAll(article);
     }
 
