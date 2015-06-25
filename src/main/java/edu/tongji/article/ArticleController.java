@@ -101,6 +101,7 @@ public class ArticleController {
     @ResponseBody
     public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String html,
                           @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
+
         return articleService.updateArticle(principal.getName(), id, topicId, title, html, coverImage, brief);
     }
 

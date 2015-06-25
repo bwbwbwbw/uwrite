@@ -7,7 +7,6 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.ObjectWriter;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
-import org.elasticsearch.action.admin.indices.flush.FlushRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
@@ -66,10 +65,17 @@ public class SearchClient {
     }
 
     public void updateData(Article article) {
+        client.prepareUpdate(esIndex, esType, article.getId().toString())
+                .setDoc(JsonUtil.obj2JsonData(article))
+                .get();
 
     }
 
     public void deleteData(Article article) {
+
+        client.prepareDelete(esIndex, esType, article.getId().toString())
+                .execute()
+                .actionGet();
 
     }
 
