@@ -130,3 +130,9 @@ $('.role-like').click(function(){
     $(this).find('i').attr('class', 'orange inverted circular thumbs up icon');
 });
 
+//$('.certain-user').click(function(){
+//    $.ajax({
+//        url:"",
+//        type: GET;
+//    })
+//})

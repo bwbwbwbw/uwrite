@@ -34,13 +34,12 @@
                 <a class="ui blue button" th:href="${article.getFinalUrl()}">Read More</a>
 
                 <a class="role-like" th:data="${article.id}" style="float: right;margin-top: 5px;">
-                    <!--<i class="orange circular thumbs up icon" th:if="${ !isLiked(article.id) }"></i>-->
+                    <i class="orange circular thumbs up icon"></i>
                     <!--<i class="orange inverted circular thumbs up icon" th:if="${ isLiked(article.id) }"></i>-->
                 </a>
             </div>
 
             </div>
-
 
         <div class="rightblock">
 
@@ -56,7 +55,7 @@
                 <ul th:each="article: ${list}">
                     <li>
                     <img class="circular ui left floated image" th:src="${article.user.getAvatarLink()}" alt="NO PIC" style="width: 40px;height: 40px;"/>
-                    <a th:text="${article.user.nickname}">Author</a>
+                    <a class="certain-user" th:text="${article.user.nickname}">Author</a>
                     </li>
                 </ul>
             </div>
