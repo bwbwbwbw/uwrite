@@ -1,6 +1,7 @@
 package edu.tongji.article;
 
 import edu.tongji.account.AccountService;
+import edu.tongji.search.Search;
 import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -104,4 +105,11 @@ public class ArticleController {
         accountService.addCollection(principal.getName(), id);
         return true;
     }*/
+    @RequestMapping(value="article/search/{aim}",method = RequestMethod.GET)
+    public String Search(Model model,@PathVariable("aim") String aim)
+    {
+        Search search=new Search();
+        model.addAttribute("searchResult",search.search(aim,articleService.listAllArticle()));
+        return "article/searchList";
+    }
 }
