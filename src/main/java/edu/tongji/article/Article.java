@@ -1,5 +1,6 @@
 package edu.tongji.article;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.tongji.account.Account;
 import edu.tongji.slug.UrlSlugGenerator;
 import edu.tongji.topic.Topic;
@@ -56,6 +57,7 @@ public class Article implements java.io.Serializable {
     private Topic topic;
 
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinTable(name = "likes",
             joinColumns = {@JoinColumn(name = "ARTICLE_ID")},
             inverseJoinColumns = {@JoinColumn(name = "ACCOUNT_ID")})
