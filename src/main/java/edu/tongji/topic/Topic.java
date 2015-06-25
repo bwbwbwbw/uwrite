@@ -33,6 +33,9 @@ public class Topic implements java.io.Serializable {
     private String description;
 
     @Column
+    private String pic;
+
+    @Column
     private String slug;
 
     public Topic() {
@@ -74,6 +77,18 @@ public class Topic implements java.io.Serializable {
 
     public String getFinalUrl() {
         return "/topic/" + this.getSlug();
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    public String getPicture() {
+        return "/image/" + this.getPic();
     }
 
 }
