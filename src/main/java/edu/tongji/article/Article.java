@@ -63,8 +63,9 @@ public class Article implements java.io.Serializable {
     private long likes = 0;
 
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JoinTable(name = "article_likedBy_user", joinColumns = {@JoinColumn(name = "ARTICLE_ID")}
+            , inverseJoinColumns = {@JoinColumn(name = "ACCOUNT_ID")})
     private List<Account> likedUser;
 
 

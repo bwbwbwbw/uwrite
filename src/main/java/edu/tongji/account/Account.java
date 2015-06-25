@@ -37,8 +37,9 @@ public class Account implements java.io.Serializable {
     @JsonIgnore
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_collect_article", joinColumns = {@JoinColumn(name = "ACCOUNT_ID")}
+            , inverseJoinColumns = {@JoinColumn(name = "ARTICLE_ID")})
     private List<Article> collection;
 
     private String role = "ROLE_USER";
