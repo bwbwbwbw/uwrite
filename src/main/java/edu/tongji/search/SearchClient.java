@@ -65,9 +65,14 @@ public class SearchClient {
     }
 
     public void updateData(Article article) {
-        client.prepareUpdate(esIndex, esType, article.getId().toString())
-                .setDoc(JsonUtil.obj2JsonData(article))
-                .get();
+        ObjectWriter ow = new ObjectMapper().writer();
+        try {
+            client.prepareUpdate(esIndex, esType, article.getId().toString())
+                    .setDoc(ow.writeValueAsString(new ArticleSearchItem(article)))
+                    .get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
