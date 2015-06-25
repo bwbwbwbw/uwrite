@@ -277,6 +277,7 @@ USE THIS STYLE SHEET FOR INNER PAGE
     padding: 15px 2% 0 2%;
     text-align: center;
     color: #fff;
+    font-family: 'OpenSansRegular';
 }
 .subMenu a{
     color: #ffffff;
@@ -722,6 +723,7 @@ table {
 /*============================================ GLOBAL  =================================================*/
 body {
     font-family:Arial, Helvetica, sans-serif;
+    -webkit-font-family:Arial, Helvetica, sans-serif;
     font-size:12px;
     margin:0 auto;
     padding:0;
@@ -856,7 +858,7 @@ ol ul {
     padding:0;
 }
 
-#outerheader, #outerslider, #outerbeforecontent, #outermain,  #outerfootersidebar, #outerfooter{width:100%; margin:0 auto}
+#outerheader, #outerslider, #outerbeforecontent, #outermain,  #outerfootersidebar, #outerfooter{width:100%; margin:0 auto;}
 
 
 /* CONTENT */
@@ -1365,6 +1367,7 @@ tr.odd td {}
     list-style-type:none;
     margin:0 0 4px 0;
     padding:0 0 3px 0;
+    font-family: 'OpenSansRegular';
 }
 
 #sidebar li li a:hover, #sidebar li li a.active{text-decoration:none;}

@@ -32,7 +32,7 @@ public class ArticleController {
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listMine(Model model, @PathVariable("id") Long id) {
         model.addAttribute("list", articleService.listUserArticleByUid(id));
-        return "article/list";
+        return "article/userarticle";
     }
 
     @RequestMapping(value = "article/view/all", method = RequestMethod.GET)

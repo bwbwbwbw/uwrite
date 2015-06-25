@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link href="../../../resources/lib/semantic-ui/semantic.min.css" rel="stylesheet" media="screen" th:href="@{/resources/lib/semantic-ui/semantic.min.css}"/>
+    <link href="../../../resources/css/uwrite.css" rel="stylesheet" media="screen" th:href="@{/resources/css/uwrite.css}" />
+    <link href="../../../resources/css/page/article-user.css" rel="stylesheet" media="screen" th:href="@{/resources/css/page/article-user.css}"/>
+
+
+    <link rel="shortcut icon" href="../../../resources/image/fav.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<div class="outheader">
+    <div id="logo" style="max-width: 1000px;width: 90%;margin: auto;"><a href="###"><img  src="../../../resources/img/logo1.png" alt="Here is logo" th:href="@{/resources/img/logo0.png}"/></a></div>
+</div>
+<div class="subMenu" >
+    <div class="inner">
+        <a href="#sTop" class="subNavBtn">Home</a>
+        <a href="#s1" class="subNavBtn">Article</a>
+        <a href="#s2" class="subNavBtn">My blog</a>
+        <a href="#s3" class="subNavBtn">Message</a>
+        <a href="#s4" class="subNavBtn">Favorite</a>
+        <a href="#s5" class="subNavBtn">User</a>
+    </div>
+</div>
+
+
+<table class="ui table segment" style="width: 65%; margin:20px auto;">
+    <thead>
+    <tr ><th class="seven wide">Article</th>
+        <th class="four wide">Update date</th>
+        <th class="five wide" style="text-align: center">Operations</th>
+    </tr></thead>
+    <tbody>
+    <tr th:each="article : ${list}">
+        <td> <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article</a></td>
+        <td><p th:text="${article.createAt}">on May 16, 2012</p></td>
+        <td style="text-align: center">
+            <div class="ui blue tiny labeled icon button" style="display:inline-block"><i class="pencil icon"></i> Edit</div>
+            <div class="ui red tiny labeled icon button" onclick="performDeletionConfirm()"><i class="delete icon"></i>
+                Delete
+            </div>
+        </td>
+    </tr>
+    <tfoot>
+    <tr><th colspan="3" style="text-align: center">
+        <div class="ui blue tiny labeled icon button"><i class="add icon"></i> Create a new article</div>
+    </th>
+    </tr></tfoot>
+    </tbody>
+</table>
+
+<div class="ui basic modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Comfirm deletion
+    </div>
+    <div class="content">
+        <div class="description">Are you sure you want to delete this article?</div>
+    </div>
+    <div class="actions" style="display: inline-block; float: right">
+        <div class="ui red basic inverted button">
+            cancel
+        </div>
+    </div>
+    <div class="actions" style="display: inline-block; float: right">
+        <div class="ui red basic inverted button">
+            delete
+        </div>
+    </div>
+</div>
+
+<script src="../../../resources/lib/jquery/dist/jquery.min.js" th:src="@{/resources/lib/jquery/dist/jquery.min.js}"></script>
+<script src="../../../resources/lib/semantic-ui/semantic.min.js" th:src="@{/resources/lib/semantic-ui/semantic.min.js}"></script>
+<script src="../../../resources/js/user-article.js" th:src="@{/resources/js/user-article.js}"></script>
+<script src="../../../resources/lib/snap.svg-min.js" th:src="@{/resources/lib/snap.svg-min.js}"></script>
+
+<script type="text/javascript">
+    $(document).ready( function() {
+        $('.subMenu').smint({
+            'scrollSpeed' : 1000
+        });
+    });
+</script>
+
+</body>
+</html>

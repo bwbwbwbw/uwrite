@@ -1,0 +1,56 @@
+/*---nav bar ---*/
+.inner {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 50px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.inner:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.subMenu {
+    height: 50px;
+    z-index: 1000;
+    width: 100%;
+    background: #3cc4f1;
+}
+
+.subMenu .inner {
+    max-width: 1000px;
+    width: 90%;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+
+.subNavBtn {
+    display: inline-block;
+    height: 50px;
+    width: 16.6%;
+    float: left;
+    margin: 0px 0px 0 0;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 15px 2% 0 2%;
+    text-align: center;
+    color: #fff;
+}
+.subMenu a:hover {
+    background: #1783c7;
+}
+
+.active {
+    background: #25aae1;
+}
+.end {
+    margin: 0;
+}
+
