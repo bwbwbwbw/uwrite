@@ -28,6 +28,13 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- Security -->
+        <dependency>
+            <groupId>org.owasp</groupId>
+            <artifactId>antisamy</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <!-- Util -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>

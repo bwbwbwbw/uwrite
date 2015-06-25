@@ -70,9 +70,9 @@ public class ArticleController {
     @RequestMapping(value = "article/create", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Article create(Principal principal, @RequestParam String title, @RequestParam String markdown,
-                          @RequestParam Long topicId) {
-        return articleService.createArticle(principal.getName(), topicId, title, markdown);
+    public Article create(Principal principal, @RequestParam String title, @RequestParam String html,
+                          @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
+        return articleService.createArticle(principal.getName(), topicId, title, html, coverImage, brief);
     }
 
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.DELETE)
@@ -84,8 +84,9 @@ public class ArticleController {
 
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String markdown, @RequestParam Long topicId) {
-        return articleService.updateArticle(principal.getName(), id, topicId, title, markdown);
+    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String html,
+                          @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
+        return articleService.updateArticle(principal.getName(), id, topicId, title, html, coverImage, brief);
     }
 
     @RequestMapping(value = "article/like/{id}", method = RequestMethod.GET)
@@ -98,15 +99,4 @@ public class ArticleController {
         articleService.like(userEmail, id);
         return true;
     }
-
-    /*
-    @RequestMapping(value = "article/collect/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Boolean collect(Principal principal, @PathVariable("id") Long id) {
-        if (accountService.hasCollected(principal.getName(), id)) {
-            return false;
-        }
-        accountService.addCollection(principal.getName(), id);
-        return true;
-    }*/
 }

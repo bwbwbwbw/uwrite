@@ -2,6 +2,7 @@ package edu.tongji.article;
 
 import edu.tongji.account.Account;
 import edu.tongji.topic.Topic;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +18,13 @@ public class ArticleRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Autowired
+    private HtmlFilter htmlFilter;
+
     @Transactional
     public Article save(Article article) {
+        article.setHtml(htmlFilter.filter(article.getHtml()));
+        article.setBrief(htmlFilter.filter(article.getBrief()));
         entityManager.persist(article);
         return article;
     }
@@ -84,12 +90,14 @@ public class ArticleRepository {
     }
 
     @Transactional
-    public Article update(Account account, Topic topic, Long id, String markdown, String title) {
+    public Article update(Account account, Topic topic, Long id, String html, String title, String coverImage, String brief) {
         Article article = getArticle(account, id);
         if (article != null) {
             article.setTopic(topic);
-            article.setHtml(markdown);
+            article.setHtml(htmlFilter.filter(html));
             article.setTitle(title);
+            article.setCoverImage(coverImage);
+            article.setBrief(htmlFilter.filter(brief));
             entityManager.merge(article);
         }
         return article;

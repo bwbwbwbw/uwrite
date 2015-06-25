@@ -53,19 +53,19 @@ public class ArticleService {
         return articleRepository.listTopicArticle(topic);
     }
 
-    public Article createArticle(String email, Long topicId, String title, String markdown) {
+    public Article createArticle(String email, Long topicId, String title, String html, String coverImage, String brief) {
         Account account = accountRepository.findByEmail(email);
         Topic topic = topicRepository.findById(topicId);
-        Article article = new Article(account, topic, title, markdown);
+        Article article = new Article(account, topic, title, html, coverImage, brief);
         articleRepository.save(article);
         return article;
     }
 
-    public Article updateArticle(String email, Long id, Long topicId, String title, String markdown) {
+    public Article updateArticle(String email, Long id, Long topicId, String title, String html, String coverImage, String brief) {
         Account account = accountRepository.findByEmail(email);
         Topic topic = topicRepository.findById(topicId);
         if (account != null) {
-            return articleRepository.update(account, topic, id, title, markdown);
+            return articleRepository.update(account, topic, id, title, html, coverImage, brief);
         } else {
             return null;
         }

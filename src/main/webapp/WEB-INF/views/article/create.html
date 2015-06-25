@@ -17,11 +17,16 @@
 
 <div th:replace="fragments/header"></div>
 
-<div class="container navbar-padding">
+<div class="ui basic modal dialog-topics"></div>
 
-    <div class="article-topic">
-        Topic: <a href="#">Select a topic</a>
-    </div>
+<div class="container" style="padding-top:126px">
+
+    <div class="article-topic"><div class="container clearfix">
+        <div class="topic-control">Topic: <span class="role-topic"></span><a href="javascript:;" class="role-select-topic">Select a topic</a></div>
+        <div class="article-action">
+            <div class="ui basic blue button role-publish">Publish</div>
+        </div>
+    </div></div>
 
     <div class="article-content">
         <div role="main" class="postArticle-content js-postField js-notesSource">
