@@ -101,6 +101,7 @@ public class ArticleController {
     @ResponseBody
     public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String html,
                           @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
+
         return articleService.updateArticle(principal.getName(), id, topicId, title, html, coverImage, brief);
     }
 
@@ -122,10 +123,12 @@ public class ArticleController {
         return "{}";
     }
 
-    @RequestMapping(value = "article/search/{keyword}", method = RequestMethod.GET)
-    @ResponseBody
-    public List<ArticleSearchItem> Search(Model model, @PathVariable("keyword") String keyword) {
-        return searchService.search(keyword);
+    @RequestMapping(value = "article/search", method = RequestMethod.GET)
+    public String Search(Model model, @RequestParam String keyword) {
+        List<ArticleSearchItem> list = searchService.search(keyword);
+        model.addAttribute("list", searchService.search(keyword));
+        model.addAttribute("keyword", keyword);
+        return "article/search";
     }
 
 

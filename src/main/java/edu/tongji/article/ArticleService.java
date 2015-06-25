@@ -5,6 +5,7 @@ import edu.tongji.account.AccountRepository;
 import edu.tongji.comment.ArticleComment;
 import edu.tongji.comment.CommentRepository;
 import edu.tongji.error.ResourceNotFoundException;
+import edu.tongji.search.SearchService;
 import edu.tongji.topic.Topic;
 import edu.tongji.topic.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class ArticleService {
 
     @Autowired
     private CommentRepository commentRepository;
+
+    @Autowired
+    private SearchService searchService;
 
     public List<Article> listUserArticleByUid(Long id) {
         Account account = accountRepository.findById(id);
@@ -66,6 +70,7 @@ public class ArticleService {
         Topic topic = topicRepository.findById(topicId);
         Article article = new Article(account, topic, title, html, coverImage, brief);
         articleRepository.save(article);
+        searchService.add(article);
         return article;
     }
 
@@ -73,7 +78,9 @@ public class ArticleService {
         Account account = accountRepository.findByEmail(email);
         Topic topic = topicRepository.findById(topicId);
         if (account != null) {
-            return articleRepository.update(account, topic, id, html, title, coverImage, brief);
+            Article article = articleRepository.update(account, topic, id, html, title, coverImage, brief);
+            searchService.update(article);
+            return article;
         } else {
             return null;
         }
@@ -82,8 +89,12 @@ public class ArticleService {
     public Boolean deleteArticle(String email, Long id) {
         Account account = accountRepository.findByEmail(email);
         if (account != null) {
-            articleRepository.delete(account, id);
-            return true;
+            Article article = articleRepository.getArticle(account, id);
+            if (article != null) {
+                articleRepository.delete(article);
+                searchService.delete(article);
+                return true;
+            }
         }
         return false;
     }
