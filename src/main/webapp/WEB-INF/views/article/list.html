@@ -9,6 +9,7 @@
     <link href="../../../resources/css/page/article-list.css" rel="stylesheet" media="screen" th:href="@{/resources/css/page/article-list.css}" />
     <link href="../../../resources/css/uwrite.css" rel="stylesheet" media="screen" th:href="@{/resources/css/uwrite.css}" />
     <link rel="shortcut icon" href="../../../resources/image/fav.ico" />
+</head>
 <body>
 
 <div th:replace="fragments/header"></div>
@@ -34,7 +35,7 @@
                                 </h2>
                                 <div class="entry-utility" >
                                     <a>
-                                    <img src="../../../resources/img/list/lp3.jpg" th:src="${article.user.avatar}" alt="NO PIC" style="width: 40px;height: 40px; display: inline-block" class="alignleft imgborder" />
+                                    <img src="../../../resources/img/list/lp3.jpg" th:src="${article.user.getAvatarLink()}" alt="NO PIC" style="width: 40px;height: 40px; display: inline-block" class="alignleft imgborder" />
                                     </a>
                                     <a href="###" th:text="${article.user.nickname}" >Templatesquare</a>
                                     <p th:text="${article.createAt}" >on May 16, 2012</p>
@@ -46,7 +47,7 @@
                                 </div>
                               <!--content-->
                                 <div class="entry-content">
-                                    <p th:href="${article.getFinalUrl()}" th:text="${article.brief}">Curabitur tincidunt iaculis ipsum, eu malesuada tellus congue a. Quisque aliquet, enim eget consequat scelerisque, lectus nibh pulvinar lectus, ac vestibulum nisl urna quis magna. Quisque laoreet pulvinar orci, eget tempor ante consectetur in. Nullam et lorem ut magna aliquet eleifend scelerisque eu justo.</p>
+                                    <p th:href="${article.getFinalUrl()}" th:utext="${article.brief}">Curabitur tincidunt iaculis ipsum, eu malesuada tellus congue a. Quisque aliquet, enim eget consequat scelerisque, lectus nibh pulvinar lectus, ac vestibulum nisl urna quis magna. Quisque laoreet pulvinar orci, eget tempor ante consectetur in. Nullam et lorem ut magna aliquet eleifend scelerisque eu justo.</p>
                                     <p><a th:href="${article.getFinalUrl()}" class="ui blue button">Read More</a></p>
 
                                     <div class="addthis_toolbox">
@@ -131,25 +132,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="footcol3" class="four columns omega">
-                            <ul>
-                                <li class="widget-container">
-                                    <h2 class="widget-title">Recent Comment</h2>
-                                    <ul>
-                                        <li><a href="#">templatesquare on <strong>Post with Sidebar</strong></a></li>
-                                        <li><a href="#">templatesquare on <strong>Post with Full Width</strong></a></li>
-                                        <li><a href="#">templatesquare on <strong>Post with Different Thumbnail</strong></a></li>
-                                        <li><a href="#">templatesquare on <strong>Post with Anothere page</strong></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="clear"></div>
                     </footer>
-
-                    <div id="line-sep-footer"></div>
-
-                    <div id="tweets"></div><!-- twitter container (don't remove) -->
 
                 </div>
             </div>
