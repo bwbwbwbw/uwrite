@@ -86,6 +86,28 @@
   width: 1000px;
   margin: 0 auto;
 }
+.page-article-search .search-content {
+  width: 1000px;
+  margin: 0 auto;
+}
+.page-article-search .search-item {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+.page-article-search .search-item-title {
+  font-size: 26px;
+  color: #222;
+}
+.page-article-search .search-item-url {
+  color: #aaa;
+  margin: 5px 0;
+}
+.page-article-search .search-item-content {
+  color: #888;
+}
+.page-article-search .search-item-content p {
+  margin: 0 0 5px 0;
+}
 .page-article .postArticle-content {
   font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   letter-spacing: -0.02em;
@@ -645,6 +667,9 @@
 }
 .navbar .nav-action-items .link-item {
   padding: 0 20px;
+}
+.navbar .nav-action-items .item {
+  display: inline-block;
 }
 .page-signup .reg-header {
   margin: 30px 0 10px 0;

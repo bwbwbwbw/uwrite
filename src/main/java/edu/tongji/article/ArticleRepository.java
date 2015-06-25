@@ -80,12 +80,9 @@ public class ArticleRepository {
     }
 
     @Transactional
-    public Boolean delete(Account account, Long id) {
-        Article article = getArticle(account, id);
-        if (article != null) {
-            article.setDeleted(true);
-            entityManager.merge(article);
-        }
+    public Boolean delete(Article article) {
+        article.setDeleted(true);
+        entityManager.merge(article);
         return true;
     }
 
