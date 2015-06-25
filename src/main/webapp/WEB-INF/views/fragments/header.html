@@ -7,7 +7,7 @@
         <div class="nav-items clearfix">
             <a th:attr="class=${current == 'recommend' ? 'active' : null}" href="/">Recommendations</a>
             <a th:attr="class=${current == 'topics' ? 'active' : null}" href="/topics">Topics</a>
-            <a th:attr="class=${current == 'my' ? 'active' : null}" th:if="${#authorization.expression('isAuthenticated()')}" href="/article/view/mine">My</a>
+            <a th:attr="class=${current == 'my' ? 'active' : null}" th:if="${#authorization.expression('isAuthenticated()')}" href="/article/view/self">My</a>
         </div>
         <div class="nav-action-items clearfix">
             <a href="/signin" th:href="@{/signin}" class="ui black basic button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign in</a>

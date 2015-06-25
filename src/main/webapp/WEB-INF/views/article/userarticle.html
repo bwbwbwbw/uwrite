@@ -13,7 +13,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-
+<div th:replace="fragments/header"></div>
+<!--
 <div class="outheader">
     <div id="logo" style="max-width: 1000px;width: 90%;margin: auto;"><a href="###"><img  src="../../../resources/img/logo1.png" alt="Here is logo" th:href="@{/resources/img/logo0.png}"/></a></div>
 </div>
@@ -27,23 +28,24 @@
         <a href="#s5" class="subNavBtn">User</a>
     </div>
 </div>
+-->
 
 
-<table class="ui table segment" style="width: 65%; margin:20px auto;">
+<table class="ui table segment" style="width: 65%; margin:20px auto; margin-top: 100px">
     <tbody>
-    <tr th:each="article : ${list}">
+    <tr th:each="article : ${list}" th:data="${article.id}">
         <td class="eight wide"> <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article</a></td>
         <td class="three wide"> <p th:text="${article.createAt}">on May 16, 2012</p></td>
         <td class="five wide" style="text-align: center">
-            <div class="ui blue tiny labeled icon button" style="display:inline-block"><i class="pencil icon"></i> Edit</div>
-            <div class="ui red tiny labeled icon button" onclick="performDeletionConfirm()"><i class="delete icon"></i>
+            <a class="ui blue tiny labeled icon button" href="/article/create"  style="display:inline-block"><i class="pencil icon"></i> Edit</a>
+            <div class="ui red tiny labeled icon button role-delete"><i class="delete icon"></i>
                 Delete
             </div>
         </td>
     </tr>
     <tfoot>
     <tr><th colspan="3" style="text-align: center">
-        <div class="ui blue tiny labeled icon button"><i class="add icon"></i> Create a new article</div>
+        <a class="ui blue tiny labeled icon button" href="/article/create" ><i class="add icon"></i> Create a new article</a>
     </th>
     </tr></tfoot>
     </tbody>
@@ -63,7 +65,7 @@
         </div>
     </div>
     <div class="actions" style="display: inline-block; float: right">
-        <div class="ui red basic inverted button">
+        <div class="ui red basic inverted button role-delete-confirm">
             delete
         </div>
     </div>
