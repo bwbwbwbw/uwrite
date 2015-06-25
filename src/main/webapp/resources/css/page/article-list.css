@@ -122,6 +122,7 @@ USE THIS STYLE SHEET FOR INNER PAGE
 .posttitle, .posttitle a{font-size:18px; line-height:24px; font-family:'OpenSansRegular', Arial;}
 .posttitle a:hover{text-decoration:none;}
 .entry-utility{padding:0; font-size:12px; font-style:italic}
+.entry-utility p{padding-top: 5px;}
 .entry-content{padding:20px 0 0 0;}
 .post .button{margin:10px 0 ; display:inline-block; float:left}
 
@@ -887,7 +888,6 @@ img.scale-with-grid {
     padding:6px;
     max-width: 95%;
     display:block;
-margin-left: -57px;
 }
 
 .shadowBottom{background:url(../../../resources/img/list/shadow-small.gif) no-repeat center bottom; padding-bottom:5px;}
