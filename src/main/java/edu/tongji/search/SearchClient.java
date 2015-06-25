@@ -80,6 +80,7 @@ public class SearchClient {
                 .prepareSearch(esIndex)
                 .setTypes(esType)
                 .setQuery(qb)
+                .setSize(50)
                 .execute()
                 .actionGet();
         SearchHits hits = searchResponse.getHits();

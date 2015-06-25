@@ -1,5 +1,7 @@
 package edu.tongji.article;
 
+import edu.tongji.account.Account;
+
 /**
  * Created by Breezewish on 6/26/15.
  */
@@ -13,6 +15,10 @@ public class ArticleSearchItem implements java.io.Serializable {
 
     public String url;
 
+    public Account user;
+
+    public String brief;
+
     protected ArticleSearchItem() {}
 
     public ArticleSearchItem(Article article)
@@ -21,6 +27,8 @@ public class ArticleSearchItem implements java.io.Serializable {
         this.title = article.getTitle();
         this.html = article.getHtml();
         this.url = article.getUrl();
+        this.user = article.getUser();
+        this.brief = article.getBrief();
     }
 
     public Long getId() {
@@ -54,4 +62,25 @@ public class ArticleSearchItem implements java.io.Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public Account getUser() {
+        return user;
+    }
+
+    public void setUser(Account user) {
+        this.user = user;
+    }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    public String getFinalUrl() {
+        return "/article/view/" + getId() + "/" + getUrl();
+    }
+
 }
