@@ -533,6 +533,7 @@
   line-height: 1;
   z-index: 999;
   background: #fff;
+  text-transform: uppercase;
 }
 .navbar a,
 .navbar a:visited,
@@ -592,6 +593,24 @@
 }
 .page-signup .form {
   padding: 20px;
+}
+.page-topics .topic-card {
+  -webkit-transition: -webkit-transform 0.8s, opacity 0.8s;
+          transition: transform 0.8s, opacity 0.8s;
+  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.page-topics .topic-card[hide="bottom"] {
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+      -ms-transform: translateY(100px);
+          transform: translateY(100px);
+}
+.page-topics .topic-card[hide="top"] {
+  opacity: 0;
+  -webkit-transform: translateY(-100px);
+      -ms-transform: translateY(-100px);
+          transform: translateY(-100px);
 }
 .page-topics .grid {
   margin: 40px auto 120px;

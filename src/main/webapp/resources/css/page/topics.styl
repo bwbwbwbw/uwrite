@@ -1,4 +1,14 @@
 .page-topics
+  
+  .topic-card
+    transition: transform .8s, opacity .8s
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+    &[hide="bottom"]
+      opacity: 0
+      transform: translateY(100px)
+    &[hide="top"]
+      opacity: 0
+      transform: translateY(-100px)
 
   .grid
     margin: 40px auto 120px

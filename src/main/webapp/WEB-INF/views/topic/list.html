@@ -13,12 +13,16 @@
 
 <div th:replace="fragments/header :: nav(current='topics')"></div>
 
+<div class="figure-template" style="display:none" data-path-hover="m 0,0 0,67.7775 c 24.580441,3.12569 55.897012,-8.199417 90,-8.199417 34.10299,0 65.41956,11.325107 90,8.199417 L 180,0 z">
+<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="m 0,0 0,151.14385 c 24.580441,15.47138 55.897012,24.75772 90,24.75772 34.10299,0 65.41956,-9.28634 90,-24.75772 L 180,0 0,0 z"/></svg>
+</div>
+
 <div class="container navbar-padding">
     <section id="grid" class="grid clearfix">
-        <a th:each="topic : ${list}" th:href="${topic.getFinalUrl()}" data-path-hover="m 0,0 0,67.7775 c 24.580441,3.12569 55.897012,-8.199417 90,-8.199417 34.10299,0 65.41956,11.325107 90,8.199417 L 180,0 z">
+        <a class="topic-card" hide="bottom" th:each="topic : ${list}" th:href="${topic.getFinalUrl()}">
             <figure>
                 <img src="../../../resources/img/1.png" th:src="@{/resources/img/1.png}" />
-                <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="m 0,0 0,151.14385 c 24.580441,15.47138 55.897012,24.75772 90,24.75772 34.10299,0 65.41956,-9.28634 90,-24.75772 L 180,0 0,0 z"/></svg>
+
                 <figcaption>
                     <h2 th:text="${topic.name}">Crystalline</h2>
                     <p th:text="${topic.description}">Soko radicchio bunya nuts gram dulse.</p>
@@ -33,14 +37,6 @@
 <script src="../../../resources/lib/semantic-ui/semantic.min.js" th:src="@{/resources/lib/semantic-ui/semantic.min.js}"></script>
 <script src="../../../resources/lib/snap.svg-min.js" th:src="@{/resources/lib/snap.svg-min.js}"></script>
 <script src="../../../resources/js/topics.js" th:src="@{/resources/js/topics.js}"></script>
-
-    <script type="text/javascript">
-        $(document).ready( function() {
-            $('.subMenu').smint({
-                'scrollSpeed' : 1000
-            });
-        });
-    </script>
 
 </body>
 </html>
