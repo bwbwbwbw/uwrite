@@ -24,7 +24,7 @@
             <a th:text="${article.user.nickname}">auther name</a>
             <p th:text="${article.createAt}">Create date </p>
 
-            <img class="articleCover"  th:src="${article.coverImage}"/>
+            <img class="articleCover"  th:src="${article.coverImage}" th:if="${article.coverImage != null}"/>
 
             <h3>
                 <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article title</a>
@@ -34,8 +34,12 @@
 
             <a class="ui blue button" th:href="${article.getFinalUrl()}">Read More</a>
 
-            <a class="role-like" style="float: right;margin-top: 5px;"><i class="orange circular thumbs up icon"></i></a>
+            <a class="role-like" th:data="${article.id}" style="float: right;margin-top: 5px;">
+                <i class="orange circular thumbs up icon" th:if="${ !isLiked(article.id) }"></i>
+                <i class="orange inverted circular thumbs up icon" th:if="${ isLiked(article.id) }"></i>
+            </a>
 
+        </div>
 
         </div>
     </div>
@@ -57,7 +61,7 @@
             </ul>
         </div>
     </div>
-</div>
+
 <div th:replace="fragments/footer"></div>
 
 

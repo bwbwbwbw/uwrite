@@ -122,6 +122,11 @@ jQuery.extend( jQuery.easing,
 
     });
 
-$('.role-like').click(function() {
+$('.role-like').click(function(){
+    $.ajax({
+        url: "article/like/" + $(this).attr('data'),
+        type: 'GET'
+    });
     $(this).find('i').attr('class', 'orange inverted circular thumbs up icon');
 });
+
