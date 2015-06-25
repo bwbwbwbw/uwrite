@@ -1,6 +1,6 @@
 package edu.tongji.article;
 
-import edu.tongji.account.Account;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  * Created by Breezewish on 6/26/15.
@@ -15,8 +15,6 @@ public class ArticleSearchItem implements java.io.Serializable {
 
     public String url;
 
-    public Account user;
-
     public String brief;
 
     protected ArticleSearchItem() {}
@@ -27,7 +25,6 @@ public class ArticleSearchItem implements java.io.Serializable {
         this.title = article.getTitle();
         this.html = article.getHtml();
         this.url = article.getUrl();
-        this.user = article.getUser();
         this.brief = article.getBrief();
     }
 
@@ -63,14 +60,6 @@ public class ArticleSearchItem implements java.io.Serializable {
         this.url = url;
     }
 
-    public Account getUser() {
-        return user;
-    }
-
-    public void setUser(Account user) {
-        this.user = user;
-    }
-
     public String getBrief() {
         return brief;
     }
@@ -79,6 +68,7 @@ public class ArticleSearchItem implements java.io.Serializable {
         this.brief = brief;
     }
 
+    @JsonIgnore
     public String getFinalUrl() {
         return "/article/view/" + getId() + "/" + getUrl();
     }

@@ -10,6 +10,12 @@
             <a th:attr="class=${current == 'my' ? 'active' : null}" th:if="${#authorization.expression('isAuthenticated()')}" href="/article/view/self">My</a>
         </div>
         <div class="nav-action-items clearfix">
+            <div class="item"><div class="ui transparent left icon input">
+                <form action="/article/search" method="get">
+                <input type="text" name="keyword" placeholder="Search..." th:value="${keyword == null ? '' : keyword}" style="width:70px;padding-right:0!important;"/>
+                <button type="submit" style="border:0;background:none;"><i class="search icon"></i></button>
+                </form>
+            </div></div>
             <a href="/signin" th:href="@{/signin}" class="ui black basic button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign in</a>
             <a href="/signup" th:href="@{/signup}" class="ui blue button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign up</a>
             <a class="link-item" href="/article/create" th:if="${#authorization.expression('isAuthenticated()')}">Write</a>

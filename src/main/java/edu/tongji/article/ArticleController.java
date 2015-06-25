@@ -122,10 +122,12 @@ public class ArticleController {
         return "{}";
     }
 
-    @RequestMapping(value = "article/search/{keyword}", method = RequestMethod.GET)
-    @ResponseBody
-    public List<ArticleSearchItem> Search(Model model, @PathVariable("keyword") String keyword) {
-        return searchService.search(keyword);
+    @RequestMapping(value = "article/search", method = RequestMethod.GET)
+    public String Search(Model model, @RequestParam String keyword) {
+        List<ArticleSearchItem> list = searchService.search(keyword);
+        model.addAttribute("list", searchService.search(keyword));
+        model.addAttribute("keyword", keyword);
+        return "article/search";
     }
 
 
