@@ -27,7 +27,7 @@
             <div class="content">
                 <a class="author" th:text="${comment.user.nickname}"></a>
                 <div class="metadata">
-                    <span class="date">Today at 5:42PM</span>
+                    <span class="date" th:text="${#dates.format(comment.createAt)}"></span>
                 </div>
                 <div class="text" th:text="${comment.html}">
                 </div>
@@ -55,7 +55,7 @@
     <div class="content">
         <a class="author"></a>
         <div class="metadata">
-            <span class="date">Today at 5:42PM</span>
+            <span class="date">Just now</span>
         </div>
         <div class="text">
         </div>
