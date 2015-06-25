@@ -28,6 +28,12 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- Search -->
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>1.6.0</version>
+        </dependency>
         <!-- Security -->
         <dependency>
             <groupId>org.owasp</groupId>
