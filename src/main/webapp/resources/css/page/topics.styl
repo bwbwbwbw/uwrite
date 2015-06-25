@@ -56,7 +56,7 @@
 
   .grid figcaption p
     padding: 0 20px
-    color: #aaa
+    color: #333
     font-weight: 300
     -webkit-transition: opacity 0.3s, -webkit-transform 0.3s
     transition: opacity 0.3s, transform 0.3s
@@ -95,10 +95,11 @@
     width: 100%
     height: 100%
   
-
   .grid svg path
-    fill: #fff
+    fill: rgba(255, 255, 255, 0.9)
   
+  .grid figure:hover svg path
+    fill: rgba(255,255,255,0.98)
 
   /* Hover effects */
   .grid a:hover figure img
@@ -129,7 +130,7 @@
     left: 0
     padding: 15px
     width: 100%
-    background: #fff
+    background: rgba(255,255,255,0.98)
     color: #333
     font-weight: 300
     -webkit-transform: translateY(100%)
@@ -214,117 +215,3 @@
 
     .grid a:nth-child(even)
       margin: 0
-
-  /*---nav bar ---*/
-    .inner {
-      width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      min-height: 50px;
-      padding: 0;
-      font-size: 18px;
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-    }
-
-    .inner:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-
-    .subMenu {
-      height: 50px;
-      z-index: 1000;
-      width: 100%;
-      background: #3cc4f1;
-    }
-
-    .subMenu .inner {
-      max-width: 1000px;
-      width: 90%;
-      font-weight: 400;
-      margin: 0 auto;
-    }
-
-
-    .subNavBtn {
-      display: inline-block;
-      height: 50px;
-      width: 16.6%;
-      float: left;
-      margin: 0px 0px 0 0;
-      text-decoration: none;
-      font-size: 16px;
-      padding: 15px 2% 0 2%;
-      text-align: center;
-      color: #fff;
-    }
-    .subMenu a:hover {
-      background: #1783c7;
-    }
-
-    .active {
-      background: #25aae1;
-    }
-    .end {
-      margin: 0;
-    }
-
-
-
-
-    /* SECTIONS */
-    .sTop {
-      min-height: 130px;
-      background:#fff;
-      color:#3d3d3d;
-      padding: 50px 0;
-      height: 300px;
-
-    }
-
-    .s1 {
-      background:#184764;
-      color:#fff;
-
-    }
-
-
-    .s2 {
-      background: #313131;
-    }
-    .s2 a {
-      color: #fff;
-    }
-
-    .s3 {
-      background: #1b83b3;
-    }
-
-
-    .s4 {
-      background: #5aa3c4;
-    }
-
-
-
-    .s5 {
-      background: #bce1f1;
-      color: #3d3d3d;
-    }
-
-    .s6 {
-      background: #161616;
-    }
-
-    .outheader{
-      background-color:#a6ebff;
-      width:100%;
-      margin:auto;
-      height:120px;
-      display inline-block;
-      padding:10px;
-
-    }
