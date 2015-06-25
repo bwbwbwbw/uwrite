@@ -1,6 +1,7 @@
 package edu.tongji.article;
 
 import edu.tongji.account.AccountService;
+import edu.tongji.comment.ArticleComment;
 import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 /**
  * Created by Breezewish on 5/29/15.
@@ -23,8 +25,9 @@ public class ArticleController {
 
     @Autowired
     private AccountService accountService;
+
     @Autowired
-    TopicService topicService;
+    private TopicService topicService;
 
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listMine(Model model, @PathVariable("id") Long id) {
@@ -45,6 +48,8 @@ public class ArticleController {
             return "redirect:" + article.getFinalUrl();
         } else {
             model.addAttribute("article", article);
+            List<ArticleComment> comments = articleService.getComment(article);
+            model.addAttribute("comments", comments);
             return "article/view";
         }
     }

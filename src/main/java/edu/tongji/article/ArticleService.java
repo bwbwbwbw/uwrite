@@ -88,6 +88,11 @@ public class ArticleService {
         return comment;
     }
 
+    public List<ArticleComment> getComment(Article article)
+    {
+        return commentRepository.listAll(article);
+    }
+
     public Boolean hasLiked(String email, Long id) {
         Account account = accountRepository.findByEmail(email);
         return articleRepository.hasLiked(account, id);
