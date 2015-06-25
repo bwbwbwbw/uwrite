@@ -77,7 +77,8 @@ public class ArticleRepository {
     public Boolean delete(Account account, Long id) {
         Article article = getArticle(account, id);
         if (article != null) {
-            entityManager.remove(article);
+            article.setDeleted(true);
+            entityManager.merge(article);
         }
         return true;
     }
