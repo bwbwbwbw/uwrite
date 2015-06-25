@@ -37,7 +37,7 @@ public class Account implements java.io.Serializable {
     @JsonIgnore
     private String password;
 
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private List<Article> collection;
 

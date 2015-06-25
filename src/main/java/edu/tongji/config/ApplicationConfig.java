@@ -52,10 +52,14 @@ class ApplicationConfig {
     }
 
     @Bean
-    public static TopicRepository topicRepository() { return new TopicRepository(); }
+    public static TopicRepository topicRepository() {
+        return new TopicRepository();
+    }
 
     @Bean
-    public static TopicService topicService() { return new TopicService(); }
+    public static TopicService topicService() {
+        return new TopicService();
+    }
 
     @Bean
     public static ImageResolver imageResolver() {

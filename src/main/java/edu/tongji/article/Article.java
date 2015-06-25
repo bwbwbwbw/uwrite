@@ -60,12 +60,11 @@ public class Article implements java.io.Serializable {
     private Topic topic;
 
     @Column
-    private long likes=0;
-
+    private long likes = 0;
 
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name="id")
+    @JoinColumn(name = "id")
     private List<Account> likedUser;
 
 
@@ -79,7 +78,6 @@ public class Article implements java.io.Serializable {
         this.setTopic(topic);
 
     }
-
 
 
     public void setTitle(String title) {
@@ -97,6 +95,7 @@ public class Article implements java.io.Serializable {
         this.html = markdown;
         // TODO: use pegdown processor
     }
+
     public String getTitle() {
         return title;
     }
@@ -148,15 +147,19 @@ public class Article implements java.io.Serializable {
     public String getFinalUrl() {
         return "/article/view/" + getId() + "/" + getUrl();
     }
+
     public long getLikes() {
         return likes;
     }
+
     public void setLikes(long likes) {
         this.likes = likes;
     }
+
     public List<Account> getLikedUser() {
         return likedUser;
     }
+
     public void setLikedUser(List<Account> likedUser) {
         this.likedUser = likedUser;
     }

@@ -1,9 +1,5 @@
 package edu.tongji.comment;
 
-import edu.tongji.account.Account;
-import edu.tongji.account.AccountRepository;
-import edu.tongji.article.Article;
-import edu.tongji.article.ArticleRepository;
 import edu.tongji.article.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

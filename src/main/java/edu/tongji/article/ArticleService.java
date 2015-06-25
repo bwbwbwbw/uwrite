@@ -87,14 +87,14 @@ public class ArticleService {
         commentRepository.save(comment);
         return comment;
     }
-    public Boolean hasLiked(String email,Long id)
-    {
-        Account account=accountRepository.findByEmail(email);
-        return articleRepository.hasLiked(account,id);
+
+    public Boolean hasLiked(String email, Long id) {
+        Account account = accountRepository.findByEmail(email);
+        return articleRepository.hasLiked(account, id);
     }
-    public void like(String email,Long id)
-    {
-        Account account=accountRepository.findByEmail(email);
-        articleRepository.like(account,id);
+
+    public void like(String email, Long id) {
+        Account account = accountRepository.findByEmail(email);
+        articleRepository.like(account, id);
     }
 }

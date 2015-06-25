@@ -47,27 +47,26 @@ public class AccountService implements UserDetailsService {
     private GrantedAuthority createAuthority(Account account) {
         return new SimpleGrantedAuthority(account.getRole());
     }
-    public Account getAccountByEmail(String email)
-   {
-     return accountRepository.findByEmail(email);
-   }
-    public Boolean hasCollected(String email,Long id)
-    {
-        Account account=accountRepository.findByEmail(email);
-        List<Article> collection=account.getCollection();
-        for(Article article:collection)
-        {
-            if(article.getId().equals(id))
+
+    public Account getAccountByEmail(String email) {
+        return accountRepository.findByEmail(email);
+    }
+
+    public Boolean hasCollected(String email, Long id) {
+        Account account = accountRepository.findByEmail(email);
+        List<Article> collection = account.getCollection();
+        for (Article article : collection) {
+            if (article.getId().equals(id))
                 return true;
         }
         return false;
     }
-    public void addCollection (String email,Long id)
-    {
-        Account account=accountRepository.findByEmail(email);
-        Article article=articleRepository.getArticle(id);
 
-        List<Article> collection=account.getCollection();
+    public void addCollection(String email, Long id) {
+        Account account = accountRepository.findByEmail(email);
+        Article article = articleRepository.getArticle(id);
+
+        List<Article> collection = account.getCollection();
         collection.add(article);
 
         account.setCollection(collection);
