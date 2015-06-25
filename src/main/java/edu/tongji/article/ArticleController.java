@@ -94,6 +94,7 @@ public class ArticleController {
         return true;
     }
 
+    /*
     @RequestMapping(value = "article/collect/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Boolean collect(Principal principal, @PathVariable("id") Long id) {
@@ -102,5 +103,5 @@ public class ArticleController {
         }
         accountService.addCollection(principal.getName(), id);
         return true;
-    }
+    }*/
 }

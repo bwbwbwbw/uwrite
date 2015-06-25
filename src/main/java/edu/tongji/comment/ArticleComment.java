@@ -18,7 +18,7 @@ public class ArticleComment extends Comment {
 
     public static final String FIND_BY_ARTICLE = "ArticleComment.findByArticle";
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Article article;
 
     public ArticleComment(Article source, Account user, String markdown) {

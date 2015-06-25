@@ -47,7 +47,7 @@ public class Article implements java.io.Serializable {
     @Column
     private String url;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Account user;
 
     @Column
@@ -56,18 +56,14 @@ public class Article implements java.io.Serializable {
     @Column
     private Date updateAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Topic topic;
 
-    @Column
-    private long likes = 0;
-
-
-    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JoinTable(name = "article_likedBy_user", joinColumns = {@JoinColumn(name = "ARTICLE_ID")}
-            , inverseJoinColumns = {@JoinColumn(name = "ACCOUNT_ID")})
-    private List<Account> likedUser;
-
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinTable(name = "likes",
+            joinColumns = {@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ACCOUNT_ID", referencedColumnName = "id")})
+    private List<Account> likedUsers;
 
     protected Article() {
     }
@@ -77,9 +73,7 @@ public class Article implements java.io.Serializable {
         this.setTitle(title);
         this.setMarkdown(markdown);
         this.setTopic(topic);
-
     }
-
 
     public void setTitle(String title) {
         this.title = title;
@@ -149,20 +143,12 @@ public class Article implements java.io.Serializable {
         return "/article/view/" + getId() + "/" + getUrl();
     }
 
-    public long getLikes() {
-        return likes;
+    public List<Account> getLikedUsers() {
+        return likedUsers;
     }
 
-    public void setLikes(long likes) {
-        this.likes = likes;
-    }
-
-    public List<Account> getLikedUser() {
-        return likedUser;
-    }
-
-    public void setLikedUser(List<Account> likedUser) {
-        this.likedUser = likedUser;
+    public void setLikedUsers(List<Account> likedUser) {
+        this.likedUsers = likedUser;
     }
 
 }

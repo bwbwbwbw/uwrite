@@ -35,12 +35,11 @@ public class Account implements java.io.Serializable {
     private String avatar;
 
     @JsonIgnore
+    @Column
     private String password;
 
-    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_collect_article", joinColumns = {@JoinColumn(name = "ACCOUNT_ID")}
-            , inverseJoinColumns = {@JoinColumn(name = "ARTICLE_ID")})
-    private List<Article> collection;
+    @ManyToMany(mappedBy = "likedUsers")
+    private List<Article> likedArticles;
 
     private String role = "ROLE_USER";
 
@@ -100,12 +99,11 @@ public class Account implements java.io.Serializable {
         this.avatar = avatar;
     }
 
-    public List<Article> getCollection() {
-        return collection;
+    public List<Article> getLikedArticles() {
+        return likedArticles;
     }
 
-    public void setCollection(List<Article> collection) {
-        this.collection = collection;
+    public void setLikedArticles(List<Article> likedArticles) {
+        this.likedArticles = likedArticles;
     }
-
 }

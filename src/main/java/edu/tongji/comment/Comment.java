@@ -29,7 +29,7 @@ public class Comment implements java.io.Serializable {
     @Type(type = "text")
     private String html;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Account user;
 
     @Column

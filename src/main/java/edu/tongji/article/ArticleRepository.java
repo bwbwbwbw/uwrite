@@ -96,7 +96,7 @@ public class ArticleRepository {
 
     public Boolean hasLiked(Account account, Long id) {
         Article article = getArticle(id);
-        List<Account> likeduser = article.getLikedUser();
+        List<Account> likeduser = article.getLikedUsers();
         for (Account a : likeduser) {
             if (a.getId().equals(account.getId()))
                 return true;
@@ -106,12 +106,9 @@ public class ArticleRepository {
 
     public void like(Account account, Long id) {
         Article article = getArticle(id);
-        long likeNow = article.getLikes();
-        List<Account> likeduser = article.getLikedUser();
+        List<Account> likeduser = article.getLikedUsers();
         likeduser.add(account);
-
-        article.setLikes(likeNow + 1);
-        article.setLikedUser(likeduser);
+        article.setLikedUsers(likeduser);
         entityManager.merge(article);
     }
 }
