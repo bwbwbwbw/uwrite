@@ -113,7 +113,7 @@ public class ArticleController {
 
     @RequestMapping(value = "article/search/{keyword}", method = RequestMethod.GET)
     @ResponseBody
-    public List<Article> Search(Model model, @PathVariable("keyword") String keyword) {
+    public List<ArticleSearchItem> Search(Model model, @PathVariable("keyword") String keyword) {
         return searchService.search(keyword);
     }
 }

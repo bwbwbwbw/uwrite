@@ -1,6 +1,7 @@
 package edu.tongji.search;
 
 import edu.tongji.article.Article;
+import edu.tongji.article.ArticleSearchItem;
 import edu.tongji.article.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -39,7 +40,7 @@ public class SearchService {
         searchClient.deleteData(article);
     }
 
-    public List<Article> search(String keyword) {
+    public List<ArticleSearchItem> search(String keyword) {
         return searchClient.search(keyword);
     }
 

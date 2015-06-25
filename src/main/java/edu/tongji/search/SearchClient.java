@@ -1,7 +1,11 @@
 package edu.tongji.search;
 
-import com.alibaba.fastjson.JSON;
 import edu.tongji.article.Article;
+import edu.tongji.article.ArticleSearchItem;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.admin.indices.flush.FlushRequest;
 import org.elasticsearch.action.search.SearchResponse;
@@ -13,6 +17,7 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +34,11 @@ public class SearchClient {
     }
 
     public void resetIndex() {
-        client.admin().indices().delete(new DeleteIndexRequest("uwrite")).actionGet();
+        try {
+            client.admin().indices().delete(new DeleteIndexRequest("uwrite")).actionGet();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void initIndexData(List<Article> articles) {
@@ -40,11 +49,20 @@ public class SearchClient {
     }
 
     public void addData(Article article) {
-        String json = JSON.toJSONString(article);
-        client.prepareIndex(esIndex, esType)
-                .setSource(json)
-                .execute()
-                .actionGet();
+        ObjectWriter ow = new ObjectMapper().writer();
+        try {
+            String json = ow.writeValueAsString(new ArticleSearchItem(article));
+            client.prepareIndex(esIndex, esType)
+                    .setSource(json)
+                    .execute()
+                    .actionGet();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateData(Article article) {
@@ -55,12 +73,12 @@ public class SearchClient {
 
     }
 
-    public List<Article> search(String keyword) {
+    public List<ArticleSearchItem> search(String keyword) {
         QueryBuilder qb = new MultiMatchQueryBuilder(
                 keyword,
                 "title", "html"
         );
-        List<Article> list = new ArrayList<Article>();
+        List<ArticleSearchItem> list = new ArrayList<ArticleSearchItem>();
         SearchResponse searchResponse = client
                 .prepareSearch(esIndex)
                 .setTypes(esType)
@@ -70,10 +88,21 @@ public class SearchClient {
         SearchHits hits = searchResponse.getHits();
         System.out.println("查询到记录数=" + hits.getTotalHits());
         SearchHit[] searchHists = hits.getHits();
-        if (searchHists.length > 0) {
-            for (SearchHit hit : searchHists) {
-                list.add(JSON.parseObject(hit.getSourceAsString(), Article.class));
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            if (searchHists.length > 0) {
+                for (SearchHit hit : searchHists) {
+                    list.add(mapper.readValue(hit.getSourceAsString(), ArticleSearchItem.class));
+                }
             }
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return list;
     }
