@@ -12,7 +12,8 @@
         <div class="nav-action-items clearfix">
             <a href="/signin" th:href="@{/signin}" class="ui black basic button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign in</a>
             <a href="/signup" th:href="@{/signup}" class="ui blue button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign up</a>
-            <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" th:if="${#authorization.expression('isAuthenticated()')}">Logout</a>
+            <a class="link-item" href="/article/create" th:if="${#authorization.expression('isAuthenticated()')}">Write</a>
+            <a class="link-item" href="/logout" th:href="@{#}" onclick="$('#form').submit();" th:if="${#authorization.expression('isAuthenticated()')}">Logout</a>
             <form id="form" method="post" action="#" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}"></form>
         </div>
     </div>

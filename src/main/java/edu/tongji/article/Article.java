@@ -89,7 +89,6 @@ public class Article implements java.io.Serializable {
     public void setTitle(String title) {
         this.title = title;
         this.url = new UrlSlugGenerator().toSlug(title);
-        this.url = title;
     }
 
     public void setHtml(String html) {
