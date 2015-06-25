@@ -30,16 +30,11 @@
 
 
 <table class="ui table segment" style="width: 65%; margin:20px auto;">
-    <thead>
-    <tr ><th class="seven wide">Article</th>
-        <th class="four wide">Update date</th>
-        <th class="five wide" style="text-align: center">Operations</th>
-    </tr></thead>
     <tbody>
     <tr th:each="article : ${list}">
-        <td> <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article</a></td>
-        <td><p th:text="${article.createAt}">on May 16, 2012</p></td>
-        <td style="text-align: center">
+        <td class="eight wide"> <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article</a></td>
+        <td class="three wide"> <p th:text="${article.createAt}">on May 16, 2012</p></td>
+        <td class="five wide" style="text-align: center">
             <div class="ui blue tiny labeled icon button" style="display:inline-block"><i class="pencil icon"></i> Edit</div>
             <div class="ui red tiny labeled icon button" onclick="performDeletionConfirm()"><i class="delete icon"></i>
                 Delete
