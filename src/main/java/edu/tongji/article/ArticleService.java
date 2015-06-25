@@ -45,6 +45,15 @@ public class ArticleService {
         return article;
     }
 
+    public Article getUserArticleById(String email, Long id)
+    {
+        Account account = accountRepository.findByEmail(email);
+        if (account == null) {
+            throw new ResourceNotFoundException();
+        }
+        return articleRepository.getArticle(account, id);
+    }
+
     public List<Article> listTopicArticleBySlug(String slug) {
         Topic topic = topicRepository.findBySlug(slug);
         if (topic == null) {
@@ -65,7 +74,7 @@ public class ArticleService {
         Account account = accountRepository.findByEmail(email);
         Topic topic = topicRepository.findById(topicId);
         if (account != null) {
-            return articleRepository.update(account, topic, id, title, html, coverImage, brief);
+            return articleRepository.update(account, topic, id, html, title, coverImage, brief);
         } else {
             return null;
         }
@@ -86,6 +95,11 @@ public class ArticleService {
         ArticleComment comment = new ArticleComment(article, account, markdown);
         commentRepository.save(comment);
         return comment;
+    }
+
+    public List<ArticleComment> getComment(Article article)
+    {
+        return commentRepository.listAll(article);
     }
 
     public Boolean hasLiked(String email, Long id) {

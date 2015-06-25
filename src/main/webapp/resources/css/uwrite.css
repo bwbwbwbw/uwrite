@@ -576,6 +576,16 @@
 .page-article .postArticle-content section[data-background-color]:not([data-background-color$="Light"]) h4 {
   color: rgba(255,255,255,0.65);
 }
+.page-article .comment-segment {
+  width: 700px;
+  margin: 0 auto;
+}
+.page-article .ui.comments {
+  max-width: none;
+}
+.page-article textarea {
+  height: 70px !important;
+}
 .navbar-padding {
   margin-top: 90px;
 }

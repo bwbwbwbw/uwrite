@@ -10,30 +10,26 @@
 </head>
 <body class="page-article">
 
-
 <div th:replace="fragments/header"></div>
 
 <div class="container">
 
 <div th:utext="${article.html}"></div>
 
-<div class="ui comments">
+<div class="comment-segment">
+<div class="ui comments" >
     <h3 class="ui dividing header">Comments</h3>
     <div id="comment">
-        <div class="comment">
+        <div class="comment" th:each="comment : ${comments}">
             <a class="avatar">
-                <img src="/images/avatar/small/matt.jpg"/>
+                <img th:src="${comment.user.getAvatarLink()}"/>
             </a>
             <div class="content">
-                <a class="author">Matt</a>
+                <a class="author" th:text="${comment.user.nickname}"></a>
                 <div class="metadata">
                     <span class="date">Today at 5:42PM</span>
                 </div>
-                <div class="text">
-                    How artistic!
-                </div>
-                <div class="actions">
-                    <a class="reply">Reply</a>
+                <div class="text" th:text="${comment.html}">
                 </div>
             </div>
         </div>
@@ -47,7 +43,24 @@
         </div>
     </form>
 </div>
+</div>
+    <input class="role-article-id" type="hidden" th:value="${article.id}" />
+</div>
 
+<div class="comment-template" style="display:none">
+<div class="comment">
+    <a class="avatar">
+        <img/>
+    </a>
+    <div class="content">
+        <a class="author"></a>
+        <div class="metadata">
+            <span class="date">Today at 5:42PM</span>
+        </div>
+        <div class="text">
+        </div>
+    </div>
+</div>
 </div>
 
 <script src="../../../resources/lib/jquery/dist/jquery.min.js" th:src="@{/resources/lib/jquery/dist/jquery.min.js}"></script>
