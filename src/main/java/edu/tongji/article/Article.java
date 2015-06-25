@@ -74,11 +74,13 @@ public class Article implements java.io.Serializable {
     protected Article() {
     }
 
-    public Article(Account owner, Topic topic, String title, String markdown) {
+    public Article(Account owner, Topic topic, String title, String html, String coverImage, String brief) {
         this.setUser(owner);
         this.setTitle(title);
-        this.setHtml(markdown);
+        this.setHtml(html);
         this.setTopic(topic);
+        this.setCoverImage(coverImage);
+        this.setBrief(brief);
         this.deleted = false;
     }
 
