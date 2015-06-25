@@ -28,6 +28,12 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- Search -->
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>1.6.0</version>
+        </dependency>
         <!-- Security -->
         <dependency>
             <groupId>org.owasp</groupId>
@@ -140,6 +146,11 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.5</version>
+        </dependency>
         <!-- Utilities -->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -183,9 +194,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.2</version>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>1.6.0</version>
         </dependency>
     </dependencies>
     <build>

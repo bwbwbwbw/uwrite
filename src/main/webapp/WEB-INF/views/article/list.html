@@ -35,7 +35,7 @@
                                 </h2>
                                 <div class="entry-utility" >
                                     <a>
-                                    <img src="../../../resources/img/list/lp3.jpg" th:src="${article.user.getAvatarLink()}" alt="NO PIC" style="width: 40px;height: 40px; display: inline-block" class="alignleft imgborder" />
+                                    <img  class="circular ui image" src="../../../resources/img/list/lp3.jpg" th:src="${article.user.getAvatarLink()}" alt="NO PIC" style="width: 40px;height: 40px; display: inline-block"  />
                                     </a>
                                     <a href="###" th:text="${article.user.nickname}" >Templatesquare</a>
                                     <p th:text="${article.createAt}" >on May 16, 2012</p>
@@ -72,24 +72,11 @@
                             </li>
 
                             <li class="widget-container">
-                                <h2 class="widget-title">Recent Visitors</h2>
-                                <ul class="rp-widget">
+                                <h2 class="widget-title">Authors</h2>
+                                <ul class="rp-widget" th:each="article : ${list}">
                                     <li>
-                                        <img src="../../../resources/img/list/lp1.jpg" alt="" class="alignleft imgborder" />
-                                        <h3><a href="#">Sed at urna sed libero.</a></h3>
-                                        <span class="smalldate">April 27, 2012</span>
-                                        <span class="clear"></span>
-                                    </li>
-                                    <li>
-                                        <img src="../../../resources/img/list/lp2.jpg" alt="" class="alignleft imgborder" />
-                                        <h3><a href="#">Nam vel nunc at augue vehicula feugiat.</a></h3>
-                                        <span class="smalldate">April 22, 2012</span>
-                                        <span class="clear"></span>
-                                    </li>
-                                    <li>
-                                        <img src="../../../resources/img/list/lp3.jpg" alt="" class="alignleft imgborder" />
-                                        <h3><a href="#">Integer pretium ipsum sit amet dui feugiat.</a></h3>
-                                        <span class="smalldate">April 20, 2012</span>
+                                        <img class="circular ui left floated image" src="../../../resources/img/list/lp3.jpg" th:src="${article.user.getAvatarLink()}" alt="NO PIC" style="width: 40px;height: 40px;"/>
+                                        <h3><a href="#" th:text="${article.user.nickname}">Sed at urna sed libero.</a></h3>
                                         <span class="clear"></span>
                                     </li>
                                 </ul>

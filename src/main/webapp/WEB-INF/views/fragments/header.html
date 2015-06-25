@@ -3,7 +3,7 @@
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="nav(current)">
     <div class="container clearfix">
-        <div class="logo"><a href="/"><img src="../../../resources/img/logo1.png" th:href="@{/resources/img/logo0.png}"/></a></div>
+        <div class="logo"><a href="/"><img src="../../../resources/img/logo1.png" th:href="@{/resources/img/logo1.png}" style="margin-top: -5px;"/></a></div>
         <div class="nav-items clearfix">
             <a th:attr="class=${current == 'recommend' ? 'active' : null}" href="/">Recommendations</a>
             <a th:attr="class=${current == 'topics' ? 'active' : null}" href="/topics">Topics</a>

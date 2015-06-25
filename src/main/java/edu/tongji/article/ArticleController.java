@@ -4,6 +4,7 @@ import edu.tongji.account.Account;
 import edu.tongji.account.AccountRepository;
 import edu.tongji.account.AccountService;
 import edu.tongji.comment.ArticleComment;
+import edu.tongji.search.SearchService;
 import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,12 +35,15 @@ public class ArticleController {
     @Autowired
     private TopicService topicService;
 
+    @Autowired
+    private SearchService searchService;
+
     @RequestMapping(value = "article/view/self", method = RequestMethod.GET)
     public String listMine(Principal principal) {
         Account account = accountRepository.findByEmail(principal.getName());
         return "redirect:user/" + account.getId().toString();
     }
-
+    
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listMine(Model model, @PathVariable("id") Long id) {
         model.addAttribute("list", articleService.listUserArticleByUid(id));
@@ -86,18 +90,18 @@ public class ArticleController {
         return articleService.createArticle(principal.getName(), topicId, title, html, coverImage, brief);
     }
 
-    @RequestMapping(value = "article/id/{id}", method = RequestMethod.POST)
-    @ResponseBody
-    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String html,
-                          @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
-        return articleService.updateArticle(principal.getName(), id, topicId, title, html, coverImage, brief);
-    }
-
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String delete(Principal principal, @PathVariable("id") Long id) {
         articleService.deleteArticle(principal.getName(), id);
         return "{}";
+    }
+
+    @RequestMapping(value = "article/id/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String html,
+                          @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
+        return articleService.updateArticle(principal.getName(), id, topicId, title, html, coverImage, brief);
     }
 
     @RequestMapping(value = "article/like/{id}", method = RequestMethod.GET)
@@ -110,12 +114,11 @@ public class ArticleController {
         articleService.like(userEmail, id);
         return true;
     }
-    @RequestMapping(value = "article/edit/{id}", method = RequestMethod.GET)
-    public String updateArticle(Model model, Principal principal, @PathVariable("id") Long id)
-    {
-        Article article = articleService.getUserArticleById(principal.getName(), id);
-        model.addAttribute("article", article);
-        return "article/create";
+
+    @RequestMapping(value = "article/search/{keyword}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Article> Search(Model model, @PathVariable("keyword") String keyword) {
+        return searchService.search(keyword);
     }
 
 
