@@ -1,6 +1,5 @@
 package edu.tongji.account;
 
-import edu.tongji.article.Article;
 import edu.tongji.article.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Collections;
-import java.util.List;
 
 public class AccountService implements UserDetailsService {
 

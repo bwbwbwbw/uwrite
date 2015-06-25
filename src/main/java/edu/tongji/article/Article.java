@@ -16,11 +16,11 @@ import java.util.List;
 @Configurable
 @Table(name = "article")
 @NamedQueries({
-        @NamedQuery(name = Article.FIND_BY_UID_ID, query = "select a from Article a where a.id = :id and a.user.id = :uid"),
-        @NamedQuery(name = Article.FIND_BY_ID, query = "select a from Article a where a.id = :id"),
-        @NamedQuery(name = Article.FIND_ALL, query = "select a from Article a order by a.createAt desc"),
-        @NamedQuery(name = Article.FIND_UNDER_USER, query = "select a from Article a where a.user.id = :uid order by a.createAt desc"),
-        @NamedQuery(name = Article.FIND_UNDER_TOPIC, query = "select a from Article a where a.topic.id= :id order by a.createAt desc"),
+        @NamedQuery(name = Article.FIND_BY_UID_ID, query = "select a from Article a where a.id = :id and a.user.id = :uid and a.deleted = false "),
+        @NamedQuery(name = Article.FIND_BY_ID, query = "select a from Article a where a.id = :id and a.deleted = false"),
+        @NamedQuery(name = Article.FIND_ALL, query = "select a from Article a where a.deleted = false order by a.createAt desc"),
+        @NamedQuery(name = Article.FIND_UNDER_USER, query = "select a from Article a where a.user.id = :uid and a.deleted = false order by a.createAt desc"),
+        @NamedQuery(name = Article.FIND_UNDER_TOPIC, query = "select a from Article a where a.topic.id = :id and a.deleted = false order by a.createAt desc"),
 })
 public class Article implements java.io.Serializable {
     public static final String FIND_BY_ID = "Article.findById";
@@ -61,9 +61,19 @@ public class Article implements java.io.Serializable {
 
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinTable(name = "likes",
-            joinColumns = {@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "ACCOUNT_ID", referencedColumnName = "id")})
+            joinColumns = {@JoinColumn(name = "ARTICLE_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "ACCOUNT_ID")})
     private List<Account> likedUsers;
+
+    @Column
+    private String coverImage;
+
+    @Column
+    @Type(type = "text")
+    private String brief;
+
+    @Column
+    private Boolean deleted;
 
     protected Article() {
     }
@@ -73,6 +83,7 @@ public class Article implements java.io.Serializable {
         this.setTitle(title);
         this.setMarkdown(markdown);
         this.setTopic(topic);
+        this.deleted = false;
     }
 
     public void setTitle(String title) {
@@ -151,4 +162,27 @@ public class Article implements java.io.Serializable {
         this.likedUsers = likedUser;
     }
 
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
 }
