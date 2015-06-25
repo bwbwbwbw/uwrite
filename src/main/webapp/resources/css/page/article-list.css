@@ -269,7 +269,7 @@ USE THIS STYLE SHEET FOR INNER PAGE
 .subNavBtn {
     display: block;
     height: 35px;
-    width: 10%;
+    width: 15%;
     float: left;
     margin: 0 ;
     text-decoration: none;
@@ -1133,7 +1133,7 @@ img.scale-with-grid {
     padding:6px;
     max-width: 95%;
     display:block;
-
+margin-left: -57px;
 }
 
 .shadowBottom{background:url(../../../resources/img/list/shadow-small.gif) no-repeat center bottom; padding-bottom:5px;}
