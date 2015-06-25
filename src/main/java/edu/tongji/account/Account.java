@@ -1,8 +1,10 @@
 package edu.tongji.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.tongji.article.Article;
 
 import javax.persistence.*;
+import java.util.List;
 
 @SuppressWarnings("serial")
 @Entity
@@ -33,7 +35,11 @@ public class Account implements java.io.Serializable {
     private String avatar;
 
     @JsonIgnore
+    @Column
     private String password;
+
+    @ManyToMany(mappedBy = "likedUsers")
+    private List<Article> likedArticles;
 
     private String role = "ROLE_USER";
 
@@ -93,4 +99,11 @@ public class Account implements java.io.Serializable {
         this.avatar = avatar;
     }
 
+    public List<Article> getLikedArticles() {
+        return likedArticles;
+    }
+
+    public void setLikedArticles(List<Article> likedArticles) {
+        this.likedArticles = likedArticles;
+    }
 }

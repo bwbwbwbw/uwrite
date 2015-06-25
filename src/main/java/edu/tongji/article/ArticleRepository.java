@@ -77,7 +77,8 @@ public class ArticleRepository {
     public Boolean delete(Account account, Long id) {
         Article article = getArticle(account, id);
         if (article != null) {
-            entityManager.remove(article);
+            article.setDeleted(true);
+            entityManager.merge(article);
         }
         return true;
     }
@@ -87,10 +88,28 @@ public class ArticleRepository {
         Article article = getArticle(account, id);
         if (article != null) {
             article.setTopic(topic);
-            article.setMarkdown(markdown);
+            article.setHtml(markdown);
             article.setTitle(title);
             entityManager.merge(article);
         }
         return article;
+    }
+
+    public Boolean hasLiked(Account account, Long id) {
+        Article article = getArticle(id);
+        List<Account> likeduser = article.getLikedUsers();
+        for (Account a : likeduser) {
+            if (a.getId().equals(account.getId()))
+                return true;
+        }
+        return false;
+    }
+
+    public void like(Account account, Long id) {
+        Article article = getArticle(id);
+        List<Account> likeduser = article.getLikedUsers();
+        likeduser.add(account);
+        article.setLikedUsers(likeduser);
+        entityManager.merge(article);
     }
 }

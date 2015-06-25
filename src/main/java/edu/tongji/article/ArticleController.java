@@ -1,10 +1,6 @@
 package edu.tongji.article;
 
-import edu.tongji.account.Account;
-import edu.tongji.account.AccountRepository;
-import edu.tongji.error.ResourceNotFoundException;
-import edu.tongji.topic.Topic;
-import edu.tongji.topic.TopicRepository;
+import edu.tongji.account.AccountService;
 import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +21,8 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-
+    @Autowired
+    private AccountService accountService;
     @Autowired
     TopicService topicService;
 
@@ -56,7 +53,7 @@ public class ArticleController {
     public String listUnderTopic(Model model, @PathVariable String slug) {
         model.addAttribute("list", articleService.listTopicArticleBySlug(slug));
         model.addAttribute("topiclist", topicService.listTopic());
-        model.addAttribute("Slug",slug);
+        model.addAttribute("Slug", slug);
         return "article/list";
     }
 
@@ -85,4 +82,26 @@ public class ArticleController {
     public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String markdown, @RequestParam Long topicId) {
         return articleService.updateArticle(principal.getName(), id, topicId, title, markdown);
     }
+
+    @RequestMapping(value = "article/like/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Boolean like(Principal principal, @PathVariable("id") Long id) {
+        String userEmail = principal.getName();
+        if (articleService.hasLiked(userEmail, id)) {
+            return false;
+        }
+        articleService.like(userEmail, id);
+        return true;
+    }
+
+    /*
+    @RequestMapping(value = "article/collect/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Boolean collect(Principal principal, @PathVariable("id") Long id) {
+        if (accountService.hasCollected(principal.getName(), id)) {
+            return false;
+        }
+        accountService.addCollection(principal.getName(), id);
+        return true;
+    }*/
 }

@@ -63,4 +63,9 @@ public class AccountRepository {
         }
     }
 
+    public void update(Account account) {
+        entityManager.merge(account);
+
+    }
+
 }
