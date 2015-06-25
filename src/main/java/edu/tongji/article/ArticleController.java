@@ -75,18 +75,18 @@ public class ArticleController {
         return articleService.createArticle(principal.getName(), topicId, title, html, coverImage, brief);
     }
 
+    @RequestMapping(value = "article/id/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String html,
+                          @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
+        return articleService.updateArticle(principal.getName(), id, topicId, title, html, coverImage, brief);
+    }
+
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String delete(Principal principal, @PathVariable("id") Long id) {
         articleService.deleteArticle(principal.getName(), id);
         return "{}";
-    }
-
-    @RequestMapping(value = "article/id/{id}", method = RequestMethod.PUT)
-    @ResponseBody
-    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String html,
-                          @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
-        return articleService.updateArticle(principal.getName(), id, topicId, title, html, coverImage, brief);
     }
 
     @RequestMapping(value = "article/like/{id}", method = RequestMethod.GET)
@@ -98,5 +98,12 @@ public class ArticleController {
         }
         articleService.like(userEmail, id);
         return true;
+    }
+    @RequestMapping(value = "article/edit/{id}", method = RequestMethod.GET)
+    public String updateArticle(Model model, Principal principal, @PathVariable("id") Long id)
+    {
+        Article article = articleService.getUserArticleById(principal.getName(), id);
+        model.addAttribute("article", article);
+        return "article/create";
     }
 }

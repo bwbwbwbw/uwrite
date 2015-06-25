@@ -22,13 +22,13 @@
 <div class="container" style="padding-top:126px">
 
     <div class="article-topic"><div class="container clearfix">
-        <div class="topic-control">Topic: <span class="role-topic"></span><a href="javascript:;" class="role-select-topic">Select a topic</a></div>
+        <div class="topic-control">Topic: <span class="role-topic" th:text="${article.topic.name}" th:if="${article != null}"></span><span class="role-topic" th:if="${article == null}">Not selected</span><a href="javascript:;" class="role-select-topic">Select a topic</a></div>
         <div class="article-action">
             <div class="ui basic blue button role-publish">Publish</div>
         </div>
     </div></div>
 
-    <div class="article-content">
+    <div class="article-content" th:if="${article == null}">
         <div role="main" class="postArticle-content js-postField js-notesSource">
             <section class="section--content section--first section--last">
                 <div class="section-content">
@@ -41,6 +41,10 @@
         </div>
     </div>
 
+    <div class="article-content" th:if="${article != null}" th:utext="${article.html}"></div>
+    <input class="role-edit" value="1" type="hidden" th:if="${article != null}"/>
+    <input class="role-edit-topic-id" type="hidden" th:value="${article.topic.id}" th:if="${article != null}"/>
+    <input class="role-edit-article-id" type="hidden" th:value="${article.id}" th:if="${article != null}"/>
 </div>
 
 <script src="../../../resources/lib/jquery/dist/jquery.min.js" th:src="@{/resources/lib/jquery/dist/jquery.min.js}"></script>
