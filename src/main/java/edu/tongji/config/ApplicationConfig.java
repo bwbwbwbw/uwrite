@@ -7,6 +7,7 @@ import edu.tongji.article.ArticleService;
 import edu.tongji.article.HtmlFilter;
 import edu.tongji.comment.CommentRepository;
 import edu.tongji.image.ImageResolver;
+import edu.tongji.search.SearchService;
 import edu.tongji.topic.TopicRepository;
 import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -33,7 +34,14 @@ class ApplicationConfig {
     }
 
     @Bean
-    public static HtmlFilter htmlFilter() { return new HtmlFilter(); }
+    public static SearchService searchService() {
+        return new SearchService();
+    }
+
+    @Bean
+    public static HtmlFilter htmlFilter() {
+        return new HtmlFilter();
+    }
 
     @Bean
     public static ArticleRepository articleRepository() {

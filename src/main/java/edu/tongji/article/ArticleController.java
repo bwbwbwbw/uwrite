@@ -1,8 +1,8 @@
 package edu.tongji.article;
 
 import edu.tongji.account.AccountService;
-import edu.tongji.search.Search;
 import edu.tongji.comment.ArticleComment;
+import edu.tongji.search.SearchService;
 import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +29,9 @@ public class ArticleController {
 
     @Autowired
     private TopicService topicService;
+
+    @Autowired
+    private SearchService searchService;
 
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listMine(Model model, @PathVariable("id") Long id) {
@@ -101,11 +104,9 @@ public class ArticleController {
         return true;
     }
 
-    @RequestMapping(value="article/search/{aim}",method = RequestMethod.GET)
-    public String Search(Model model,@PathVariable("aim") String aim)
-    {
-        Search search=new Search();
-        model.addAttribute("searchResult",search.search(aim,articleService.listAllArticle()));
-        return "article/searchList";
+    @RequestMapping(value = "article/search/{keyword}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Article> Search(Model model, @PathVariable("keyword") String keyword) {
+        return searchService.search(keyword);
     }
 }
