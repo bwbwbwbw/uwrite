@@ -104,6 +104,13 @@ public class ArticleController {
         return true;
     }
 
+    @RequestMapping(value = "article/search/clear", method = RequestMethod.GET)
+    @ResponseBody
+    public String ClearSearch() {
+        searchService.addAll();
+        return "{}";
+    }
+
     @RequestMapping(value = "article/search/{keyword}", method = RequestMethod.GET)
     @ResponseBody
     public List<Article> Search(Model model, @PathVariable("keyword") String keyword) {

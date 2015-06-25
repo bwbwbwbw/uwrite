@@ -18,7 +18,13 @@ public class SearchService {
 
     public SearchService() {
         searchClient = new SearchClient();
+    }
+
+    public void addAll() {
+        searchClient.resetIndex();
+        System.out.print("Indexing initial data...");
         searchClient.initIndexData(articleService.listAllArticle());
+        System.out.print("Index done.");
     }
 
     public void add(Article article) {
