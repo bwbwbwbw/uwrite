@@ -1,5 +1,7 @@
 package edu.tongji.article;
 
+import edu.tongji.account.Account;
+import edu.tongji.account.AccountRepository;
 import edu.tongji.account.AccountService;
 import edu.tongji.comment.ArticleComment;
 import edu.tongji.search.SearchService;
@@ -28,11 +30,20 @@ public class ArticleController {
     private AccountService accountService;
 
     @Autowired
+    private AccountRepository accountRepository;
+
+    @Autowired
     private TopicService topicService;
 
     @Autowired
     private SearchService searchService;
 
+    @RequestMapping(value = "article/view/self", method = RequestMethod.GET)
+    public String listMine(Principal principal) {
+        Account account = accountRepository.findByEmail(principal.getName());
+        return "redirect:user/" + account.getId().toString();
+    }
+    
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listMine(Model model, @PathVariable("id") Long id) {
         model.addAttribute("list", articleService.listUserArticleByUid(id));
@@ -116,4 +127,6 @@ public class ArticleController {
     public List<ArticleSearchItem> Search(Model model, @PathVariable("keyword") String keyword) {
         return searchService.search(keyword);
     }
+
+
 }
