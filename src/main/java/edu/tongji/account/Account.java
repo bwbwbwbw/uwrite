@@ -38,7 +38,8 @@ public class Account implements java.io.Serializable {
     @Column
     private String password;
 
-    @ManyToMany(mappedBy = "likedUsers")
+    @ManyToMany(mappedBy = "likedUsers", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Article> likedArticles;
 
     private String role = "ROLE_USER";
@@ -101,6 +102,10 @@ public class Account implements java.io.Serializable {
 
     public List<Article> getLikedArticles() {
         return likedArticles;
+    }
+
+    public String getAvatarLink() {
+        return "/image/" + this.getAvatar();
     }
 
     public void setLikedArticles(List<Article> likedArticles) {

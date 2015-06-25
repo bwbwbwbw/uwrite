@@ -1,4 +1,35 @@
 .page-article-create
+
+  .role-topic
+    margin-right: 20px
+      
+  .dialog-topics
+    .content
+      width: 400px
+      margin: 0 auto
+    
+    .topic-item
+      margin: 10px 0
+      padding: 10px
+      border: 1px solid transparent
+      border-left: 3px solid transparent
+      transition: border-color .2s linear
+      cursor: pointer
+    
+    .topic-selected
+      border-left: 3px solid #FFA45C
+    
+    .topic-item:hover
+      border: 1px solid rgba(255,255,255,0.2)
+      border-left: 3px solid #2ECFE0
+    
+    .topic-name
+      font-size: 14px
+      margin-bottom: 5px
+    
+    .topic-desc
+      font-size: 12px
+      color: rgba(255,255,255,0.6)
   
   h3[contenteditable]:empty:not(:focus):before{
     content:'The title'
@@ -9,3 +40,28 @@
   
   .role-content-edit
     min-height: 500px
+  
+  .navbar
+    border-bottom: 0
+  
+  .article-topic
+    position: fixed
+    left: 0
+    width: 100%
+    top: 70px
+    line-height: 35px
+    padding: 10px 0
+    background: rgba(255,255,255,0.9)
+    border-bottom: 1px solid #EEE
+    z-index:999
+    
+    .topic-control
+      float: left
+      margin-left: 20px
+
+    .article-action
+      float: right
+
+    .container
+      width: 1000px
+      margin: 0 auto

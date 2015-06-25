@@ -4,6 +4,7 @@ import edu.tongji.Application;
 import edu.tongji.account.AccountRepository;
 import edu.tongji.article.ArticleRepository;
 import edu.tongji.article.ArticleService;
+import edu.tongji.article.HtmlFilter;
 import edu.tongji.comment.CommentRepository;
 import edu.tongji.image.ImageResolver;
 import edu.tongji.topic.TopicRepository;
@@ -30,6 +31,9 @@ class ApplicationConfig {
         );
         return ppc;
     }
+
+    @Bean
+    public static HtmlFilter htmlFilter() { return new HtmlFilter(); }
 
     @Bean
     public static ArticleRepository articleRepository() {

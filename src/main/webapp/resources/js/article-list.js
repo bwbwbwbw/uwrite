@@ -122,3 +122,6 @@ jQuery.extend( jQuery.easing,
 
     });
 
+$('.role-like').click(function() {
+    $(this).find('i').attr('class', 'orange inverted circular thumbs up icon');
+});

@@ -28,6 +28,7 @@ public class CommentRepository {
             return entityManager.createNamedQuery(ArticleComment.FIND_BY_ARTICLE, ArticleComment.class)
                     .setParameter("article_id", article.getId())
                     .getResultList();
+
         } catch (PersistenceException e) {
             return null;
         }

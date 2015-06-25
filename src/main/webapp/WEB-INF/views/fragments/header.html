@@ -3,7 +3,7 @@
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="nav(current)">
     <div class="container clearfix">
-        <div class="logo"><img src="../../../resources/img/logo1.png" alt="Here is logo" th:href="@{/resources/img/logo0.png}"/></div>
+        <div class="logo"><a href="/"><img src="../../../resources/img/logo1.png" th:href="@{/resources/img/logo1.png}" style="margin-top: -5px;"/></a></div>
         <div class="nav-items clearfix">
             <a th:attr="class=${current == 'recommend' ? 'active' : null}" href="/">Recommendations</a>
             <a th:attr="class=${current == 'topics' ? 'active' : null}" href="/topics">Topics</a>
@@ -12,7 +12,8 @@
         <div class="nav-action-items clearfix">
             <a href="/signin" th:href="@{/signin}" class="ui black basic button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign in</a>
             <a href="/signup" th:href="@{/signup}" class="ui blue button" th:if="${#authorization.expression('!isAuthenticated()')}">Sign up</a>
-            <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" th:if="${#authorization.expression('isAuthenticated()')}">Logout</a>
+            <a class="link-item" href="/article/create" th:if="${#authorization.expression('isAuthenticated()')}">Write</a>
+            <a class="link-item" href="/logout" th:href="@{#}" onclick="$('#form').submit();" th:if="${#authorization.expression('isAuthenticated()')}">Logout</a>
             <form id="form" method="post" action="#" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}"></form>
         </div>
     </div>

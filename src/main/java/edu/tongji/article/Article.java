@@ -1,5 +1,6 @@
 package edu.tongji.article;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.tongji.account.Account;
 import edu.tongji.slug.UrlSlugGenerator;
 import edu.tongji.topic.Topic;
@@ -56,6 +57,7 @@ public class Article implements java.io.Serializable {
     private Topic topic;
 
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinTable(name = "likes",
             joinColumns = {@JoinColumn(name = "ARTICLE_ID")},
             inverseJoinColumns = {@JoinColumn(name = "ACCOUNT_ID")})
@@ -74,18 +76,19 @@ public class Article implements java.io.Serializable {
     protected Article() {
     }
 
-    public Article(Account owner, Topic topic, String title, String markdown) {
+    public Article(Account owner, Topic topic, String title, String html, String coverImage, String brief) {
         this.setUser(owner);
         this.setTitle(title);
-        this.setHtml(markdown);
+        this.setHtml(html);
         this.setTopic(topic);
+        this.setCoverImage(coverImage);
+        this.setBrief(brief);
         this.deleted = false;
     }
 
     public void setTitle(String title) {
         this.title = title;
         this.url = new UrlSlugGenerator().toSlug(title);
-        this.url = title;
     }
 
     public void setHtml(String html) {

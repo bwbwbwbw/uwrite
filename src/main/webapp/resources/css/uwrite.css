@@ -21,6 +21,37 @@
 .uwrite-animation.hide-out {
   opacity: 0;
 }
+.page-article-create .role-topic {
+  margin-right: 20px;
+}
+.page-article-create .dialog-topics .content {
+  width: 400px;
+  margin: 0 auto;
+}
+.page-article-create .dialog-topics .topic-item {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-left: 3px solid transparent;
+  -webkit-transition: border-color 0.2s linear;
+          transition: border-color 0.2s linear;
+  cursor: pointer;
+}
+.page-article-create .dialog-topics .topic-selected {
+  border-left: 3px solid #ffa45c;
+}
+.page-article-create .dialog-topics .topic-item:hover {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-left: 3px solid #2ecfe0;
+}
+.page-article-create .dialog-topics .topic-name {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.page-article-create .dialog-topics .topic-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+}
 .page-article-create h3[contenteditable]:empty:not(:focus):before {
   content: 'The title';
 }
@@ -29,6 +60,31 @@
 }
 .page-article-create .role-content-edit {
   min-height: 500px;
+}
+.page-article-create .navbar {
+  border-bottom: 0;
+}
+.page-article-create .article-topic {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  top: 70px;
+  line-height: 35px;
+  padding: 10px 0;
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid #eee;
+  z-index: 999;
+}
+.page-article-create .article-topic .topic-control {
+  float: left;
+  margin-left: 20px;
+}
+.page-article-create .article-topic .article-action {
+  float: right;
+}
+.page-article-create .article-topic .container {
+  width: 1000px;
+  margin: 0 auto;
 }
 .page-article .postArticle-content {
   font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
@@ -520,6 +576,16 @@
 .page-article .postArticle-content section[data-background-color]:not([data-background-color$="Light"]) h4 {
   color: rgba(255,255,255,0.65);
 }
+.page-article .comment-segment {
+  width: 700px;
+  margin: 0 auto;
+}
+.page-article .ui.comments {
+  max-width: none;
+}
+.page-article textarea {
+  height: 70px !important;
+}
 .navbar-padding {
   margin-top: 90px;
 }
@@ -532,7 +598,7 @@
   height: 70px;
   line-height: 1;
   z-index: 999;
-  background: #fff;
+  background: rgba(255,255,255,0.9);
   text-transform: uppercase;
 }
 .navbar a,
@@ -576,6 +642,9 @@
   height: 30px;
   margin: 20px 0;
   line-height: 30px;
+}
+.navbar .nav-action-items .link-item {
+  padding: 0 20px;
 }
 .page-signup .reg-header {
   margin: 30px 0 10px 0;

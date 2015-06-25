@@ -1,55 +1,3 @@
-/* COLOR STYLE*/
-
-body {color:#888;}
-#bodychild {
-    border-top: 15px solid #f7f7f7;
-}
-
-/* Link color */
-a, a:visited, .colortext, .colortext a, .colortext a:visited{color:#009FDA}
-a:hover, a.colortext:hover, .colortext a:hover{color:#ec561d}
-
-
-/* Heading & text */
-h1, h2, h3, h4, h5, h6{color:#4f5b70;}
-.pagetitle, .titleBold{color:#2a313c;}
-.customColor{color:#505c70;}
-
-/* Menu top color */
-.sf-menu a, .sf-menu a:visited{color:#2a313c;}/* 1st level */
-.sf-menu a:hover, .sf-menu li.current a{color:#2a313c; background:#fafafa}/* 1st level */
-.sf-menu li.sfHover a:hover{color:#2a313c;}/* 2nd level */
-
-.sf-menu > li {
-    border-left: 1px solid #e4e4e4;
-}
-.sf-menu > li:before {
-    border-left: 1px solid #fff;
-}
-
-.sf-menu li:first-child, .sf-menu li:first-child:before{border:0;}
-
-.sf-menu li:hover ul,
-.sf-menu li.sfHover ul {
-    background:#f4f4f4;
-    color:#2a313c;
-}
-.sf-menu li li, .sf-menu li li:first-child{
-    border-bottom:1px solid #e4e4e4;
-}
-.sf-menu > li li:before{
-    border-bottom:solid 1px #fff;
-}
-.sf-menu ul li a{ color:#2a313c;}
-.sf-menu ul li a:hover, #topnav li li a.current{color:#e13e00;}
-
-#topnav li li a, .sf-menu li li a, .sf-menu li li a:visited {color:#2a313c;}
-#topnav li li a:hover{color:#e13e00; background:#fafafa;}
-
-/* Slider */
-.flex-caption h1, .flex-caption .slidetext1{color:#2a313c}
-
-
 
 /* Before Content */
 #outerbeforecontent{border:solid 1px #e8e8e8;  background:#fafafa}
@@ -174,6 +122,7 @@ USE THIS STYLE SHEET FOR INNER PAGE
 .posttitle, .posttitle a{font-size:18px; line-height:24px; font-family:'OpenSansRegular', Arial;}
 .posttitle a:hover{text-decoration:none;}
 .entry-utility{padding:0; font-size:12px; font-style:italic}
+.entry-utility p{padding-top: 5px;}
 .entry-content{padding:20px 0 0 0;}
 .post .button{margin:10px 0 ; display:inline-block; float:left}
 
@@ -342,70 +291,6 @@ USE THIS STYLE SHEET FOR INNER PAGE
 }
 
 
-/* #Media Queries
-================================================== */
-/* Smaller than standard 960 (devices and browsers) */
-@media only screen and (min-width: 959px) {
-    #topnav{display:block !important;}
-}
-
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-    #bodychild{width:100%;}
-
-    /* Main Menu */
-    #navigation{background:url(../../../resources/img/list/bg-navigation2.png) no-repeat;}
-    #topnav{display:block !important;}
-    .sf-menu a {padding:25px 15px !important;}
-    .sf-menu, .sf-menu * {font-size:14px;}
-    .sf-menu li:hover ul,
-    .sf-menu li.sfHover ul {
-        top:4.8em; /* match top ul list item height */
-    }
-
-    .sf-menu > li {
-        width:123px;
-    }
-    .sf-menu > li:last-child{width:120px;}
-
-
-    /* Slider */
-    .flex-caption h1{font-size:70px; line-height:70px}
-
-    /* Content */
-    .postimg{background:url(../../../resources/img/list/shadow-small.gif) no-repeat center bottom; padding-bottom:5px;}
-    .padcontent{padding-right:12.8%;}
-    #content.positionright .padcontent{padding-left:12.8%; padding-right:0}
-    .button.large{font-size:14px; line-height:14px; padding:9px 20px 10px 20px;}
-
-    /* Sidebar */
-    .rp-widget li .smalldate{background:transparent; padding:0}
-
-    /* Portfolio */
-    .ts-display-pf-col-4 li{width:162px; }
-    .ts-display-pf-col-4 .ts-display-pf-img{width:142px; height:100%}
-    .ts-display-pf-col-4 .ts-display-pf-img a.image{width:142px; height:100%}
-    .ts-display-pf-col-4  .ts-display-pf-img a .rollover{width:142px; height:100%}
-    .ts-display-pf-col-4 .shadowpfimg{
-        background:url(../../../resources/img/list/shadow-extrasmall2.gif) no-repeat center bottom;
-    }
-
-}
-
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
-    #bodychild{width:100%;}
-
-    /* Slider */
-    .flex-control-nav { display:none;}
-
-    /* Blog */
-    .commentlist ol{padding-left:20px;}
-    .avatar{display:none;}
-    .comment-body{margin:0;}
-
-}
-
 .container					                { position: relative; width: 960px; margin: 0 auto; padding: 0;}
 .column, .columns                           { float: left; display: inline; margin-left: 10px; margin-right: 10px; }
 .row                                        { margin-bottom: 20px; }
@@ -469,136 +354,6 @@ USE THIS STYLE SHEET FOR INNER PAGE
 .five_sixth 								{ width: 82.6665%;}
 .firstcols									{ margin-left:0px !important; }
 .last, .lastcols							{ margin-right:0px !important; clear:right; }
-
-
-
-/* #Tablet (Portrait)
-================================================== */
-
-/* Note: Design for a width of 768px */
-
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-    .container                				{ width: 768px; }
-
-
-    .container .column,
-    .container .columns                     { margin-left: 10px; margin-right: 10px;  }
-
-    .column.alpha, .columns.alpha           { margin-left: 0; margin-right: 10px; }
-    .column.omega, .columns.omega           { margin-right: 0; margin-left: 10px; }
-
-    .container .one.column					{ width: 44px;  }
-    .container .two.columns 				{ width: 108px; }
-    .container .three.columns 				{ width: 172px; }
-    .container .four.columns 				{ width: 236px; }
-    .container .five.columns 				{ width: 300px; }
-    .container .six.columns 				{ width: 364px; }
-    .container .seven.columns 				{ width: 428px; }
-    .container .eight.columns 				{ width: 492px; }
-    .container .nine.columns 				{ width: 556px; }
-    .container .ten.columns 				{ width: 620px; }
-    .container .eleven.columns 				{ width: 684px; }
-    .container .twelve.columns 				{ width: 748px; }
-
-    /* Offsets */
-    .container .offset-by-one                { padding-left: 64px; }
-    .container .offset-by-two                { padding-left: 128px; }
-    .container .offset-by-three              { padding-left: 192px; }
-    .container .offset-by-four               { padding-left: 256px; }
-    .container .offset-by-five               { padding-left: 320px; }
-    .container .offset-by-six                { padding-left: 384px; }
-    .container .offset-by-seven              { padding-left: 448px; }
-    .container .offset-by-eight              { padding-left: 512px; }
-    .container .offset-by-nine               { padding-left: 576px; }
-    .container .offset-by-ten                { padding-left: 640px; }
-    .container .offset-by-eleven             { padding-left: 704px; }
-}
-
-
-/*  #Mobile (Portrait)
-================================================== */
-
-/* Note: Design for a width of 320px */
-
-@media only screen and (max-width: 767px) {
-    .container { width: 300px; }
-    .columns, .column { margin: 0; }
-
-    .container .one.column,
-    .container .two.columns,
-    .container .three.columns,
-    .container .four.columns,
-    .container .five.columns,
-    .container .six.columns,
-    .container .seven.columns,
-    .container .eight.columns,
-    .container .nine.columns,
-    .container .ten.columns,
-    .container .eleven.columns,
-    .container .twelve.columns { width: 300px;  margin-bottom:10px;}
-
-    /* Offsets */
-
-    .container .offset-by-one,
-    .container .offset-by-two,
-    .container .offset-by-three,
-    .container .offset-by-four,
-    .container .offset-by-five,
-    .container .offset-by-six,
-    .container .offset-by-seven,
-    .container .offset-by-eight,
-    .container .offset-by-nine,
-    .container .offset-by-ten,
-    .container .offset-by-eleven { padding-left:0px; }
-
-    /* Column Layouts */
-    .one_half, .one_third, .two_third,
-    .three_fourth, .one_fourth, .one_fifth,
-    .two_fifth, .three_fifth, .four_fifth,
-    .one_sixth, .five_sixth						{margin-right: 0; margin-left:0; position:relative; float:left;  margin-bottom:20px }
-
-    .one_half,
-    .one_third,
-    .one_fourth,
-    .one_fifth,
-    .one_sixth,
-    .two_third,
-    .two_fourth,
-    .two_fifth,
-    .two_sixth,
-    .three_fourth,
-    .three_fifth,
-    .three_sixth,
-    .four_fifth,
-    .four_sixth { width: 96%;}
-    .firstcols									{ margin-left:0px !important; clear:left }
-    .last, .lastcols							{ margin-right:0px !important; clear:left; }
-
-}
-
-
-/* #Mobile (Landscape)
-================================================== */
-
-/* Note: Design for a width of 480px */
-
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-    .container { width: 420px; }
-    .columns, .column { margin: 0; }
-
-    .container .one.column,
-    .container .two.columns,
-    .container .three.columns,
-    .container .four.columns,
-    .container .five.columns,
-    .container .six.columns,
-    .container .seven.columns,
-    .container .eight.columns,
-    .container .nine.columns,
-    .container .ten.columns,
-    .container .eleven.columns,
-    .container .twelve.columns { width: 420px; }
-}
 
 
 /* Self Clearing Goodness */
@@ -1133,7 +888,6 @@ img.scale-with-grid {
     padding:6px;
     max-width: 95%;
     display:block;
-margin-left: -57px;
 }
 
 .shadowBottom{background:url(../../../resources/img/list/shadow-small.gif) no-repeat center bottom; padding-bottom:5px;}

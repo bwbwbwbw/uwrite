@@ -45,6 +45,15 @@ public class ArticleService {
         return article;
     }
 
+    public Article getUserArticleById(String email, Long id)
+    {
+        Account account = accountRepository.findByEmail(email);
+        if (account == null) {
+            throw new ResourceNotFoundException();
+        }
+        return articleRepository.getArticle(account, id);
+    }
+
     public List<Article> listTopicArticleBySlug(String slug) {
         Topic topic = topicRepository.findBySlug(slug);
         if (topic == null) {
@@ -53,19 +62,19 @@ public class ArticleService {
         return articleRepository.listTopicArticle(topic);
     }
 
-    public Article createArticle(String email, Long topicId, String title, String markdown) {
+    public Article createArticle(String email, Long topicId, String title, String html, String coverImage, String brief) {
         Account account = accountRepository.findByEmail(email);
         Topic topic = topicRepository.findById(topicId);
-        Article article = new Article(account, topic, title, markdown);
+        Article article = new Article(account, topic, title, html, coverImage, brief);
         articleRepository.save(article);
         return article;
     }
 
-    public Article updateArticle(String email, Long id, Long topicId, String title, String markdown) {
+    public Article updateArticle(String email, Long id, Long topicId, String title, String html, String coverImage, String brief) {
         Account account = accountRepository.findByEmail(email);
         Topic topic = topicRepository.findById(topicId);
         if (account != null) {
-            return articleRepository.update(account, topic, id, title, markdown);
+            return articleRepository.update(account, topic, id, html, title, coverImage, brief);
         } else {
             return null;
         }
@@ -86,6 +95,11 @@ public class ArticleService {
         ArticleComment comment = new ArticleComment(article, account, markdown);
         commentRepository.save(comment);
         return comment;
+    }
+
+    public List<ArticleComment> getComment(Article article)
+    {
+        return commentRepository.listAll(article);
     }
 
     public Boolean hasLiked(String email, Long id) {

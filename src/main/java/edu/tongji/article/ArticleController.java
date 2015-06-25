@@ -2,6 +2,7 @@ package edu.tongji.article;
 
 import edu.tongji.account.AccountService;
 import edu.tongji.search.Search;
+import edu.tongji.comment.ArticleComment;
 import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 /**
  * Created by Breezewish on 5/29/15.
@@ -24,8 +26,9 @@ public class ArticleController {
 
     @Autowired
     private AccountService accountService;
+
     @Autowired
-    TopicService topicService;
+    private TopicService topicService;
 
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listMine(Model model, @PathVariable("id") Long id) {
@@ -46,6 +49,8 @@ public class ArticleController {
             return "redirect:" + article.getFinalUrl();
         } else {
             model.addAttribute("article", article);
+            List<ArticleComment> comments = articleService.getComment(article);
+            model.addAttribute("comments", comments);
             return "article/view";
         }
     }
@@ -66,9 +71,9 @@ public class ArticleController {
     @RequestMapping(value = "article/create", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Article create(Principal principal, @RequestParam String title, @RequestParam String markdown,
-                          @RequestParam Long topicId) {
-        return articleService.createArticle(principal.getName(), topicId, title, markdown);
+    public Article create(Principal principal, @RequestParam String title, @RequestParam String html,
+                          @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
+        return articleService.createArticle(principal.getName(), topicId, title, html, coverImage, brief);
     }
 
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.DELETE)
@@ -80,8 +85,9 @@ public class ArticleController {
 
     @RequestMapping(value = "article/id/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String markdown, @RequestParam Long topicId) {
-        return articleService.updateArticle(principal.getName(), id, topicId, title, markdown);
+    public Article update(Principal principal, @PathVariable("id") Long id, @RequestParam String title, @RequestParam String html,
+                          @RequestParam Long topicId, @RequestParam(required = false) String coverImage, @RequestParam String brief) {
+        return articleService.updateArticle(principal.getName(), id, topicId, title, html, coverImage, brief);
     }
 
     @RequestMapping(value = "article/like/{id}", method = RequestMethod.GET)
@@ -95,16 +101,6 @@ public class ArticleController {
         return true;
     }
 
-    /*
-    @RequestMapping(value = "article/collect/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Boolean collect(Principal principal, @PathVariable("id") Long id) {
-        if (accountService.hasCollected(principal.getName(), id)) {
-            return false;
-        }
-        accountService.addCollection(principal.getName(), id);
-        return true;
-    }*/
     @RequestMapping(value="article/search/{aim}",method = RequestMethod.GET)
     public String Search(Model model,@PathVariable("aim") String aim)
     {
