@@ -50,9 +50,10 @@ public class ArticleController {
         return "article/userarticle";
     }
 
-    @RequestMapping(value = "article/view/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listAll(Principal principal, Model model) {
         model.addAttribute("list", articleService.listAllArticle());
+        model.addAttribute("topiclist", topicService.listTopic());
         return "article/list";
     }
 

@@ -11,65 +11,63 @@
     <link rel="shortcut icon" href="../../../resources/image/fav.ico" />
 </head>
 <body>
-
 <div th:replace="fragments/header"></div>
 
 <div class="clearfix">
 
-    <div class="leftblock">
-        <h2 th:text="${Slug}">Article list</h2>
-        <div class="square" th:each="article : ${list}" style="padding-bottom: 80px;padding-top: 20px">
+        <div class="leftblock">
+            <h2 th:text="${Slug}">Article list</h2>
+            <div class="square" th:each="article : ${list}" style="padding-bottom: 80px;padding-top: 20px">
 
-            <img class="circular left floated ui image" th:src="${article.user.getAvatarLink()}" style="width: 45px"/>
-            <a th:text="${article.user.nickname}">auther name</a>
-            <p th:text="${article.createAt}">Create date </p>
+                <img class="circular left floated ui image" th:src="${article.user.getAvatarLink()}" style="width: 45px"/>
+                <a th:text="${article.user.nickname}">auther name</a>
+                <p th:text="${article.createAt}">Create date </p>
 
-            <img class="articleCover"  th:src="${article.coverImage}" th:if="${article.coverImage != null}"/>
+                <img class="articleCover"  th:src="${article.coverImage}" th:if="${article.coverImage != null}"/>
 
-            <h3>
-                <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article title</a>
-            </h3>
+                <h3>
+                    <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article title</a>
+                </h3>
 
-            <p th:href="${article.getFinalUrl()}" th:utext="${article.brief}">paragraph</p>
+                <p th:href="${article.getFinalUrl()}" th:utext="${article.brief}">paragraph</p>
 
-            <a class="ui blue button" th:href="${article.getFinalUrl()}">Read More</a>
+                <a class="ui blue button" th:href="${article.getFinalUrl()}">Read More</a>
 
-            <a class="role-like" th:data="${article.id}" style="float: right;margin-top: 5px;">
-                <i class="orange circular thumbs up icon" th:if="${ !isLiked(article.id) }"></i>
-                <i class="orange inverted circular thumbs up icon" th:if="${ isLiked(article.id) }"></i>
-            </a>
+                <a class="role-like" th:data="${article.id}" style="float: right;margin-top: 5px;">
+                    <!--<i class="orange circular thumbs up icon" th:if="${ !isLiked(article.id) }"></i>-->
+                    <!--<i class="orange inverted circular thumbs up icon" th:if="${ isLiked(article.id) }"></i>-->
+                </a>
+            </div>
 
-        </div>
+            </div>
 
-        </div>
-    </div>
 
-    <div class="rightblock">
-       <div class="topiclist">
-        <h3>Topic list</h3>
-        <ul th:each="topic : ${topiclist}">
-            <li><a th:text="${topic.name}" th:href="${topic.getFinalUrl()}">Interaction Design</a></li>
-        </ul>
-    </div>
-        <div class="author">
-            <h3>Author</h3>
-            <ul th:each="article: ${list}">
-                <li>
-                <img class="circular ui left floated image" th:src="${article.user.getAvatarLink()}" alt="NO PIC" style="width: 40px;height: 40px;"/>
-                <a th:text="${article.user.nickname}">Author</a>
-                </li>
+        <div class="rightblock">
+
+           <div class="topiclist">
+            <h3>Topic list</h3>
+            <ul th:each="topic : ${topiclist}">
+                <li><a th:text="${topic.name}" th:href="${topic.getFinalUrl()}">Interaction Design</a></li>
             </ul>
+            </div>
+
+            <div class="author">
+                <h3>Author</h3>
+                <ul th:each="article: ${list}">
+                    <li>
+                    <img class="circular ui left floated image" th:src="${article.user.getAvatarLink()}" alt="NO PIC" style="width: 40px;height: 40px;"/>
+                    <a th:text="${article.user.nickname}">Author</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+</div>
 
-<div th:replace="fragments/footer"></div>
+<!--<div th:replace="fragments/footer"></div>-->
 
 
- //////////////////////////////////
- //      Javascript Files        //
- //////////////////////////////////
 <script src="../../../resources/lib/jquery/dist/jquery.min.js" th:src="@{/resources/lib/jquery/dist/jquery.min.js}"></script>
 <script src="../../../resources/lib/semantic-ui/semantic.min.js" th:src="@{/resources/lib/semantic-ui/semantic.min.js}"></script>
-<script src="../../../resources/js/article-list.js" th:src="@{/resources/js/article-list.js}"></script>-->
+<script src="../../../resources/js/article-list.js" th:src="@{/resources/js/article-list.js}"></script>
 </body>
 </html>
