@@ -1,42 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-
+<head>
+    <title>List articles</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title></title>
-    <link href="../../../resources/css/page/article-list.css" rel="stylesheet" media="screen" th:href="@{/resources/css/page/article-list.css}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="../../../resources/lib/semantic-ui/semantic.min.css" rel="stylesheet" media="screen" th:href="@{/resources/lib/semantic-ui/semantic.min.css}"/>
-
-    <!-- Favicons ================================================== -->
+    <link href="../../../resources/css/page/article-list.css" rel="stylesheet" media="screen" th:href="@{/resources/css/page/article-list.css}" />
+    <link href="../../../resources/css/uwrite.css" rel="stylesheet" media="screen" th:href="@{/resources/css/uwrite.css}" />
     <link rel="shortcut icon" href="../../../resources/image/fav.ico" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
-
-
 <body>
+
+<div th:replace="fragments/header"></div>
+
+<div class="container navbar-padding">
+
 <div id="bodychild">
     <div id="outercontainer">
-
-        <!-- HEADER -->
-        <div id="outerheader">
-            <div class="container">
-                <header id="top" class="twelve columns">
-                    <div id="logo" class="three columns alpha"><a href="###"><img src="../../../resources/img/logo1.png" alt="Here is logo" /></a></div>
-                    <div class="clear"></div>
-                </header>
-            </div>
-            <div class="subMenu" style="box-sizing:content-box">
-                <div class="inner">
-                    <a href="../../../WEB-INF/views/topic/list.html" th:href="@{/WEB-INF/views/topic/list.html}" class="subNavBtn">Home</a>
-                    <a href="../../../WEB-INF/views/article/userarticle.html" th:href="@{/WEB-INF/views/article/userarticle.html}" class="subNavBtn">Article</a>
-                    <a href="../../../WEB-INF/views/article/list.html" th:href="@{/WEB-INF/views/article/list.html}" class="subNavBtn">My blog</a>
-                    <a href="#s4" class="subNavBtn">Favorite</a>
-                    <a href="#s5" class="subNavBtn">User</a>
-                </div>
-            </div>
-        </div>
-        <!-- END HEADER -->
-
-
         <!-- MAIN CONTENT -->
         <div id="outermain" class="inner">
             <div class="container">
@@ -191,18 +171,13 @@
     </div>
 </div>
 
+</div>
+
 <!-- ////////////////////////////////// -->
 <!-- //      Javascript Files        // -->
 <!-- ////////////////////////////////// -->
 <script src="../../../resources/lib/jquery/dist/jquery.min.js" th:src="@{/resources/lib/jquery/dist/jquery.min.js}"></script>
 <script src="../../../resources/lib/semantic-ui/semantic.min.js" th:src="@{/resources/lib/semantic-ui/semantic.min.js}"></script>
-
 <script src="../../../resources/js/article-list.js" th:src="@{/resources/js/article-list.js}"></script>
-
-<!-- addthis button -->
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fe7d4f472573b8b"></script>
-
-
 </body>
 </html>

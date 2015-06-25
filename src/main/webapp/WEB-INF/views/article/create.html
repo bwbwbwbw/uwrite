@@ -10,25 +10,32 @@
     <link href="../../../resources/libmedium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css" rel="stylesheet" media="screen" th:href="@{/resources/lib/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css}" />
     <link href="../../../resources/css/fonts.css" rel="stylesheet" media="screen" th:href="@{/resources/css/fonts.css}" />
     <link href="../../../resources/css/uwrite.css" rel="stylesheet" media="screen" th:href="@{/resources/css/uwrite.css}" />
+    <link rel="shortcut icon" href="../../../resources/image/fav.ico" />
 </head>
 
 <body class="page-article page-article-create">
 
-<div class="article-topic">
-    Topic: <a href="#">Select a topic</a>
-</div>
+<div th:replace="fragments/header"></div>
 
-<div class="article-content">
-    <div role="main" class="postArticle-content js-postField js-notesSource">
-        <section class="section--content section--first section--last">
-            <div class="section-content">
-                <div class="section-inner layoutSingleColumn">
-                    <h3 class="graf--h3" data-align="center" contenteditable="plaintext-only"></h3>
-                    <div class="role-content-edit"></div>
-                </div>
-            </div>
-        </section>
+<div class="container navbar-padding">
+
+    <div class="article-topic">
+        Topic: <a href="#">Select a topic</a>
     </div>
+
+    <div class="article-content">
+        <div role="main" class="postArticle-content js-postField js-notesSource">
+            <section class="section--content section--first section--last">
+                <div class="section-content">
+                    <div class="section-inner layoutSingleColumn">
+                        <h3 class="graf--h3" data-align="center" contenteditable="plaintext-only"></h3>
+                        <div class="role-content-edit"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
 </div>
 
 <script src="../../../resources/lib/jquery/dist/jquery.min.js" th:src="@{/resources/lib/jquery/dist/jquery.min.js}"></script>
