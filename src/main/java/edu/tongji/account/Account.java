@@ -38,7 +38,8 @@ public class Account implements java.io.Serializable {
     @Column
     private String password;
 
-    @ManyToMany(mappedBy = "likedUsers")
+    @ManyToMany(mappedBy = "likedUsers", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Article> likedArticles;
 
     private String role = "ROLE_USER";
