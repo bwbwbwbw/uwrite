@@ -175,6 +175,11 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>1.6.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
