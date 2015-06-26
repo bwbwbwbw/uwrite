@@ -37,7 +37,7 @@
         <td class="eight wide"> <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article</a></td>
         <td class="three wide"> <p th:text="${article.createAt}">on May 16, 2012</p></td>
         <td class="five wide" style="text-align: center">
-            <a class="ui blue tiny labeled icon button" href="/article/create"  style="display:inline-block"><i class="pencil icon"></i> Edit</a>
+            <a class="ui blue tiny labeled icon button" th:href="${article.getEditUrl()}"  style="display:inline-block"><i class="pencil icon"></i> Edit</a>
             <div class="ui red tiny labeled icon button role-delete"><i class="delete icon"></i>
                 Delete
             </div>

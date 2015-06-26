@@ -131,5 +131,12 @@ public class ArticleController {
         return "article/search";
     }
 
+    @RequestMapping(value = "article/edit/{id}", method = RequestMethod.GET)
+    public String updateArticle(Model model, Principal principal, @PathVariable("id") Long id)
+    {
+        Article article = articleService.getUserArticleById(principal.getName(), id);
+        model.addAttribute("article", article);
+        return "article/create";
+    }
 
 }

@@ -147,6 +147,8 @@ public class Article implements java.io.Serializable {
         return "/article/view/" + getId() + "/" + getUrl();
     }
 
+    public String getEditUrl() { return "/article/edit/" + getId(); }
+
     public List<Account> getLikedUsers() {
         return likedUsers;
     }
