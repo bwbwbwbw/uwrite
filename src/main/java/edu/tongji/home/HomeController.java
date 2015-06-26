@@ -9,7 +9,7 @@ import java.security.Principal;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String index(Principal principal) {
         return "home/home";
     }
