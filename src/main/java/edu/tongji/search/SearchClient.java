@@ -77,11 +77,9 @@ public class SearchClient {
     }
 
     public void deleteData(Article article) {
-
         client.prepareDelete(esIndex, esType, article.getId().toString())
                 .execute()
                 .actionGet();
-
     }
 
     public List<ArticleSearchItem> search(String keyword) {

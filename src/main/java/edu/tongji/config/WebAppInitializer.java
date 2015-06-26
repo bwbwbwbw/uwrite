@@ -1,5 +1,6 @@
 package edu.tongji.config;
 
+import org.springframework.boot.context.embedded.MultipartConfigFactory;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -39,5 +40,6 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
         registration.setInitParameter("defaultHtmlEscape", "true");
         registration.setInitParameter("spring.profiles.active", "default");
+        registration.setMultipartConfig(new MultipartConfigFactory().createMultipartConfig());
     }
 }

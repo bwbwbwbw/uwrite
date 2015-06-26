@@ -41,7 +41,16 @@ $(document).ready(function() {
   });
 
   $('.role-content-edit').mediumInsert({
-    editor: editor
+    editor: editor,
+    addons: {
+      images: {
+        fileUploadOptions: {
+          url: '/upload',
+          acceptFileTypes: /(.|\/)(gif|jpe?g|png)$/i,
+          paramName: 'file'
+        }
+      }
+    }
   });
 
   $(document).on('click', '.topic-item', function() {

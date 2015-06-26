@@ -16,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import static org.springframework.context.annotation.ComponentScan.Filter;
 
@@ -33,6 +34,23 @@ class ApplicationConfig {
         return ppc;
     }
 
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setDefaultEncoding("utf-8");
+        commonsMultipartResolver.setMaxUploadSize(50000000);
+        return commonsMultipartResolver;
+    }
+
+    /*
+        @Bean
+        public MultipartConfigElement multipartConfigElement() {
+            MultipartConfigFactory factory = new MultipartConfigFactory();
+            factory.setMaxFileSize("10MB");
+            factory.setMaxRequestSize("10MB");
+            return factory.createMultipartConfig();
+        }
+    */
     @Bean
     public static SearchService searchService() {
         return new SearchService();

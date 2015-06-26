@@ -8,16 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.WebContentGenerator;
 
 import java.io.*;
-
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Formatter;
 
 /**
  * Created by Breezewish on 6/13/15.
@@ -46,23 +44,50 @@ public class ImageController extends WebContentGenerator {
         }
     }
 
+    public static String SHAsum(byte[] convertme) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        return byteArray2Hex(md.digest(convertme));
+    }
 
-    @RequestMapping(value="/upload", method=RequestMethod.POST)
-    public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
-       @RequestParam("file") MultipartFile file){
+    private static String byteArray2Hex(final byte[] hash) {
+        Formatter formatter = new Formatter();
+        for (byte b : hash) {
+            formatter.format("%02x", b);
+        }
+        return formatter.toString();
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public String showFileUpload()
+    {
+        return "upload";
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @ResponseBody
+    public ImageResponse handleFileUpload(@RequestParam("file") MultipartFile file) {
         if (!file.isEmpty()) {
+            if (!ImageUtil.isImageFile(file.getOriginalFilename())) {
+                return new ImageResponse();
+            }
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream =
-                new BufferedOutputStream(new FileOutputStream(new File(name)));
-                stream.write(bytes);
-                stream.close();
-                return "You successfully uploaded " + name + "!";
+                String filename = SHAsum(bytes) + "." + ImageUtil.getFileExtension(file.getOriginalFilename());
+                String targetFile = imageResolver.resolveRealPath(filename);
+
+                File f = new File(targetFile);
+                if (!f.exists()) {
+                    BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(f));
+                    stream.write(bytes);
+                    stream.close();
+                }
+                return new ImageResponse("/image/" + filename);
             } catch (Exception e) {
-                return "You failed to upload " + name + " => " + e.getMessage();
+                e.printStackTrace();;
+                return new ImageResponse();
             }
         } else {
-            return "You failed to upload " + name + " because the file was empty.";
+            return new ImageResponse();
         }
     }
 }

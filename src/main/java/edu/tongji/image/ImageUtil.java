@@ -7,10 +7,22 @@ import org.springframework.http.MediaType;
  */
 public class ImageUtil {
 
-    private static String getFileExtension(String filePath) {
+    public static String getFileExtension(String filePath) {
         if (filePath.lastIndexOf(".") != -1 && filePath.lastIndexOf(".") != 0)
             return filePath.substring(filePath.lastIndexOf(".") + 1);
         else return "";
+    }
+
+    public static Boolean isImageFile(String fileName) {
+        if (fileName.indexOf('.') == -1) {
+            return false;
+        }
+        String ext = getFileExtension(fileName).toLowerCase();
+        if (ext.equals("png") || ext.equals("jpeg") || ext.equals("jpg") || ext.equals("gif")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static MediaType getMimeType(String filePath) {
