@@ -6,32 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="../../../resources/lib/semantic-ui/semantic.min.css" rel="stylesheet" media="screen" th:href="@{/resources/lib/semantic-ui/semantic.min.css}"/>
-    <link href="../../../resources/css/page/article-list.css" rel="stylesheet" media="screen" th:href="@{/resources/css/page/article-list.css}" />
     <link href="../../../resources/css/uwrite.css" rel="stylesheet" media="screen" th:href="@{/resources/css/uwrite.css}" />
     <link rel="shortcut icon" href="../../../resources/image/fav.ico" />
 </head>
-<body>
-<div th:replace="fragments/header"></div>
+<body class="page-article-list">
+<div th:replace="fragments/header :: nav(current='recommend')"></div>
 
-<div class="clearfix">
+<div class="container navbar-padding">
+
+    <div class="clearfix">
 
         <div class="leftblock">
             <h2 th:text="${Slug}">Article list</h2>
             <div class="square" th:each="article : ${list}" style="padding-bottom: 80px;padding-top: 20px">
 
-                <img class="circular left floated ui image" th:src="${article.user.getAvatarLink()}" style="width: 45px"/>
-                <a th:text="${article.user.nickname}">auther name</a>
-                <p th:text="${article.createAt}">Create date </p>
+
+                <h1>
+                    <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article title</a>
+                </h1>
+
+                <div class="clearfix">
+                    <img class="circular left floated ui image" th:src="${article.user.getAvatarLink()}" style="width: 45px"/>
+                    <a th:text="${article.user.nickname}" th:href="${article.user.getLink()}">auther name</a>
+                    <p th:text="${article.createAt}">Create date </p>
+                </div>
 
                 <img class="articleCover"  th:src="${article.coverImage}" th:if="${article.coverImage != null}"/>
 
-                <h3>
-                    <a th:href="${article.getFinalUrl()}" th:text="${article.title}">Article title</a>
-                </h3>
-
-                <p th:href="${article.getFinalUrl()}" th:utext="${article.brief}">paragraph</p>
-
-                <a class="ui blue button" th:href="${article.getFinalUrl()}">Read More</a>
+                <p th:utext="${article.brief}">paragraph</p>
 
                 <a class="role-like" th:data="${article.id}" style="float: right;margin-top: 5px;">
                     <i class="orange circular thumbs up icon"></i>
@@ -52,14 +54,16 @@
 
             <div class="author">
                 <h3>Author</h3>
-                <ul th:each="article: ${list}">
-                    <li>
+                <ul th:each="article: ${list}" th:if="${isPeople == null}">
+                    <li class="clearfix">
                     <img class="circular ui left floated image" th:src="${article.user.getAvatarLink()}" alt="NO PIC" style="width: 40px;height: 40px;"/>
                     <a class="certain-user" th:text="${article.user.nickname}">Author</a>
                     </li>
                 </ul>
             </div>
         </div>
+
+    </div>
 </div>
 
 <!--<div th:replace="fragments/footer"></div>-->

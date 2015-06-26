@@ -45,9 +45,17 @@ public class ArticleController {
     }
     
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
-    public String listMine(Model model, @PathVariable("id") Long id) {
+    public String listUserArticle(Principal principal, Model model, @PathVariable("id") Long id) {
         model.addAttribute("list", articleService.listUserArticleByUid(id));
-        return "article/userarticle";
+        if (principal != null) {
+            Account account = accountRepository.findByEmail(principal.getName());
+            if (account.getId().equals(id)) {
+                return "article/userarticle";
+            }
+        }
+        model.addAttribute("isPeople", true);
+        model.addAttribute("topiclist", topicService.listTopic());
+        return "article/list";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

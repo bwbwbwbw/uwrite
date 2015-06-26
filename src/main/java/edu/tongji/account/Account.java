@@ -108,6 +108,10 @@ public class Account implements java.io.Serializable {
         return "/image/" + this.getAvatar();
     }
 
+    public String getLink() {
+        return "/article/view/user/" + this.getId();
+    }
+
     public void setLikedArticles(List<Article> likedArticles) {
         this.likedArticles = likedArticles;
     }

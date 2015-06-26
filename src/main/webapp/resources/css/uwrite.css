@@ -24,6 +24,9 @@
 .page-article-create .role-topic {
   margin-right: 20px;
 }
+.page-article-create [data-addon="embeds"] {
+  display: none !important;
+}
 .page-article-create .dialog-topics .content {
   width: 400px;
   margin: 0 auto;
@@ -85,6 +88,72 @@
 .page-article-create .article-topic .container {
   width: 1000px;
   margin: 0 auto;
+}
+.page-article-list .container {
+  width: 1000px;
+  margin: 0 auto;
+}
+.page-article-list h1 h2 h3 {
+  color: #08516e;
+  margin-bottom: 20px;
+}
+.page-article-list h1 {
+  font-size: 32px;
+  line-height: 34px;
+  font-weight: bold;
+}
+.page-article-list h2 {
+  font-size: 26px;
+  line-height: 28px;
+  font-weight: bold;
+}
+.page-article-list h3 {
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: normal;
+}
+.page-article-list h1:hover h2:hover h3:hover {
+  color: #dc3c00;
+}
+.page-article-list .leftblock {
+  width: 630px;
+  float: left;
+}
+.page-article-list .leftblock a {
+  color: #222;
+  text-decoration: none;
+}
+.page-article-list .leftblock a:hover {
+  text-decoration: underline;
+}
+.page-article-list .articleCover {
+  border-radius: 3px;
+  max-width: 100%;
+}
+.page-article-list .square {
+  margin: 20px 0;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+.page-article-list .rightblock {
+  width: 290px;
+  float: right;
+}
+.page-article-list .rightblock a {
+  color: #08516e;
+}
+.page-article-list .rightblock a:hover {
+  color: #ec561d;
+}
+.page-article-list .author {
+  margin-top: 80px;
+}
+.page-article-list li {
+  display: block;
+  text-decoration: none;
+  line-height: 30px;
+  margin-left: -40px;
+  list-style: none;
 }
 .page-article-search .search-content {
   width: 1000px;
@@ -609,7 +678,7 @@
   height: 70px !important;
 }
 .navbar-padding {
-  margin-top: 90px;
+  padding-top: 90px;
 }
 .navbar {
   position: fixed;

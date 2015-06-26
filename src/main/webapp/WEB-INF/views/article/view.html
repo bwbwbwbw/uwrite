@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <form class="ui reply form">
+    <form class="ui reply form" th:if="${#authorization.expression('isAuthenticated()')}">
         <div class="field">
             <textarea class="role-reply-body"></textarea>
         </div>
