@@ -5,8 +5,6 @@ import edu.tongji.account.AccountRepository;
 import edu.tongji.account.AccountService;
 import edu.tongji.account.AccountSignUpValidator;
 import edu.tongji.error.ConstraintException;
-import edu.tongji.error.RestError;
-import edu.tongji.error.ValidateError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

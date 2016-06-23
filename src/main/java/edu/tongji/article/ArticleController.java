@@ -43,7 +43,7 @@ public class ArticleController {
         Account account = accountRepository.findByEmail(principal.getName());
         return "redirect:user/" + account.getId().toString();
     }
-    
+
     @RequestMapping(value = "article/view/user/{id}", method = RequestMethod.GET)
     public String listUserArticle(Principal principal, Model model, @PathVariable("id") Long id) {
         model.addAttribute("list", articleService.listUserArticleByUid(id));
@@ -141,8 +141,7 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "article/edit/{id}", method = RequestMethod.GET)
-    public String updateArticle(Model model, Principal principal, @PathVariable("id") Long id)
-    {
+    public String updateArticle(Model model, Principal principal, @PathVariable("id") Long id) {
         Article article = articleService.getUserArticleById(principal.getName(), id);
         model.addAttribute("article", article);
         return "article/create";

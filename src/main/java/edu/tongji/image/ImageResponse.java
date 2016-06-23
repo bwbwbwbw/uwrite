@@ -10,13 +10,11 @@ public class ImageResponse implements java.io.Serializable {
 
     private List<ImageItem> files;
 
-    protected ImageResponse()
-    {
+    protected ImageResponse() {
 
     }
 
-    public ImageResponse(String path)
-    {
+    public ImageResponse(String path) {
         files = new ArrayList<>();
         files.add(new ImageItem(path));
     }

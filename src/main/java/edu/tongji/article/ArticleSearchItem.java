@@ -17,10 +17,10 @@ public class ArticleSearchItem implements java.io.Serializable {
 
     public String brief;
 
-    protected ArticleSearchItem() {}
+    protected ArticleSearchItem() {
+    }
 
-    public ArticleSearchItem(Article article)
-    {
+    public ArticleSearchItem(Article article) {
         this.id = article.getId();
         this.title = article.getTitle();
         this.html = article.getHtml();

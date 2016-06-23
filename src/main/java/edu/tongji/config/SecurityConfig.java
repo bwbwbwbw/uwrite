@@ -1,6 +1,5 @@
 package edu.tongji.config;
 
-import edu.tongji.account.AccountService;
 import edu.tongji.account.UserDetailsServiceImpl;
 import edu.tongji.error.ajaxAuthenticationFailureHandler;
 import edu.tongji.error.ajaxAuthenticationSuccessHandler;

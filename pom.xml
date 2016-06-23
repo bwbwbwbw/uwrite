@@ -2,7 +2,7 @@
         xmlns="http://maven.apache.org/POM/4.0.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-        >
+>
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.tongji</groupId>
     <artifactId>uwrite</artifactId>
@@ -113,8 +113,8 @@
             <!-- Avoid issue #72 Could not initialize class org.thymeleaf.templateresolver.ServletContextTemplateResolver due to 'validation is not supported' -->
             <exclusions>
                 <exclusion>
-            		<artifactId>pull-parser</artifactId>
-            		<groupId>pull-parser</groupId>
+                    <artifactId>pull-parser</artifactId>
+                    <groupId>pull-parser</groupId>
                 </exclusion>
             </exclusions>
         </dependency>

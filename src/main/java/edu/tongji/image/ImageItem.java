@@ -3,8 +3,7 @@ package edu.tongji.image;
 /**
  * Created by Breezewish on 6/26/15.
  */
-public class ImageItem implements java.io.Serializable
-{
+public class ImageItem implements java.io.Serializable {
     private String url;
 
     public String getUrl() {
@@ -19,8 +18,7 @@ public class ImageItem implements java.io.Serializable
 
     }
 
-    public ImageItem(String url)
-    {
+    public ImageItem(String url) {
         this.setUrl(url);
     }
 }

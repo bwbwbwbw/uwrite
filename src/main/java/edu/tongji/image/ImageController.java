@@ -58,8 +58,7 @@ public class ImageController extends WebContentGenerator {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
-    public String showFileUpload()
-    {
+    public String showFileUpload() {
         return "upload";
     }
 
@@ -83,7 +82,8 @@ public class ImageController extends WebContentGenerator {
                 }
                 return new ImageResponse("/image/" + filename);
             } catch (Exception e) {
-                e.printStackTrace();;
+                e.printStackTrace();
+                ;
                 return new ImageResponse();
             }
         } else {
