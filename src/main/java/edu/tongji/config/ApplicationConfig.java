@@ -2,6 +2,8 @@ package edu.tongji.config;
 
 import edu.tongji.Application;
 import edu.tongji.account.AccountRepository;
+import edu.tongji.account.AccountService;
+import edu.tongji.account.AccountSignUpValidator;
 import edu.tongji.article.ArticleRepository;
 import edu.tongji.article.ArticleService;
 import edu.tongji.article.HtmlFilter;
@@ -15,8 +17,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
+import javax.persistence.EntityManagerFactory;
+import javax.transaction.TransactionManager;
 
 import static org.springframework.context.annotation.ComponentScan.Filter;
 
@@ -51,6 +58,15 @@ class ApplicationConfig {
             return factory.createMultipartConfig();
         }
     */
+
+    @Bean
+    public static AccountService accountService() { return new AccountService(); }
+
+    @Bean
+    public static AccountSignUpValidator accountSignUpValidator() {
+        return new AccountSignUpValidator();
+    }
+
     @Bean
     public static SearchService searchService() {
         return new SearchService();
@@ -69,11 +85,6 @@ class ApplicationConfig {
     @Bean
     public static ArticleService articleService() {
         return new ArticleService();
-    }
-
-    @Bean
-    public static AccountRepository accountRepository() {
-        return new AccountRepository();
     }
 
     @Bean

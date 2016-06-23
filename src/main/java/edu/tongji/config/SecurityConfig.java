@@ -1,6 +1,7 @@
 package edu.tongji.config;
 
 import edu.tongji.account.AccountService;
+import edu.tongji.account.UserDetailsServiceImpl;
 import edu.tongji.error.ajaxAuthenticationFailureHandler;
 import edu.tongji.error.ajaxAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
@@ -18,8 +20,8 @@ import org.springframework.security.web.authentication.rememberme.TokenBasedReme
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public AccountService userService() {
-        return new AccountService();
+    public UserDetailsService userService() {
+        return new UserDetailsServiceImpl();
     }
 
     @Bean

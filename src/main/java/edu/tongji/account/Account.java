@@ -12,15 +12,7 @@ import java.util.List;
         @UniqueConstraint(name = "email", columnNames = {"email"}),
         @UniqueConstraint(name = "nickname", columnNames = {"nickname"}),
 })
-@NamedQueries({
-        @NamedQuery(name = Account.FIND_BY_EMAIL, query = "select a from Account a where a.email = :email"),
-        @NamedQuery(name = Account.FIND_BY_ID, query = "select a from Account a where a.id = :id"),
-})
 public class Account implements java.io.Serializable {
-
-    public static final String FIND_BY_EMAIL = "Account.findByEmail";
-    public static final String FIND_BY_ID = "Account.findById";
-
     @Id
     @GeneratedValue
     private Long id;

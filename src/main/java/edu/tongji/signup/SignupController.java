@@ -3,10 +3,15 @@ package edu.tongji.signup;
 import edu.tongji.account.Account;
 import edu.tongji.account.AccountRepository;
 import edu.tongji.account.AccountService;
+import edu.tongji.account.AccountSignUpValidator;
+import edu.tongji.error.ConstraintException;
+import edu.tongji.error.RestError;
+import edu.tongji.error.ValidateError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,6 +27,9 @@ public class SignupController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private AccountSignUpValidator accountSignUpValidator;
+
     @RequestMapping(value = "signup")
     public String signup(Model model) {
         model.addAttribute(new SignupForm());
@@ -31,9 +39,14 @@ public class SignupController {
     @RequestMapping(value = "signup", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Account signup(@Valid @ModelAttribute SignupForm signupForm) {
-        Account account = accountRepository.save(signupForm.createAccount());
-        accountService.signin(account);
+    public Account signup(@Valid @ModelAttribute SignupForm signupForm, BindingResult bindingResult) {
+        Account account = signupForm.createAccount();
+        accountSignUpValidator.validate(account, bindingResult);
+        if (bindingResult.hasErrors()) {
+            throw new ConstraintException(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
+        account = accountService.signUp(account);
+        accountService.signIn(account);
         return account;
     }
 
