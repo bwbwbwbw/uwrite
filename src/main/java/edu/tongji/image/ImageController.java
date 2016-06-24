@@ -17,9 +17,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
 
-/**
- * Created by Breezewish on 6/13/15.
- */
 @Controller
 @Secured("ROLE_USER")
 public class ImageController extends WebContentGenerator {

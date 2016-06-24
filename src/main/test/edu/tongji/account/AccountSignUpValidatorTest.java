@@ -1,48 +1,102 @@
 package edu.tongji.account;
 
-import org.apache.tomcat.jni.Error;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 /**
- * Created by summer on 6/23/16.
+ * @unitTestId ACCOUNT_SIGN_UP_VALIDATOR
  */
+@RunWith(MockitoJUnitRunner.class)
 public class AccountSignUpValidatorTest {
 
-    @Test
-    public void testSupports() throws Exception {
-        AccountSignUpValidator accountSignUpValidator = new AccountSignUpValidator();
+    @InjectMocks
+    private AccountSignUpValidator accountSignUpValidator;
 
-        //test true case
+    @Mock
+    private AccountService accountServiceMock;
+
+    /**
+     * @unitTestTarget AccountSignUpValidator.supports
+     * @unitTestType 等价类测试
+     * @unitTestDescription
+     */
+    @Test
+    public void testSupports1() throws Exception {
         Account testTrue = new Account();
-        assertEquals(true,accountSignUpValidator.supports(testTrue.getClass()));
-
-        //test false case
-        Integer testFalse = new Integer(10);
-        assertEquals(false,accountSignUpValidator.supports((testFalse.getClass())));
-
-        //test null case
-        assertEquals(false,accountSignUpValidator.supports(null));
-
+        assertEquals(true, accountSignUpValidator.supports(testTrue.getClass()));
     }
 
+    /**
+     * @unitTestTarget AccountSignUpValidator.supports
+     * @unitTestType 等价类测试
+     * @unitTestDescription
+     */
     @Test
-    public void testValidate() throws Exception {
-        AccountSignUpValidator accountSignUpValidator = new AccountSignUpValidator();
-
-        Account account1 = new Account();
-        account1.setEmail("");
-        account1.setNickname("");
-        Errors error1 = new BeanPropertyBindingResult(account1,"");
-        accountSignUpValidator.validate(account1,error1);
-        boolean result1 = error1.hasFieldErrors("email");
-        boolean result2 = error1.hasFieldErrors("nickname");
-        boolean result = result1 || result2;
-        assertEquals(false,result);
-
+    public void testSupports2() throws Exception {
+        Object testFalse = new Object();
+        assertEquals(false, accountSignUpValidator.supports((testFalse.getClass())));
     }
+
+    /**
+     * @unitTestTarget AccountSignUpValidator.supports
+     * @unitTestType 等价类测试
+     * @unitTestDescription
+     */
+    @Test
+    public void testSupports3() throws Exception {
+        assertEquals(false, accountSignUpValidator.supports(null));
+    }
+
+    /**
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType 等价类测试
+     * @unitTestDescription
+     */
+    @Test
+    public void testValidate1() throws Exception {
+        // act
+        Account account = new Account();
+        account.setEmail("");
+        account.setNickname("");
+        Errors error = new BeanPropertyBindingResult(account, "");
+        accountSignUpValidator.validate(account, error);
+
+        // assert
+        assertTrue(error.hasFieldErrors("email"));
+        assertTrue(error.hasFieldErrors("nickname"));
+    }
+
+    /**
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType 等价类测试
+     * @unitTestDescription
+     */
+    @Test
+    public void testValidate2() throws Exception {
+        // arrange
+        Account demoAccount = new Account("test@example.com", "test", "test_user", "ROLE_USER");
+        when(accountServiceMock.findByEmail("test@example.com")).thenReturn(demoAccount);
+        when(accountServiceMock.findByNickname("test_user")).thenReturn(demoAccount);
+
+        // act
+        Account account = new Account();
+        account.setEmail("test2@example.com");
+        account.setNickname("test_user");
+        Errors error = new BeanPropertyBindingResult(account, "");
+        accountSignUpValidator.validate(account, error);
+
+        // assert
+        assertTrue(error.hasFieldErrors("email"));
+        assertFalse(error.hasFieldErrors("nickname"));
+        assertTrue(false);
+    }
+
 }
