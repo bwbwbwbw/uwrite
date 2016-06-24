@@ -235,7 +235,7 @@
                 <version>2.10.4</version>
                 <configuration>
                     <show>private</show>
-                    <additionalparam>-d ${project.build.directory} -filename ${project.artifactId}-${project.version}-javadoc.xml</additionalparam>
+                    <additionalparam>-d ${project.build.directory} -filename javadoc.xml</additionalparam>
                     <useStandardDocletOptions>false</useStandardDocletOptions>
                     <doclet>com.github.markusbernhardt.xmldoclet.XmlDoclet</doclet>
                     <docletArtifact>

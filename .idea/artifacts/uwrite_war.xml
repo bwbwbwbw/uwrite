@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="uwrite:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="uwrite-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="uwrite:war exploded" />
+    </root>
+  </artifact>
+</component>
