@@ -1,12 +1,14 @@
 package edu.tongji.image;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 
-/**
- * Created by Breezewish on 6/13/15.
- */
+@Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ImageResolver {
 
     @Value("${uwrite.image.path}")

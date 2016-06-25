@@ -9,13 +9,15 @@ import edu.tongji.search.SearchService;
 import edu.tongji.topic.Topic;
 import edu.tongji.topic.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Breezewish on 6/15/15.
- */
+@Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ArticleService {
 
     @Autowired

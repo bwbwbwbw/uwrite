@@ -3,11 +3,13 @@ package edu.tongji.article;
 import org.owasp.validator.html.AntiSamy;
 import org.owasp.validator.html.CleanResults;
 import org.owasp.validator.html.Policy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
 
-/**
- * Created by Breezewish on 6/25/15.
- */
+@Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class HtmlFilter {
 
     private AntiSamy antiSamy;

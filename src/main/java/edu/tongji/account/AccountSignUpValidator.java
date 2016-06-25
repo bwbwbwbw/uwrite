@@ -1,14 +1,17 @@
 package edu.tongji.account;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import java.util.regex.Pattern;
 
-@Component
+@Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class AccountSignUpValidator implements Validator {
 
     @Autowired

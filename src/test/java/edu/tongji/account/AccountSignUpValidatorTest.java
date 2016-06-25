@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 /**
- * @unitTestId ACCOUNT_SIGN_UP_VALIDATOR
+ * @testType UNIT_TEST
  */
 @RunWith(MockitoJUnitRunner.class)
 public class AccountSignUpValidatorTest {
@@ -24,6 +24,7 @@ public class AccountSignUpValidatorTest {
     private AccountService accountServiceMock;
 
     /**
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_1
      * @unitTestTarget AccountSignUpValidator.supports
      * @unitTestType 等价类测试
      * @unitTestDescription
@@ -35,6 +36,7 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_2
      * @unitTestTarget AccountSignUpValidator.supports
      * @unitTestType 等价类测试
      * @unitTestDescription
@@ -46,6 +48,7 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_3
      * @unitTestTarget AccountSignUpValidator.supports
      * @unitTestType 等价类测试
      * @unitTestDescription
@@ -56,6 +59,7 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_4
      * @unitTestTarget AccountSignUpValidator.validate
      * @unitTestType 等价类测试
      * @unitTestDescription
@@ -75,6 +79,7 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_5
      * @unitTestTarget AccountSignUpValidator.validate
      * @unitTestType 等价类测试
      * @unitTestDescription
@@ -101,26 +106,14 @@ public class AccountSignUpValidatorTest {
 
         assertEquals(1, errors.getFieldErrorCount("nickname"));
         assertEquals("Nickname is already taken", errors.getFieldError("nickname").getDefaultMessage());
-
-
-        // arrange
-       /* Account demoAccount = new Account("test@example.com", "test", "test_user", "ROLE_USER");
-        when(accountServiceMock.findByEmail("test@example.com")).thenReturn(demoAccount);
-        when(accountServiceMock.findByNickname("test_user")).thenReturn(demoAccount);
-
-        // act
-        Account account = new Account();
-        account.setEmail("test2@example.com");
-        account.setNickname("test_user");
-        Errors error = new BeanPropertyBindingResult(account, "");
-        accountSignUpValidator.validate(account, error);
-
-        // assert
-        assertTrue(error.hasFieldErrors("email"));
-        assertFalse(error.hasFieldErrors("nickname"));
-        assertTrue(false);
-        */
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate3() throws Exception {
         // arrange
@@ -141,6 +134,13 @@ public class AccountSignUpValidatorTest {
 
         assertEquals(0, errors.getFieldErrorCount("nickname"));
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate4() throws Exception {
         // arrange
@@ -162,6 +162,13 @@ public class AccountSignUpValidatorTest {
         assertEquals(1,errors.getFieldErrorCount("nickname"));
         assertEquals("Nickname is required", errors.getFieldError("nickname").getDefaultMessage());
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate5() throws Exception {
         // arrange
@@ -183,6 +190,13 @@ public class AccountSignUpValidatorTest {
         assertEquals(1,errors.getFieldErrorCount("nickname"));
         assertEquals("Nickname is already taken", errors.getFieldError("nickname").getDefaultMessage());
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate6() throws Exception {
         // arrange
@@ -203,6 +217,13 @@ public class AccountSignUpValidatorTest {
 
         assertEquals(0,errors.getFieldErrorCount("nickname"));
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate7() throws Exception {
         // arrange
@@ -224,6 +245,13 @@ public class AccountSignUpValidatorTest {
         assertEquals(1,errors.getFieldErrorCount("nickname"));
         assertEquals("Nickname is required", errors.getFieldError("nickname").getDefaultMessage());
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate8() throws Exception {
         //arrange
@@ -245,6 +273,13 @@ public class AccountSignUpValidatorTest {
         assertEquals(1,errors.getFieldErrorCount("nickname"));
         assertEquals("Nickname is already taken", errors.getFieldError("nickname").getDefaultMessage());
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate9() throws Exception {
         //arrange
@@ -266,6 +301,13 @@ public class AccountSignUpValidatorTest {
         assertEquals(0,errors.getFieldErrorCount("nickname"));
 
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate10() throws Exception {
         //arrange
@@ -287,6 +329,13 @@ public class AccountSignUpValidatorTest {
         assertEquals("Nickname is required", errors.getFieldError("nickname").getDefaultMessage());
 
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate11() throws Exception {
         //arrange
@@ -308,6 +357,13 @@ public class AccountSignUpValidatorTest {
         assertEquals("Nickname is already taken", errors.getFieldError("nickname").getDefaultMessage());
 
     }
+
+    /**
+     * @unitTestId
+     * @unitTestTarget AccountSignUpValidator.validate
+     * @unitTestType
+     * @unitTestDescription
+     */
     @Test
     public void testValidate12() throws Exception {
         //arrange

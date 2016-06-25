@@ -4,12 +4,14 @@ import edu.tongji.article.Article;
 import edu.tongji.article.ArticleSearchItem;
 import edu.tongji.article.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by pc-dll on 2015/6/25.
- */
+@Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SearchService {
 
     @Autowired
