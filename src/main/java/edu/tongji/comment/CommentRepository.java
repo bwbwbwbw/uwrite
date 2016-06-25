@@ -35,6 +35,7 @@ public class CommentRepository {
     }
 
     public Comment getComment(Account account, Long id) {
+
         try {
             return entityManager.createNamedQuery(Comment.FIND_BY_UID_ID, Comment.class)
                     .setParameter("uid", account.getId())

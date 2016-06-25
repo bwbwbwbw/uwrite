@@ -112,6 +112,8 @@ public class ArticleService {
     public ArticleComment addComment(String email, Long id, String markdown) {
         Account account = accountRepository.findByEmail(email);
         Article article = articleRepository.getArticle(id);
+        if(account == null || article == null) throw new ResourceNotFoundException();
+        if(markdown.length() == 0)throw new RuntimeException();
         ArticleComment comment = new ArticleComment(article, account, markdown);
         commentRepository.save(comment);
         return comment;
