@@ -20,9 +20,6 @@ public class SignupController {
     private static final String SIGNUP_VIEW_NAME = "signup/signup";
 
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
     private AccountService accountService;
 
     @Autowired

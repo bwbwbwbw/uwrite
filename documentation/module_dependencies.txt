@@ -1,0 +1,30 @@
+graph TD;
+
+AccountRepository --> AccountDAO
+AccountService --> AccountRepository
+UserDetailsService --> AccountRepository
+
+ArticleRepository --> ArticleDAO
+ArticleService --> AccountRepository
+ArticleService --> ArticleRepository
+ArticleService --> TopicRepository
+ArticleService --> CommentRepository
+
+ArticleController --> ArticleService
+ArticleController --> AccountService
+ArticleController --> TopicService
+
+CommentRepository --> ArticleCommentDAO
+CommentController --> ArticleService
+
+ArticleDAO --> ArticleCommentDAO
+ArticleDAO --> TopicDAO
+ArticleDAO --> AccountDAO
+
+SignupController --> AccountService
+
+SigninController --> UserDetailsService
+
+TopicRepository --> TopicDAO
+TopicService --> TopicRepository
+TopicController --> TopicService
