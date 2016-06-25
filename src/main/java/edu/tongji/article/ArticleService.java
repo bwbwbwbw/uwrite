@@ -104,7 +104,7 @@ public class ArticleService {
                 return true;
             }
         }
-        return false;   
+        return false;
     }
 
     public ArticleComment addComment(String email, Long id, String markdown) {
