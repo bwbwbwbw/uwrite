@@ -31,7 +31,7 @@ public class AccountSignUpValidator implements Validator {
         Account account = (Account) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", null, "Email is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickname", null, "Nickname is required");
-        if (!emailPattern.matcher(account.getEmail()).matches()) {
+        if ((!errors.hasFieldErrors("email")) && (!emailPattern.matcher(account.getEmail()).matches())) {
             errors.rejectValue("email", null, "Email is not valid");
         }
         if (accountService.findByEmail(account.getEmail()) != null) {

@@ -86,6 +86,17 @@ public class Article implements java.io.Serializable {
         this.deleted = false;
     }
 
+    public Article(Long id, boolean deleted){
+        this.id = id;
+        this.deleted = deleted;
+    }
+
+    public Article(Long id, boolean deleted, Account owner){
+        this.id = id;
+        this.deleted = deleted;
+        this.setUser(owner);
+    }
+
     public void setTitle(String title) {
         this.title = title;
         this.url = new UrlSlugGenerator().toSlug(title);

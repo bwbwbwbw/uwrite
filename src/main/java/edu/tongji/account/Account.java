@@ -48,6 +48,11 @@ public class Account implements java.io.Serializable {
         this.setAvatar("default.png");
     }
 
+    public Account(Long id, String email, String nickname) {
+        this(email, "dummy_password", nickname, "ROLE_USER");
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
