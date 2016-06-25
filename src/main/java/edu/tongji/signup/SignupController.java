@@ -1,7 +1,6 @@
 package edu.tongji.signup;
 
 import edu.tongji.account.Account;
-import edu.tongji.account.AccountRepository;
 import edu.tongji.account.AccountService;
 import edu.tongji.account.AccountSignUpValidator;
 import edu.tongji.error.ConstraintException;

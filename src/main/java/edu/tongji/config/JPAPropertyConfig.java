@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Properties;
 
 @Configuration
-public class JPAPropertyConfig {
+public class JpaPropertyConfig {
     @Value("${hibernate.dialect}")
     private String dialect;
     @Value("${hibernate.hbm2ddl.auto}")

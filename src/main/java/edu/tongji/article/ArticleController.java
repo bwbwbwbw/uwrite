@@ -1,7 +1,6 @@
 package edu.tongji.article;
 
 import edu.tongji.account.Account;
-import edu.tongji.account.AccountRepository;
 import edu.tongji.account.AccountService;
 import edu.tongji.comment.ArticleComment;
 import edu.tongji.search.SearchService;

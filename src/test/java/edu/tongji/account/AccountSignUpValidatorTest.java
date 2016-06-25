@@ -9,10 +9,10 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 /**
- * @unitTestId ACCOUNT_SIGN_UP_VALIDATOR
+ * @testType UNIT_TEST
  */
 @RunWith(MockitoJUnitRunner.class)
 public class AccountSignUpValidatorTest {
