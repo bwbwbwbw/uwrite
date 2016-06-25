@@ -1,20 +1,12 @@
 package edu.tongji.config;
 
 import edu.tongji.Application;
-import edu.tongji.account.AccountService;
-import edu.tongji.account.AccountSignUpValidator;
-import edu.tongji.article.ArticleRepository;
-import edu.tongji.article.ArticleService;
-import edu.tongji.article.HtmlFilter;
-import edu.tongji.comment.CommentRepository;
-import edu.tongji.image.ImageResolver;
-import edu.tongji.search.SearchService;
-import edu.tongji.topic.TopicRepository;
-import edu.tongji.topic.TopicService;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -53,53 +45,4 @@ class ApplicationConfig {
         }
     */
 
-    @Bean
-    public static AccountService accountService() {
-        return new AccountService();
-    }
-
-    @Bean
-    public static AccountSignUpValidator accountSignUpValidator() {
-        return new AccountSignUpValidator();
-    }
-
-    @Bean
-    public static SearchService searchService() {
-        return new SearchService();
-    }
-
-    @Bean
-    public static HtmlFilter htmlFilter() {
-        return new HtmlFilter();
-    }
-
-    @Bean
-    public static ArticleRepository articleRepository() {
-        return new ArticleRepository();
-    }
-
-    @Bean
-    public static ArticleService articleService() {
-        return new ArticleService();
-    }
-
-    @Bean
-    public static CommentRepository commentRepository() {
-        return new CommentRepository();
-    }
-
-    @Bean
-    public static TopicRepository topicRepository() {
-        return new TopicRepository();
-    }
-
-    @Bean
-    public static TopicService topicService() {
-        return new TopicService();
-    }
-
-    @Bean
-    public static ImageResolver imageResolver() {
-        return new ImageResolver();
-    }
 }

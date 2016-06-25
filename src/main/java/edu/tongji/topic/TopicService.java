@@ -1,12 +1,14 @@
 package edu.tongji.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by Breezewish on 6/15/15.
- */
+@Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class TopicService {
 
     @Autowired

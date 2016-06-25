@@ -5,6 +5,7 @@ import edu.tongji.error.ajaxAuthenticationFailureHandler;
 import edu.tongji.error.ajaxAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -45,7 +46,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/favicon.ico", "/resources/**", "/signup", "/image/**").permitAll()
+                .antMatchers("/", "/home", "/favicon.ico", "/resources/**", "/signup", "/image/**").permitAll()
                 .antMatchers("/article/view/**", "/topics", "/topic/**", "/article/search/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

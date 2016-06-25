@@ -94,9 +94,8 @@ public class AccountSignUpValidatorTest {
         accountSignUpValidator.validate(account, error);
 
         // assert
-        assertTrue(error.hasFieldErrors("email"));
-        assertFalse(error.hasFieldErrors("nickname"));
-        assertTrue(false);
+        assertFalse(error.hasFieldErrors("email"));
+        assertTrue(error.hasFieldErrors("nickname"));
     }
 
 }

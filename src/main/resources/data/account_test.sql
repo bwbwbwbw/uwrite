@@ -1,0 +1,8 @@
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
+
+BEGIN;
+INSERT INTO `account` VALUES ('1', 'default.png', 'admin', 'admin', '$2a$10$ePPwDn05zVkORRUP9BTZlu5sBIUEFtJHLxsLiWbkTgeJ99eomWkRe', 'ROLE_ADMIN');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;

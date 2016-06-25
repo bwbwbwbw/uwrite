@@ -4,9 +4,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
-/**
- * Created by pc-dll on 2015/6/9.
- */
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "topic")
