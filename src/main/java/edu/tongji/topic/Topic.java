@@ -47,6 +47,11 @@ public class Topic implements java.io.Serializable {
         this.setDescription(description);
     }
 
+    public Topic(long id)
+    {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

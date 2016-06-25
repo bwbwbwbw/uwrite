@@ -10,6 +10,7 @@ import edu.tongji.topic.Topic;
 import edu.tongji.topic.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +35,7 @@ public class ArticleService {
 
     public List<Article> listUserArticleByUid(Long id) {
         Account account = accountRepository.findById(id);
+        if (account == null) return new ArrayList<Article>();
         return articleRepository.listUserArticle(account);
     }
 
@@ -68,10 +70,15 @@ public class ArticleService {
     public Article createArticle(String email, Long topicId, String title, String html, String coverImage, String brief) {
         Account account = accountRepository.findByEmail(email);
         Topic topic = topicRepository.findById(topicId);
-        Article article = new Article(account, topic, title, html, coverImage, brief);
-        articleRepository.save(article);
-        searchService.add(article);
-        return article;
+        if (topic == null || account == null) throw new ResourceNotFoundException();
+        if (title.length() != 0 && html.length() != 0 && brief.length() != 0) {
+            Article article = new Article(account, topic, title, html, coverImage, brief);
+            articleRepository.save(article);
+            searchService.add(article);
+            return article;
+        } else {
+            throw new RuntimeException();
+        }
     }
 
     public Article updateArticle(String email, Long id, Long topicId, String title, String html, String coverImage, String brief) {
@@ -88,15 +95,16 @@ public class ArticleService {
 
     public Boolean deleteArticle(String email, Long id) {
         Account account = accountRepository.findByEmail(email);
+
         if (account != null) {
             Article article = articleRepository.getArticle(account, id);
-            if (article != null) {
+            if (article != null && !article.getDeleted()) {
                 articleRepository.delete(article);
                 searchService.delete(article);
                 return true;
             }
         }
-        return false;
+        return false;   
     }
 
     public ArticleComment addComment(String email, Long id, String markdown) {
@@ -120,4 +128,6 @@ public class ArticleService {
         Account account = accountRepository.findByEmail(email);
         articleRepository.like(account, id);
     }
+
+
 }
