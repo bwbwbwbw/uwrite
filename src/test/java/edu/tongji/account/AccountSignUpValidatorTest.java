@@ -27,7 +27,7 @@ public class AccountSignUpValidatorTest {
      * @unitTestId TEST_SIGN_UP_VALIDATOR_1
      * @unitTestTarget AccountSignUpValidator.supports
      * @unitTestType 等价类测试
-     * @unitTestDescription
+     * @unitTestDescription 输入一个为Account实例的对象,预期返回true
      */
     @Test
     public void testSupports1() throws Exception {
@@ -39,7 +39,7 @@ public class AccountSignUpValidatorTest {
      * @unitTestId TEST_SIGN_UP_VALIDATOR_2
      * @unitTestTarget AccountSignUpValidator.supports
      * @unitTestType 等价类测试
-     * @unitTestDescription
+     * @unitTestDescription 输入一个不为Account实例的对象,预期返回false
      */
     @Test
     public void testSupports2() throws Exception {
@@ -51,7 +51,7 @@ public class AccountSignUpValidatorTest {
      * @unitTestId TEST_SIGN_UP_VALIDATOR_3
      * @unitTestTarget AccountSignUpValidator.supports
      * @unitTestType 等价类测试
-     * @unitTestDescription
+     * @unitTestDescription 输入一个null,预期返回false
      */
     @Test
     public void testSupports3() throws Exception {
@@ -62,7 +62,7 @@ public class AccountSignUpValidatorTest {
      * @unitTestId TEST_SIGN_UP_VALIDATOR_4
      * @unitTestTarget AccountSignUpValidator.validate
      * @unitTestType 等价类测试
-     * @unitTestDescription
+     * @unitTestDescription 输入的email和nickname都为空的情况,预期出现email和nickname错误
      */
     @Test
     public void testValidate1() throws Exception {
@@ -82,7 +82,7 @@ public class AccountSignUpValidatorTest {
      * @unitTestId TEST_SIGN_UP_VALIDATOR_5
      * @unitTestTarget AccountSignUpValidator.validate
      * @unitTestType 等价类测试
-     * @unitTestDescription
+     * @unitTestDescription 输入一个email为空,nickname不为空但被占用的情况,预期出现email错误
      */
     @Test
     public void testValidate2() throws Exception {
@@ -109,10 +109,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_6
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email为空,nickname合法的情况,预期返回email错误
      */
     @Test
     public void testValidate3() throws Exception {
@@ -136,10 +136,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_7
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email合法且未被占用,nickname为空的情况,预期返回nickname错误
      */
     @Test
     public void testValidate4() throws Exception {
@@ -164,10 +164,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_8
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email为空,nickname已被占用的情况,预期返回nickname错误
      */
     @Test
     public void testValidate5() throws Exception {
@@ -192,10 +192,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_9
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email不合法,nickname合法的情况,预期返回email错误
      */
     @Test
     public void testValidate6() throws Exception {
@@ -219,10 +219,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_10
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email被占用,nickname为空的情况,预期返回email错误和nickname错误
      */
     @Test
     public void testValidate7() throws Exception {
@@ -247,10 +247,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_11
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email被占用,nickname被占用的情况,预期返回email错误和nickname错误
      */
     @Test
     public void testValidate8() throws Exception {
@@ -275,10 +275,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_12
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email被占用,nickname合法的情况,预期返回email错误
      */
     @Test
     public void testValidate9() throws Exception {
@@ -303,10 +303,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_13
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email合法且未被占用,nickname为空的情况,预期返回nickname错误
      */
     @Test
     public void testValidate10() throws Exception {
@@ -331,10 +331,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_14
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email合法且未被占用,nickname被占用的情况,预期返回nickname错误
      */
     @Test
     public void testValidate11() throws Exception {
@@ -359,10 +359,10 @@ public class AccountSignUpValidatorTest {
     }
 
     /**
-     * @unitTestId
+     * @unitTestId TEST_SIGN_UP_VALIDATOR_15
      * @unitTestTarget AccountSignUpValidator.validate
-     * @unitTestType
-     * @unitTestDescription
+     * @unitTestType 等价类测试
+     * @unitTestDescription 输入一个email合法且未被占用,nickname未被占用的情况,预期执行结果正确,不返回任何错误
      */
     @Test
     public void testValidate12() throws Exception {
